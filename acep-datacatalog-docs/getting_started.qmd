@@ -1,0 +1,11 @@
+# Getting Started
+
+Here are some instructions for how to navigate the data catalog.
+
+![](images/ckanafter.png)
+
+## Making an Account {.unnumbered}
+
+## Searching for Datasets {.unnumbered}
+
+## Submitting a Comment/Complaint {.unnumbered}

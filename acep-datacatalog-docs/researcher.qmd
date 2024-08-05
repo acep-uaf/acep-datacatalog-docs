@@ -1,0 +1,14 @@
+# Researcher
+
+This is some things researcher's posting stuff should know
+
+## Posting a Dataset {.unnumbered}
+
+## Tagging a Dataset {.unnumbered}
+
+## Editing/Deleting a Dataset {.unnumbered}
+
+## Adding a Dataset to a Group {.unnumbered}
+
+## Creating a New Group {.unnumbered}
+

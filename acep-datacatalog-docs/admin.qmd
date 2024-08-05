@@ -1,0 +1,11 @@
+# Admin
+
+Here is some stuff admins should know how to do.
+
+## Giving User Permissions {.unnumbered}
+
+## Reviewing a Dataset {.unnumbered}
+
+## Deleting Datasets/Groups/Organizations {.unnumbered}
+
+## Restoring a Deleted User {.unnumbered}

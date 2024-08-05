@@ -1,0 +1,24 @@
+project:
+  type: book
+
+book:
+  title: "ACEP Data Catalog User Guides"
+  author: "Jenae Matson"
+  date: "8/5/2024"
+  chapters:
+    - index.qmd
+    - getting_started.qmd
+    - researcher.qmd
+    - admin.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+
+
