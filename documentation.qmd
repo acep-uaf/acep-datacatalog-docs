@@ -33,15 +33,9 @@ __Purpose__: Created resource views for geojson and other geo-data file types. W
 #### ckanext-package-group-permissions
 __Link__: [https://github.com/salsadigitalauorg/ckanext-package-group-permissions](https://github.com/salsadigitalauorg/ckanext-package-group-permissions)  
 __Purpose__: Allows all editors and admins to add datasets to any group, without having to be added as members to each group.  
-__Modifications__: This extension was created and works with CKAN 2.9. This instance is version 2.10, so the extension requires some small modifications to work. In the file `plugin.py`, change the following
+__Modifications__: This extension was created and works with CKAN 2.9. This instance is version 2.10, so the extension requires some small modifications to work. The following changes were made to the original extension:    
 
-#### ckanext-scheming
-__Link__: [https://github.com/ckan/ckanext-scheming ](https://github.com/ckan/ckanext-scheming)  
-__Purpose__: Allows for the creation of alternate metadata templates (schemas) defined by .yaml or .json files.
-
-### Adding Alternate Schemas with ckanext-scheming
-1. Create a .yaml or .json file in the folder `ckanext-scheming/ckanext/scheming` to define the metadata schema. See extension documentatoin for more information and examples.  
-2. In `ckan.ini`, add your schema to the `scheming.dataset_schemas` config option.  
+- In the file `plugin.py`, change the `member_create` function to the following
 ```
 def member_create(self, next_auth, context, data_dict):
     """
@@ -51,16 +45,46 @@ def member_create(self, next_auth, context, data_dict):
     :param data_dict:
     :return:
     """
-    authorized = False
-    if context.get('controller') in ['package', 'dataset'] and context.get('action') in ['groups']:
-        authorized = helpers.user_has_admin_access(include_editor_access=True)
+    group = logic_auth.get_group_object(context, data_dict)
 
+    authorized = False
+    if not group.is_organization and data_dict.get('object_type') == 'package':
+        authorized = helpers.user_has_admin_access(include_editor_access=True)
 
     if not authorized:
         # Fallback to the default CKAN behaviour
         return next_auth(context, data_dict)
     else:
         return {'success': True}
+```
+- In the the file `templates/package/group_list.html`, add the line `{{ h.csrf_input() }}` to the beginning of the two post forms, as follows
+```
+{% if groups %}
+<form class="add-to-group" method="post">
+    {{ h.csrf_input() }}
+    ...
+</form>
+{% endif %}
+```
+```
+{% if c.pkg_dict.groups %}
+<form method="post">
+    {{ h.csrf_input() }}
+    ...
+{% endif %}
+```
+
+#### ckanext-scheming
+__Link__: [https://github.com/ckan/ckanext-scheming ](https://github.com/ckan/ckanext-scheming)  
+__Purpose__: Allows for the creation of alternate metadata templates (schemas) defined by .yaml or .json files.
+
+### Adding Alternate Schemas with ckanext-scheming
+1. Create a .yaml or .json file in the folder `ckanext-scheming/ckanext/scheming` to define the metadata schema. See extension documentation for more information and examples.  
+2. In `ckan.ini`, add your schema to the `scheming.dataset_schemas` config option.
+For example:   
+```
+scheming.dataset_schemas = ckanext.scheming:arctic_dataset.json   
+                            ckanext.scheming:geo_dataset.json
 ```
 3. The new dataset creation form is located at a url defined by the schema type name. For example, the creation form for datasets of type `arctic-dataset` is located at `/arctic-dataset/new`. You can define a new Add Dataset button using this new url.
 
@@ -72,3 +96,8 @@ __Problems__: This extension is not currently installed due to the following,
 
 - Configuring map tiles for ckanext-spatial caused the map tiles for ckanext-geoview to disappear.
 - Datasets with the required spatial metadata were not searchable on the map search widget, although the dataset extent widet worked correctly. 
+
+#### ckanext-oidc-pkce
+__Link__: [https://github.com/DataShades/ckanext-oidc-pkce/tree/master](https://github.com/DataShades/ckanext-oidc-pkce/tree/master)  
+__Purpose__: This extension allows for users to be authenticated through an external application when they login.   
+__Problems__: Ideally users on the ACEP Data Catalog would be able to login using their UA login credentials through Google Authentication. This extension installs correctly, but does not seem to support Google Authentication.
