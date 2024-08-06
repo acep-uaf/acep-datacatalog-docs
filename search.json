@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "ACEP Data Catalog User Guides",
     "section": "",
-    "text": "Welcome\nWelcome to the ACEP Data Catalog documentation, this is how to use it",
+    "text": "Welcome\nThis documentation provides some helpful tutorials for working with the ACEP Data Catalog.",
     "crumbs": [
       "Welcome"
     ]
@@ -134,7 +134,7 @@
     "href": "admin.html#restoring-a-deleted-user",
     "title": "3  Admin",
     "section": "Restoring a Deleted User",
-    "text": "Restoring a Deleted User",
+    "text": "Restoring a Deleted User\nWhen a user is deleted from the website, their information remains in the database with the state field set to deleted. To reactivate the user, you must set this field to active in the database.\n\nEnter the acep-db-cont docker container\n\n&gt; docker exec -it acep-db-cont /bin/bash\n\n\nAccess the postgres database\n\n&gt; psql -U postgres\n\n\nList all the databases and connect to the ckandb database.\n\n&gt; \\l\n&gt; \\c ckandb\n\nList all the tables and list the columns of the user table.\n\n&gt; \\d\n&gt; \\d user\n\nList all the users in the user table.\n\n&gt; SELECT * FROM public.user\n\nFind the deleted user with the username [username].\n\n&gt; SELECT id, name, email, state FROM public.user WHERE name = ‘[username]’\n\nUpdate the user’s state field.\n\n&gt; UPDATE public.user SET state = ‘active’ WHERE name = ‘[username]’\n\nFind the user again and ensure that the state field is set to active.\n\n&gt; SELECT id, name, email, state FROM public.user WHERE name = ‘[username]’",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Admin</span>"
     ]
