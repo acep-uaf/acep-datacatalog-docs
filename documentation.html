@@ -216,7 +216,43 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored" data-anchor-id="ckanext-package-group-permissions">ckanext-package-group-permissions</h4>
 <p><strong>Link</strong>: <a href="https://github.com/salsadigitalauorg/ckanext-package-group-permissions">https://github.com/salsadigitalauorg/ckanext-package-group-permissions</a><br>
 <strong>Purpose</strong>: Allows all editors and admins to add datasets to any group, without having to be added as members to each group.<br>
-<strong>Modifications</strong>: This extension was created and works with CKAN 2.9. This instance is version 2.10, so the extension requires some small modifications to work. In the file <code>plugin.py</code>, change the following</p>
+<strong>Modifications</strong>: This extension was created and works with CKAN 2.9. This instance is version 2.10, so the extension requires some small modifications to work. The following changes were made to the original extension:</p>
+<ul>
+<li>In the file <code>plugin.py</code>, change the <code>member_create</code> function to the following</li>
+</ul>
+<pre><code>def member_create(self, next_auth, context, data_dict):
+    """
+    This code is largely borrowed from /src/ckan/ckan/logic/auth/create.py
+    With a modification to allow users to add datasets to any group
+    :param context:
+    :param data_dict:
+    :return:
+    """
+    group = logic_auth.get_group_object(context, data_dict)
+
+    authorized = False
+    if not group.is_organization and data_dict.get('object_type') == 'package':
+        authorized = helpers.user_has_admin_access(include_editor_access=True)
+
+    if not authorized:
+        # Fallback to the default CKAN behaviour
+        return next_auth(context, data_dict)
+    else:
+        return {'success': True}</code></pre>
+<ul>
+<li>In the the file <code>templates/package/group_list.html</code>, add the line <code>{ h.csrf_input() }</code> to the beginning of the two post forms, as follows</li>
+</ul>
+<pre><code>{% if groups %}
+&lt;form class="add-to-group" method="post"&gt;
+    {{ h.csrf_input() }}
+    ...
+&lt;/form&gt;
+{% endif %}</code></pre>
+<pre><code>{% if c.pkg_dict.groups %}
+&lt;form method="post"&gt;
+    {{ h.csrf_input() }}
+    ...
+{% endif %}</code></pre>
 </section>
 <section id="ckanext-scheming" class="level4">
 <h4 class="anchored" data-anchor-id="ckanext-scheming">ckanext-scheming</h4>
@@ -227,29 +263,13 @@ ul.task-list li input[type="checkbox"] {
 <section id="adding-alternate-schemas-with-ckanext-scheming" class="level3">
 <h3 class="anchored" data-anchor-id="adding-alternate-schemas-with-ckanext-scheming">Adding Alternate Schemas with ckanext-scheming</h3>
 <ol type="1">
-<li>Create a .yaml or .json file in the folder <code>ckanext-scheming/ckanext/scheming</code> to define the metadata schema. See extension documentatoin for more information and examples.<br>
+<li>Create a .yaml or .json file in the folder <code>ckanext-scheming/ckanext/scheming</code> to define the metadata schema. See extension documentation for more information and examples.<br>
 </li>
-<li>In <code>ckan.ini</code>, add your schema to the <code>scheming.dataset_schemas</code> config option.<br>
+<li>In <code>ckan.ini</code>, add your schema to the <code>scheming.dataset_schemas</code> config option. For example:<br>
 </li>
 </ol>
-<pre><code>def member_create(self, next_auth, context, data_dict):
-    """
-    This code is largely borrowed from /src/ckan/ckan/logic/auth/create.py
-    With a modification to allow users to add datasets to any group
-    :param context:
-    :param data_dict:
-    :return:
-    """
-    authorized = False
-    if context.get('controller') in ['package', 'dataset'] and context.get('action') in ['groups']:
-        authorized = helpers.user_has_admin_access(include_editor_access=True)
-
-
-    if not authorized:
-        # Fallback to the default CKAN behaviour
-        return next_auth(context, data_dict)
-    else:
-        return {'success': True}</code></pre>
+<pre><code>scheming.dataset_schemas = ckanext.scheming:arctic_dataset.json   
+                            ckanext.scheming:geo_dataset.json</code></pre>
 <ol start="3" type="1">
 <li>The new dataset creation form is located at a url defined by the schema type name. For example, the creation form for datasets of type <code>arctic-dataset</code> is located at <code>/arctic-dataset/new</code>. You can define a new Add Dataset button using this new url.</li>
 </ol>
@@ -265,6 +285,12 @@ ul.task-list li input[type="checkbox"] {
 <li>Configuring map tiles for ckanext-spatial caused the map tiles for ckanext-geoview to disappear.</li>
 <li>Datasets with the required spatial metadata were not searchable on the map search widget, although the dataset extent widet worked correctly.</li>
 </ul>
+</section>
+<section id="ckanext-oidc-pkce" class="level4">
+<h4 class="anchored" data-anchor-id="ckanext-oidc-pkce">ckanext-oidc-pkce</h4>
+<p><strong>Link</strong>: <a href="https://github.com/DataShades/ckanext-oidc-pkce/tree/master">https://github.com/DataShades/ckanext-oidc-pkce/tree/master</a><br>
+<strong>Purpose</strong>: This extension allows for users to be authenticated through an external application when they login.<br>
+<strong>Problems</strong>: Ideally users on the ACEP Data Catalog would be able to login using their UA login credentials through Google Authentication. This extension installs correctly, but does not seem to support Google Authentication.</p>
 
 
 </section>
