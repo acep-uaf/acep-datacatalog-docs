@@ -2,8 +2,6 @@
 
 Here are some instructions for how to navigate the data catalog.
 
-![](images/ckanafter.png)
-
 ## Making an Account {.unnumbered}
 1. Click the `Register` button in the upper right corner.
 [](images/account1)

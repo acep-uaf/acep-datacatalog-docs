@@ -1,3 +1,7 @@
 # Welcome {.unnumbered}
 
-Welcome to the ACEP Data Catalog documentation, this is how to use it
+This documentation provides some helpful tutorials for working with the ACEP Data Catalog.
+
+![](images/ckanafter.png)
+
+
