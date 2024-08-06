@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Researcher – ACEP Data Catalog User Guides</title>
+<title>For Developers – ACEP Data Catalog User Guides</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./admin.html" rel="next">
-<link href="./getting_started.html" rel="prev">
+<link href="./admin.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -81,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./researcher.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Researcher</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./documentation.html">For Developers</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -120,7 +119,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./researcher.html" class="sidebar-item-text sidebar-link active">
+  <a href="./researcher.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Researcher</span></span></a>
   </div>
 </li>
@@ -132,7 +131,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./documentation.html" class="sidebar-item-text sidebar-link">
+  <a href="./documentation.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">For Developers</span></a>
   </div>
 </li>
@@ -146,11 +145,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#posting-a-dataset" id="toc-posting-a-dataset" class="nav-link active" data-scroll-target="#posting-a-dataset">Posting a Dataset</a></li>
-  <li><a href="#tagging-a-dataset" id="toc-tagging-a-dataset" class="nav-link" data-scroll-target="#tagging-a-dataset">Tagging a Dataset</a></li>
-  <li><a href="#editingdeleting-a-dataset" id="toc-editingdeleting-a-dataset" class="nav-link" data-scroll-target="#editingdeleting-a-dataset">Editing/Deleting a Dataset</a></li>
-  <li><a href="#adding-a-dataset-to-a-group" id="toc-adding-a-dataset-to-a-group" class="nav-link" data-scroll-target="#adding-a-dataset-to-a-group">Adding a Dataset to a Group</a></li>
-  <li><a href="#creating-a-new-group" id="toc-creating-a-new-group" class="nav-link" data-scroll-target="#creating-a-new-group">Creating a New Group</a></li>
+  <li><a href="#extensions" id="toc-extensions" class="nav-link active" data-scroll-target="#extensions">Extensions</a>
+  <ul class="collapse">
+  <li><a href="#currently-installed" id="toc-currently-installed" class="nav-link" data-scroll-target="#currently-installed">Currently Installed</a></li>
+  <li><a href="#adding-alternate-schemas-with-ckanext-scheming" id="toc-adding-alternate-schemas-with-ckanext-scheming" class="nav-link" data-scroll-target="#adding-alternate-schemas-with-ckanext-scheming">Adding Alternate Schemas with ckanext-scheming</a></li>
+  <li><a href="#attempted-extensions" id="toc-attempted-extensions" class="nav-link" data-scroll-target="#attempted-extensions">Attempted Extensions</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -159,7 +159,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Researcher</span></h1>
+<h1 class="title">For Developers</h1>
 </div>
 
 
@@ -176,23 +176,99 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is some things researcher’s posting stuff should know</p>
-<section id="posting-a-dataset" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="posting-a-dataset">Posting a Dataset</h2>
+<p>Documentation of the development of the ACEP Data Catalog.</p>
+<p>For more information and guides, visit the official <a href="https://docs.ckan.org/en/2.10/contents.html">CKAN Documentation</a></p>
+<section id="extensions" class="level2">
+<h2 class="anchored" data-anchor-id="extensions">Extensions</h2>
+<section id="currently-installed" class="level3">
+<h3 class="anchored" data-anchor-id="currently-installed">Currently Installed</h3>
+<section id="ckanext-customtheme" class="level4">
+<h4 class="anchored" data-anchor-id="ckanext-customtheme">ckanext-customtheme</h4>
+<p><strong>Author</strong>: Jenae Matson<br>
+<strong>Purpose</strong>: Add custom theming and features for the CKAN instance, including</p>
+<ul>
+<li>ACEP logos, colors, and fonts</li>
+<li>Home page layout, images, and featured dataset</li>
+<li>Changed font weight of Register button</li>
+<li>Added tags to search page display</li>
+<li>HTML file for About page text</li>
+<li>Removed social media links from dataset/resources pages</li>
+<li>Added support contact info to dataset sidebar</li>
+<li>Added default blank option to add-to-group dropdown menu</li>
+</ul>
 </section>
-<section id="tagging-a-dataset" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="tagging-a-dataset">Tagging a Dataset</h2>
+<section id="ckanext-faqpage" class="level4">
+<h4 class="anchored" data-anchor-id="ckanext-faqpage">ckanext-faqpage</h4>
+<p><strong>Author</strong>: Jenae Matson<br>
+<strong>Purpose</strong>: Create an FAQ page linked in the masthead with collapsible boxes for questions and answers.</p>
 </section>
-<section id="editingdeleting-a-dataset" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="editingdeleting-a-dataset">Editing/Deleting a Dataset</h2>
+<section id="ckanext-restrictpublish" class="level4">
+<h4 class="anchored" data-anchor-id="ckanext-restrictpublish">ckanext-restrictpublish</h4>
+<p><strong>Author</strong>: Jenae Matson<br>
+<strong>Purpose</strong>: Restrict the ability to ochange the visibility of a dataset to admins only. Datasets posted by editors default to private.</p>
 </section>
-<section id="adding-a-dataset-to-a-group" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="adding-a-dataset-to-a-group">Adding a Dataset to a Group</h2>
+<section id="ckanext-geoview" class="level4">
+<h4 class="anchored" data-anchor-id="ckanext-geoview">ckanext-geoview</h4>
+<p><strong>Link</strong>: <a href="https://github.com/ckan/ckanext-geoview">https://github.com/ckan/ckanext-geoview</a><br>
+<strong>Purpose</strong>: Created resource views for geojson and other geo-data file types. We have implemented the OpenLayers Viewer.</p>
 </section>
-<section id="creating-a-new-group" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="creating-a-new-group">Creating a New Group</h2>
+<section id="ckanext-package-group-permissions" class="level4">
+<h4 class="anchored" data-anchor-id="ckanext-package-group-permissions">ckanext-package-group-permissions</h4>
+<p><strong>Link</strong>: <a href="https://github.com/salsadigitalauorg/ckanext-package-group-permissions">https://github.com/salsadigitalauorg/ckanext-package-group-permissions</a><br>
+<strong>Purpose</strong>: Allows all editors and admins to add datasets to any group, without having to be added as members to each group.<br>
+<strong>Modifications</strong>: This extension was created and works with CKAN 2.9. This instance is version 2.10, so the extension requires some small modifications to work. In the file <code>plugin.py</code>, change the following</p>
+</section>
+<section id="ckanext-scheming" class="level4">
+<h4 class="anchored" data-anchor-id="ckanext-scheming">ckanext-scheming</h4>
+<p><strong>Link</strong>: <a href="https://github.com/ckan/ckanext-scheming">https://github.com/ckan/ckanext-scheming</a><br>
+<strong>Purpose</strong>: Allows for the creation of alternate metadata templates (schemas) defined by .yaml or .json files.</p>
+</section>
+</section>
+<section id="adding-alternate-schemas-with-ckanext-scheming" class="level3">
+<h3 class="anchored" data-anchor-id="adding-alternate-schemas-with-ckanext-scheming">Adding Alternate Schemas with ckanext-scheming</h3>
+<ol type="1">
+<li>Create a .yaml or .json file in the folder <code>ckanext-scheming/ckanext/scheming</code> to define the metadata schema. See extension documentatoin for more information and examples.<br>
+</li>
+<li>In <code>ckan.ini</code>, add your schema to the <code>scheming.dataset_schemas</code> config option.<br>
+</li>
+</ol>
+<pre><code>def member_create(self, next_auth, context, data_dict):
+    """
+    This code is largely borrowed from /src/ckan/ckan/logic/auth/create.py
+    With a modification to allow users to add datasets to any group
+    :param context:
+    :param data_dict:
+    :return:
+    """
+    authorized = False
+    if context.get('controller') in ['package', 'dataset'] and context.get('action') in ['groups']:
+        authorized = helpers.user_has_admin_access(include_editor_access=True)
 
 
+    if not authorized:
+        # Fallback to the default CKAN behaviour
+        return next_auth(context, data_dict)
+    else:
+        return {'success': True}</code></pre>
+<ol start="3" type="1">
+<li>The new dataset creation form is located at a url defined by the schema type name. For example, the creation form for datasets of type <code>arctic-dataset</code> is located at <code>/arctic-dataset/new</code>. You can define a new Add Dataset button using this new url.</li>
+</ol>
+</section>
+<section id="attempted-extensions" class="level3">
+<h3 class="anchored" data-anchor-id="attempted-extensions">Attempted Extensions</h3>
+<section id="ckanext-spatial" class="level4">
+<h4 class="anchored" data-anchor-id="ckanext-spatial">ckanext-spatial</h4>
+<p><strong>Link</strong>: <a href="https://github.com/ckan/ckanext-spatial">https://github.com/ckan/ckanext-spatial</a><br>
+<strong>Purpose</strong>: This extension adds the ability to search for datasets on a map widget, as well as a dataset extent map widget on the dataset page, provided correct geospatial metadata.<br>
+<strong>Problems</strong>: This extension is not currently installed due to the following,</p>
+<ul>
+<li>Configuring map tiles for ckanext-spatial caused the map tiles for ckanext-geoview to disappear.</li>
+<li>Datasets with the required spatial metadata were not searchable on the map search widget, although the dataset extent widet worked correctly.</li>
+</ul>
+
+
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -618,14 +694,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./getting_started.html" class="pagination-link" aria-label="Getting Started">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started</span></span>
+      <a href="./admin.html" class="pagination-link" aria-label="Admin">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Admin</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./admin.html" class="pagination-link" aria-label="Admin">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Admin</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

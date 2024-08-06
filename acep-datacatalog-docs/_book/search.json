@@ -74,7 +74,7 @@
     "href": "getting_started.html#submitting-a-commentcomplaint",
     "title": "1  Getting Started",
     "section": "Submitting a Comment/Complaint",
-    "text": "Submitting a Comment/Complaint",
+    "text": "Submitting a Comment/Complaint\nIf you find a problem with a dataset or have a comment or suggestion for the data catalog, please contact the ACEP data team at uaf-acep-dcm-support@alaska.edu.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Getting Started</span>"
     ]
@@ -157,6 +157,36 @@
     "text": "Creating a New Group",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Researcher</span>"
+    ]
+  },
+  {
+    "objectID": "getting_started.html#making-an-account",
+    "href": "getting_started.html#making-an-account",
+    "title": "1  Getting Started",
+    "section": "",
+    "text": "Click the Register button in the upper right corner. \nFill out your information, using your UA email if you have one.\nIn order to see the Internal Use datasets or post datasets, you will need permission granted If you are an ACEP employee, contact Liz or another admin.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Getting Started</span>"
+    ]
+  },
+  {
+    "objectID": "documentation.html",
+    "href": "documentation.html",
+    "title": "For Developers",
+    "section": "",
+    "text": "Extensions",
+    "crumbs": [
+      "For Developers"
+    ]
+  },
+  {
+    "objectID": "documentation.html#extensions",
+    "href": "documentation.html#extensions",
+    "title": "For Developers",
+    "section": "",
+    "text": "Currently Installed\n\nckanext-customtheme\nAuthor: Jenae Matson\nPurpose: Add custom theming and features for the CKAN instance, including\n\nACEP logos, colors, and fonts\nHome page layout, images, and featured dataset\nChanged font weight of Register button\nAdded tags to search page display\nHTML file for About page text\nRemoved social media links from dataset/resources pages\nAdded support contact info to dataset sidebar\nAdded default blank option to add-to-group dropdown menu\n\n\n\nckanext-faqpage\nAuthor: Jenae Matson\nPurpose: Create an FAQ page linked in the masthead with collapsible boxes for questions and answers.\n\n\nckanext-restrictpublish\nAuthor: Jenae Matson\nPurpose: Restrict the ability to ochange the visibility of a dataset to admins only. Datasets posted by editors default to private.\n\n\nckanext-geoview\nLink: https://github.com/ckan/ckanext-geoview\nPurpose: Created resource views for geojson and other geo-data file types. We have implemented the OpenLayers Viewer.\n\n\nckanext-package-group-permissions\nLink: https://github.com/salsadigitalauorg/ckanext-package-group-permissions\nPurpose: Allows all editors and admins to add datasets to any group, without having to be added as members to each group.\nModifications: This extension was created and works with CKAN 2.9. This instance is version 2.10, so the extension requires some small modifications to work. In the file plugin.py, change the following\n\n\nckanext-scheming\nLink: https://github.com/ckan/ckanext-scheming\nPurpose: Allows for the creation of alternate metadata templates (schemas) defined by .yaml or .json files.\n\n\n\nAdding Alternate Schemas with ckanext-scheming\n\nCreate a .yaml or .json file in the folder ckanext-scheming/ckanext/scheming to define the metadata schema. See extension documentatoin for more information and examples.\n\nIn ckan.ini, add your schema to the scheming.dataset_schemas config option.\n\n\ndef member_create(self, next_auth, context, data_dict):\n    \"\"\"\n    This code is largely borrowed from /src/ckan/ckan/logic/auth/create.py\n    With a modification to allow users to add datasets to any group\n    :param context:\n    :param data_dict:\n    :return:\n    \"\"\"\n    authorized = False\n    if context.get('controller') in ['package', 'dataset'] and context.get('action') in ['groups']:\n        authorized = helpers.user_has_admin_access(include_editor_access=True)\n\n\n    if not authorized:\n        # Fallback to the default CKAN behaviour\n        return next_auth(context, data_dict)\n    else:\n        return {'success': True}\n\nThe new dataset creation form is located at a url defined by the schema type name. For example, the creation form for datasets of type arctic-dataset is located at /arctic-dataset/new. You can define a new Add Dataset button using this new url.\n\n\n\nAttempted Extensions\n\nckanext-spatial\nLink: https://github.com/ckan/ckanext-spatial\nPurpose: This extension adds the ability to search for datasets on a map widget, as well as a dataset extent map widget on the dataset page, provided correct geospatial metadata.\nProblems: This extension is not currently installed due to the following,\n\nConfiguring map tiles for ckanext-spatial caused the map tiles for ckanext-geoview to disappear.\nDatasets with the required spatial metadata were not searchable on the map search widget, although the dataset extent widet worked correctly.",
+    "crumbs": [
+      "For Developers"
     ]
   }
 ]
