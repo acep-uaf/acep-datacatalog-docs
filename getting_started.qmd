@@ -12,6 +12,7 @@ Here are some instructions for how to navigate the data catalog.
 If you are an ACEP employee, contact Liz or another admin.
 
 ## Searching for Datasets {.unnumbered}
+There are multiple ways to search for datasets
 
 ## Submitting a Comment/Complaint {.unnumbered}
 If you find a problem with a dataset or have a comment or suggestion for the data catalog, please contact the ACEP data team at [uaf-acep-dcm-support@alaska.edu](uaf-acep-dcm-support@alaska.edu). 
