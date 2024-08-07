@@ -3,6 +3,14 @@
 This is some things researcher's posting stuff should know
 
 ## Posting a Dataset {.unnumbered}
+There are two ways to access the __Add Dataset__ button:
+
+- Click on the __Datasets__ tab at the top of the screen
+- Click on the __Organizations__ tab at the top of the screen and select the organization you want to add a dataset to:
+    - Choose __ACEP Open Data__ if you are posting your own data or data that ACEP owns.
+    - Choose __ACEP Internal Use__ if you are posting a useful dataset that ACEP does not own.
+
+
 
 ## Tagging a Dataset {.unnumbered}
 
