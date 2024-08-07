@@ -24,7 +24,7 @@
     "href": "getting_started.html#making-an-account",
     "title": "1  Getting Started",
     "section": "",
-    "text": "Click the Register button in the upper right corner. \nFill out your information, using your UA email if you have one.\nIn order to see the Internal Use datasets or post datasets, you will need permission granted If you are an ACEP employee, contact Liz or another admin.",
+    "text": "Click the Register button in the upper right corner of the screen.\nFill out your information, using your UA email if you have one. \nIn order to see the Internal Use datasets or post datasets, you will need permissions granted to your account. If you are an ACEP employee, contact Liz or another admin.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Getting Started</span>"
     ]
@@ -34,7 +34,7 @@
     "href": "getting_started.html#searching-for-datasets",
     "title": "1  Getting Started",
     "section": "Searching for Datasets",
-    "text": "Searching for Datasets\nThere are multiple ways to search for datasets\n- Search Bar - Organizations - Groups",
+    "text": "Searching for Datasets\nThere are multiple ways to search for datasets\n\nSearch Bar\nUse key words to find datasets, just like Google.\nGroups\nBrowse through the groups that can be found at the Groups tab at the top of the screen or listed on the home page. \nOrganizations",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Getting Started</span>"
     ]
@@ -54,7 +54,17 @@
     "href": "researcher.html",
     "title": "2  Researcher",
     "section": "",
-    "text": "Posting a Dataset",
+    "text": "Posting a Dataset\nThere are two ways to access the Add Dataset button:",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Researcher</span>"
+    ]
+  },
+  {
+    "objectID": "researcher.html#posting-a-dataset",
+    "href": "researcher.html#posting-a-dataset",
+    "title": "2  Researcher",
+    "section": "",
+    "text": "Click on the Datasets tab at the top of the screen\nClick on the Organizations tab at the top of the screen and select the organization you want to add a dataset to:\n\nChoose ACEP Open Data if you are posting your own data or data that ACEP owns.\nChoose ACEP Internal Use if you are posting a useful dataset that ACEP does not own.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Researcher</span>"
     ]
