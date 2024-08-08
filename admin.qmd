@@ -3,6 +3,23 @@
 Here is some stuff admins should know how to do.
 
 ## Giving User Permissions {.unnumbered}
+Users have roles in each organization that give them different permissions.  
+The roles are:
+- Member: can see private datasets in the organization
+- Editor: can add private datasets to the organization and delete datasets from the organization
+- Admin: can change users' roles in an organization and publish datasets from private to public
+To give a user a role in an organization:
+1. Click on the __Organizations__ tab at the top of the screen and click on the organization you want to add the user to. 
+2. Click on the __Manage__ button in the upper right.
+3. Click on the __Members__ tab at the top.
+![](images/orgmembers.png)
+    - To add a new member to the organizaton, click the __Add Member__ button. Enter their username, select their new role from the dropdown, and click the __Add Member__ button at the bottom of the form.
+    ![](images/addorgmember.png)
+    -To change an existing member's role, click the wrench next to their user name.
+    ![](images/editmember.png)
+    ![](images/deletemember.png)
+        - Select their new role from the dropdown menu and click __Update Member__
+        - To remove the user from the organization completely, click the __Delete__ button.
 
 ## Reviewing a Dataset {.unnumbered}
 

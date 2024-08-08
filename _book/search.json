@@ -84,7 +84,7 @@
     "href": "admin.html",
     "title": "3  Admin",
     "section": "",
-    "text": "Giving User Permissions",
+    "text": "Giving User Permissions\nUsers have roles in each organization that give them different permissions.\nThe roles are: - Member: can see private datasets in the organization - Editor: can add private datasets to the organization and delete datasets from the organization - Admin: can change users’ roles in an organization and publish datasets from private to public To give a user a role in an organization: 1. Click on the Organizations tab at the top of the screen and click on the organization you want to add the user to. 2. Click on the Manage button in the upper right. 3. Click on the Members tab at the top.  - To add a new member to the organizaton, click the Add Member button. Enter their username, select their new role from the dropdown, and click the Add Member button at the bottom of the form.  -To change an existing member’s role, click the wrench next to their user name.   - Select their new role from the dropdown menu and click Update Member - To remove the user from the organization completely, click the Delete button.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Admin</span>"
     ]
