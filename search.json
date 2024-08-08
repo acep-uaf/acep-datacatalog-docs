@@ -64,7 +64,7 @@
     "href": "researcher.html#posting-a-dataset",
     "title": "2  Researcher",
     "section": "",
-    "text": "Click on the Datasets tab at the top of the screen\nClick on the Organizations tab at the top of the screen and select the organization you want to add a dataset to:\n\nChoose ACEP Open Data if you are posting your own data or data that ACEP owns.\nChoose ACEP Internal Use if you are posting a useful dataset that ACEP does not own.",
+    "text": "Click on the Datasets tab at the top of the screen\nClick on the Organizations tab at the top of the screen and select the organization you want to add a dataset to:\n\nChoose ACEP Open Data if you are posting your own data or data that ACEP owns.\nChoose ACEP Internal Use if you are posting a useful dataset that ACEP does not own.\n\n\n\nClick on the Add Dataset button above the search bar.\nOn the first page, fill out the metadata fields for your dataset. \n\nDouble check the organization field.\n\nChoose ACEP Open Data if you are posting your own data or data that ACEP owns.\nChoose ACEP Internal Use if you are posting a useful dataset that ACEP does not own.\n\nIf you are a researcher, your dataset’s visibility will automatically be set to private. An admin will review your dataset and make it public.\n\nOnce you have completed the metadata fields, click the Next: Add Data button at the bottom of the form.\nOn the next page, add the data resources to your dataset. \n\nSmall datasets (&lt;2MB) can be uploaded directly to the catalog\nAlternatively, enter a link to where the data is stored, such as a GitHub repository or Google Drive.\n\nIf you have more resources to add, click the Save & add another button at the bottom of the form. Otherwise click Finish to post your dataset.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Researcher</span>"
     ]
@@ -74,7 +74,7 @@
     "href": "researcher.html#tagging-a-dataset",
     "title": "2  Researcher",
     "section": "Tagging a Dataset",
-    "text": "Tagging a Dataset",
+    "text": "Tagging a Dataset\nTBD",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Researcher</span>"
     ]
@@ -154,7 +154,17 @@
     "href": "documentation.html",
     "title": "For Developers",
     "section": "",
-    "text": "Developing the Data Catalog\nThe ACEP Data Catalog is run on a VM hosted by RCS. Extensions can be updated by pushing to the acepportal-ckan Github repository. After pushing, changes take ~30 min to update on the main site.",
+    "text": "Developing the Data Catalog\nThe ACEP Data Catalog is run on a VM hosted by RCS. Extensions can be updated by pushing to the acepportal-ckan GitHub repository. After pushing, changes take ~30 min to update on the main site.",
+    "crumbs": [
+      "For Developers"
+    ]
+  },
+  {
+    "objectID": "documentation.html#developing-the-data-catalog",
+    "href": "documentation.html#developing-the-data-catalog",
+    "title": "For Developers",
+    "section": "",
+    "text": "Creating a Local Instance\nCreating a local version of the data catalog is a useful tool for developing and testing new features.\n\nInstall Docker: https://www.docker.com/get-started/\n\nClone the ACEP CKAN repository from Github: https://github.com/UAF-RCS/acepportal-ckan.git\n\nCreate a replica of the main VM CKAN instance by copying over the source files, storage files, ckan.ini file, and database backups.\nThese files are located on the VM inside /opt/ckan/backups. Use scp to copy the files onto your machine\n\nscp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/app_[date].tar.bz2 .\nscp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/app_storage_[date].tar.bz2 .\nscp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/ckandb_[date].tar .\nscp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/datastore_[date].tar .\n\nUse tar to decompress the source and storage tar files\n\ntar -jxvf app_[date].tar.bz2\ntar -jxvf app_[date].tar.bz2\n\nPlace the source files and storage files inside of acepportal-ckan/ckan-src\nCreate a backups folder alongside the acepportal-ckan repository on your machine.\nCreate the .env file inside the main acepportal-ckan folder. Copy the contents from the .env.example file.\nSpecify the location of the source files, storage files, backups, etc. in the .env file.\nFor example:\n# CKAN Mounts Directory\nCKAN_EXTENSIONS_MOUNT=./ckan-extension\nSRC_EXTENSIONS_PATH=/srv/app/src_extensions\nCKAN_SOURCE_MOUNT=./ckan-src/src\nCKAN_STORAGE_MOUNT=./ckan-src/storage\nCKAN_INI_MOUNT=./ckan-src/ckan.ini\nBuild the containers using,\n\ndocker compose up\n\nOnce the containers are up, use the import_database.sh bash script to import the database.\n\nbash import_database.sh\n\nRebuild the CKAN search index.\n\ndocker exec -it acep-ckan-cont /bin/bash\ncd /srv/app\nckan search-index rebuild\n\n\n\n\nCreate a New Extension\n\nEnter the acep-ckan-cont Docker container\n\n\ndocker exec -it acep-ckan-cont /bin/bash and run the following command\nckan generate extension -o /srv/app/src/ckan-extension This will create an extension in the ckan-extension folder which can be edited outside of the container.\n\n\nAdd the extension name to the CKAN_PLUGINS list in the .env file.\nRun docker compose up -d --build ckan\n\n\n\nInstall an Extension\n\nEnsure that the extension supports CKAN 2.10.4 and Python 3.10 Clone the extension repository into the ckan-extension folder.\nEnsure that all dependencies for the extension are listed in requirements.txt or a similar file.\nAdd the extension name to the CKAN_PLUGINS list in the .env file.\nRun docker compose up -d --build ckan\n\n\n\nUpdating the Main Site\nTo add a feature from your local instance to the main Data Catalog,\n\nPush the files to the acepportal-ckan GitHub repository.\nWait about 30 min. for the changes to be pulled to VM.\nIf you have added a new extension, ssh into the VM and add the extension name to the .env file.",
     "crumbs": [
       "For Developers"
     ]

@@ -179,7 +179,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#developing-the-data-catalog" id="toc-developing-the-data-catalog" class="nav-link active" data-scroll-target="#developing-the-data-catalog">Developing the Data Catalog</a></li>
+  <li><a href="#developing-the-data-catalog" id="toc-developing-the-data-catalog" class="nav-link active" data-scroll-target="#developing-the-data-catalog">Developing the Data Catalog</a>
+  <ul class="collapse">
+  <li><a href="#creating-a-local-instance" id="toc-creating-a-local-instance" class="nav-link" data-scroll-target="#creating-a-local-instance">Creating a Local Instance</a></li>
+  <li><a href="#create-a-new-extension" id="toc-create-a-new-extension" class="nav-link" data-scroll-target="#create-a-new-extension">Create a New Extension</a></li>
+  <li><a href="#install-an-extension" id="toc-install-an-extension" class="nav-link" data-scroll-target="#install-an-extension">Install an Extension</a></li>
+  <li><a href="#updating-the-main-site" id="toc-updating-the-main-site" class="nav-link" data-scroll-target="#updating-the-main-site">Updating the Main Site</a></li>
+  </ul></li>
   <li><a href="#extensions" id="toc-extensions" class="nav-link" data-scroll-target="#extensions">Extensions</a>
   <ul class="collapse">
   <li><a href="#currently-installed" id="toc-currently-installed" class="nav-link" data-scroll-target="#currently-installed">Currently Installed</a></li>
@@ -213,11 +219,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>Documentation of the development of the ACEP Data Catalog.</p>
 <p>For more information and guides, visit the official <a href="https://docs.ckan.org/en/2.10/contents.html">CKAN Documentation</a></p>
-<section id="developing-the-data-catalog" class="level3">
-<h3 class="anchored" data-anchor-id="developing-the-data-catalog">Developing the Data Catalog</h3>
-<p>The ACEP Data Catalog is run on a VM hosted by RCS. Extensions can be updated by pushing to the acepportal-ckan Github repository. After pushing, changes take ~30 min to update on the main site.</p>
-<section id="creating-a-local-instance" class="level4">
-<h4 class="anchored" data-anchor-id="creating-a-local-instance">Creating a Local Instance</h4>
+<section id="developing-the-data-catalog" class="level2">
+<h2 class="anchored" data-anchor-id="developing-the-data-catalog">Developing the Data Catalog</h2>
+<p>The ACEP Data Catalog is run on a VM hosted by RCS. Extensions can be updated by pushing to the acepportal-ckan GitHub repository. After pushing, changes take ~30 min to update on the main site.</p>
+<section id="creating-a-local-instance" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-local-instance">Creating a Local Instance</h3>
 <p>Creating a local version of the data catalog is a useful tool for developing and testing new features.</p>
 <ol type="1">
 <li><p>Install Docker: <a href="https://www.docker.com/get-started/">https://www.docker.com/get-started/</a><br>
@@ -227,10 +233,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Create a replica of the main VM CKAN instance by copying over the source files, storage files, ckan.ini file, and database backups.<br>
 These files are located on the VM inside <code>/opt/ckan/backups</code>. Use scp to copy the files onto your machine</p>
 <ul>
-<li><code>scp user@acepportal.rcs.alaska.edu:/opt/ckan/backups/app_[date].tar.bz2 .</code></li>
-<li><code>scp user@acepportal.rcs.alaska.edu:/opt/ckan/backups/app_storage_[date].tar.bz2 .</code></li>
-<li><code>scp user@acepportal.rcs.alaska.edu:/opt/ckan/backups/ckandb_[date].tar .</code></li>
-<li><code>scp user@acepportal.rcs.alaska.edu:/opt/ckan/backups/datastore_[date].tar .</code></li>
+<li><code>scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/app_[date].tar.bz2 .</code></li>
+<li><code>scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/app_storage_[date].tar.bz2 .</code></li>
+<li><code>scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/ckandb_[date].tar .</code></li>
+<li><code>scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/datastore_[date].tar .</code></li>
 </ul></li>
 <li><p>Use tar to decompress the source and storage tar files</p>
 <ul>
@@ -264,12 +270,13 @@ For example:</p>
 </ul></li>
 </ol>
 </section>
-<section id="create-a-new-extension" class="level4">
-<h4 class="anchored" data-anchor-id="create-a-new-extension">Create a New Extension</h4>
+<section id="create-a-new-extension" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-new-extension">Create a New Extension</h3>
 <ol type="1">
-<li>Run the following command inside the <code>acep-ckan-cont</code> Docker container.</li>
+<li>Enter the <code>acep-ckan-cont</code> Docker container</li>
 </ol>
 <ul>
+<li><code>docker exec -it acep-ckan-cont /bin/bash</code> and run the following command</li>
 <li><code>ckan generate extension -o /srv/app/src/ckan-extension</code> This will create an extension in the <code>ckan-extension</code> folder which can be edited outside of the container.</li>
 </ul>
 <ol start="2" type="1">
@@ -277,13 +284,23 @@ For example:</p>
 <li>Run <code>docker compose up -d --build ckan</code></li>
 </ol>
 </section>
-<section id="install-an-extension" class="level4">
-<h4 class="anchored" data-anchor-id="install-an-extension">Install an Extension</h4>
+<section id="install-an-extension" class="level3">
+<h3 class="anchored" data-anchor-id="install-an-extension">Install an Extension</h3>
 <ol type="1">
 <li>Ensure that the extension supports CKAN 2.10.4 and Python 3.10 Clone the extension repository into the <code>ckan-extension</code> folder.</li>
 <li>Ensure that all dependencies for the extension are listed in <code>requirements.txt</code> or a similar file.</li>
 <li>Add the extension name to the <code>CKAN_PLUGINS</code> list in the <code>.env</code> file.</li>
 <li>Run <code>docker compose up -d --build ckan</code></li>
+</ol>
+</section>
+<section id="updating-the-main-site" class="level3">
+<h3 class="anchored" data-anchor-id="updating-the-main-site">Updating the Main Site</h3>
+<p>To add a feature from your local instance to the main Data Catalog,</p>
+<ol type="1">
+<li>Push the files to the <code>acepportal-ckan</code> GitHub repository.</li>
+<li>Wait about 30 min. for the changes to be pulled to VM.</li>
+<li>If you have added a new extension, ssh into the VM and add the extension name to the <code>.env</code> file.</li>
+<li></li>
 </ol>
 </section>
 </section>
