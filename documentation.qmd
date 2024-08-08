@@ -4,7 +4,7 @@ Documentation of the development of the ACEP Data Catalog.
 For more information and guides, visit the official [CKAN Documentation](https://docs.ckan.org/en/2.10/contents.html)
 
 ## Developing the Data Catalog
-The ACEP Data Catalog is run on a VM hosted by RCS. Extensions can be updated by pushing to the acepportal-ckan Github repository. After pushing, changes take ~30 min to update on the main site.
+The ACEP Data Catalog is run on a VM hosted by RCS. Extensions can be updated by pushing to the acepportal-ckan GitHub repository. After pushing, changes take ~30 min to update on the main site.
 
 ### Creating a Local Instance
 Creating a local version of the data catalog is a useful tool for developing and testing new features.
@@ -14,10 +14,10 @@ Creating a local version of the data catalog is a useful tool for developing and
 3. Create a replica of the main VM CKAN instance by copying over the source files, storage    files, ckan.ini file, and database backups.   
     These files are located on the VM inside `/opt/ckan/backups`. Use scp to copy the files onto your machine
 
-    - `scp user@acepportal.rcs.alaska.edu:/opt/ckan/backups/app_[date].tar.bz2 .`
-    - `scp user@acepportal.rcs.alaska.edu:/opt/ckan/backups/app_storage_[date].tar.bz2 .`
-    - `scp user@acepportal.rcs.alaska.edu:/opt/ckan/backups/ckandb_[date].tar .`
-    - `scp user@acepportal.rcs.alaska.edu:/opt/ckan/backups/datastore_[date].tar .`
+    - `scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/app_[date].tar.bz2 .`
+    - `scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/app_storage_[date].tar.bz2 .`
+    - `scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/ckandb_[date].tar .`
+    - `scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/datastore_[date].tar .`
 4. Use tar to decompress the source and storage tar files
 
     - `tar -jxvf app_[date].tar.bz2`
@@ -49,7 +49,9 @@ Creating a local version of the data catalog is a useful tool for developing and
     - `ckan search-index rebuild`
 
 ### Create a New Extension
-1. Run the following command inside the `acep-ckan-cont` Docker container.
+1. Enter the `acep-ckan-cont` Docker container
+- `docker exec -it acep-ckan-cont /bin/bash`
+    and run the following command
 - `ckan generate extension -o /srv/app/src/ckan-extension`
 This will create an extension in the `ckan-extension` folder which can be edited outside of the container. 
 2. Add the extension name to the `CKAN_PLUGINS` list in the `.env` file.
@@ -62,6 +64,13 @@ Clone the extension repository into the `ckan-extension` folder.
 3. Add the extension name to the `CKAN_PLUGINS` list in the `.env` file.
 4. Run `docker compose up -d --build ckan`
 
+### Updating the Main Site
+To add a feature from your local instance to the main Data Catalog, 
+
+1. Push the files to the `acepportal-ckan` GitHub repository. 
+2. Wait about 30 min. for the changes to be pulled to VM.
+3. If you have added a new extension, ssh into the VM and add the extension name to the `.env` file.
+4. 
     
 ## Extensions
 ### Currently Installed

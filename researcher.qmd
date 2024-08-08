@@ -10,9 +10,22 @@ There are two ways to access the __Add Dataset__ button:
     - Choose __ACEP Open Data__ if you are posting your own data or data that ACEP owns.
     - Choose __ACEP Internal Use__ if you are posting a useful dataset that ACEP does not own.
 
-
+1. Click on the __Add Dataset__ button above the search bar.
+2. On the first page, fill out the metadata fields for your dataset. 
+![](images/createdataset1.png)
+    - Double check the organization field.
+        - Choose __ACEP Open Data__ if you are posting your own data or data that ACEP owns.
+        - Choose __ACEP Internal Use__ if you are posting a useful dataset that ACEP does not own.
+    - If you are a researcher, your dataset's visibility will automatically be set to private. An admin will review your dataset and make it public.
+3. Once you have completed the metadata fields, click the __Next: Add Data__ button at the bottom of the form. 
+4. On the next page, add the data resources to your dataset.
+![](images/createdataset2.png)
+    - Small datasets (<2MB) can be uploaded directly to the catalog
+    - Alternatively, enter a link to where the data is stored, such as a GitHub repository or Google Drive.
+5. If you have more resources to add, click the __Save & add another__ button at the bottom of the form. Otherwise click __Finish__ to post your dataset.
 
 ## Tagging a Dataset {.unnumbered}
+TBD
 
 ## Editing/Deleting a Dataset {.unnumbered}
 
