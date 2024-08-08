@@ -3,10 +3,10 @@ Documentation of the development of the ACEP Data Catalog.
 
 For more information and guides, visit the official [CKAN Documentation](https://docs.ckan.org/en/2.10/contents.html)
 
-### Developing the Data Catalog
+## Developing the Data Catalog
 The ACEP Data Catalog is run on a VM hosted by RCS. Extensions can be updated by pushing to the acepportal-ckan Github repository. After pushing, changes take ~30 min to update on the main site.
 
-#### Creating a Local Instance
+### Creating a Local Instance
 Creating a local version of the data catalog is a useful tool for developing and testing new features.
 
 1. Install Docker: [https://www.docker.com/get-started/](https://www.docker.com/get-started/)  
@@ -48,14 +48,14 @@ Creating a local version of the data catalog is a useful tool for developing and
     - `cd /srv/app`
     - `ckan search-index rebuild`
 
-#### Create a New Extension
+### Create a New Extension
 1. Run the following command inside the `acep-ckan-cont` Docker container.
 - `ckan generate extension -o /srv/app/src/ckan-extension`
 This will create an extension in the `ckan-extension` folder which can be edited outside of the container. 
 2. Add the extension name to the `CKAN_PLUGINS` list in the `.env` file.
 3. Run `docker compose up -d --build ckan`
 
-#### Install an Extension
+### Install an Extension
 1. Ensure that the extension supports CKAN 2.10.4 and Python 3.10
 Clone the extension repository into the `ckan-extension` folder.
 2. Ensure that all dependencies for the extension are listed in `requirements.txt` or a similar file.
