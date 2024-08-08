@@ -84,7 +84,7 @@
     "href": "researcher.html#editingdeleting-a-dataset",
     "title": "2  Researcher",
     "section": "Editing/Deleting a Dataset",
-    "text": "Editing/Deleting a Dataset",
+    "text": "Editing/Deleting a Dataset\n\nNavigate to the dataset page and click on the Manage button in the upper right. \nThis displays the Edit metadata page where you can change the metadata of the dataset. After making changes, click the Update Dataset button at the bottom of the form.\n\nTo delete the dataset, click the Delete button at the bottom of the form.\n\n\nNOTE: Deleting a dataset does not remove it completely from the database. The url of the deleted dataset will not be able to be reused until it has been purged by a sysadmin.\n\nTo edit the resources or add more resources, click on the Resources tab. \n\nTo delete a resource, select it from the list and then click the Delete button at the bottom of the page.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Researcher</span>"
     ]
@@ -94,7 +94,7 @@
     "href": "researcher.html#adding-a-dataset-to-a-group",
     "title": "2  Researcher",
     "section": "Adding a Dataset to a Group",
-    "text": "Adding a Dataset to a Group",
+    "text": "Adding a Dataset to a Group\n\nNavigate to the dataset page and click on the Groups tab. \nSelect a group from the dropdown menu and click the Add to group button.\nTo remove the dataset from a group, hover your cursor over the group and click the Remove button.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Researcher</span>"
     ]
@@ -104,7 +104,7 @@
     "href": "researcher.html#creating-a-new-group",
     "title": "2  Researcher",
     "section": "Creating a New Group",
-    "text": "Creating a New Group",
+    "text": "Creating a New Group\nGroups are a good way to group together datasets that are connected. You may want to create groups for common research themes, funding organizations, or projects. 1. Click on the Groups tab at the top of the screen. 2. Click the Add Group button.  3. Enter the information for the group. Find a logo or simple image to upload to represent the group.\n4. Once you have entered the information, click the Create Group button at the bottom of the form.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Researcher</span>"
     ]
