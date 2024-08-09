@@ -47,13 +47,10 @@ Creating a local version of the data catalog is a useful tool for developing and
     CKAN_SOURCE_MOUNT=./ckan-src/src
     CKAN_STORAGE_MOUNT=./ckan-src/storage
     CKAN_INI_MOUNT=./ckan-src/ckan.ini
-    ...
-    # Backups 
-    BACKUP_TO=../../[backups folder name]
     ```
 3. To create a replica of the current main Data Catalog, copy over the source files, storage files, ckan.ini file, and database backups from the VM. These files are located on the VM inside `/opt/ckan/backups`. Use scp to copy the files onto your machine. These backups are created everyday: replace [date] with the most recent date in the format `yyyymmdd`. 
 
-    Inside of `acepportal-ckan/sckan-src` run the following
+    Inside of `acepportal-ckan/ckan-src` run the following
 
     - `scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/app_[date].tar.bz2 .`   
     - `scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/app_storage_[date].tar.bz2 .`
@@ -67,6 +64,11 @@ Creating a local version of the data catalog is a useful tool for developing and
     This should result in the directory structure specified in `ckan-src/README.txt`
 
 5. Create a backups folder alongside the `acepportal-ckan` repository on your machine. Specify the name in the `BACKUP_TO` setting in the `.env` file. 
+
+    ```.ini
+    # Backups 
+    BACKUP_TO=../../[backups folder name]
+    ```
 6. Run the following commands inside the backups folder to copy over the database and datastore.
     - `scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/ckandb_[date].tar .`
     - `scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/datastore_[date].tar .`
