@@ -48,6 +48,7 @@ TBD
 
 ## Creating a New Group {.unnumbered}
 Groups are a good way to group together datasets that are connected. You may want to create groups for common research themes, funding organizations, or projects.
+
 1. Click on the __Groups__ tab at the top of the screen.
 2. Click the __Add Group__ button. 
 ![](images/creategroup.png)
