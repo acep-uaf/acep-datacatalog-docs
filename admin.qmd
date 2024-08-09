@@ -1,6 +1,6 @@
 # Admin
 
-Here is some stuff admins should know how to do.
+Guides for admins managing the data catalog.
 
 ## Giving User Permissions {.unnumbered}
 Users have roles in each organization that give them different permissions.  

@@ -1,6 +1,6 @@
 # Getting Started
 
-Here are some instructions for how to navigate the data catalog.
+Guides for anyone using the data catalog.
 
 ## Making an Account {.unnumbered}
 1. Click the __Register__ button in the upper right corner of the screen.
