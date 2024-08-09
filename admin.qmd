@@ -5,10 +5,13 @@ Here is some stuff admins should know how to do.
 ## Giving User Permissions {.unnumbered}
 Users have roles in each organization that give them different permissions.  
 The roles are:
-- Member: can see private datasets in the organization
-- Editor: can add private datasets to the organization and delete datasets from the organization
-- Admin: can change users' roles in an organization and publish datasets from private to public
+
+- __Member__: can see private datasets in the organization
+- __Editor__: can add private datasets to the organization and delete datasets from the organization
+- __Admin__: can change users' roles in an organization and publish datasets from private to public
+
 To give a user a role in an organization:
+
 1. Click on the __Organizations__ tab at the top of the screen and click on the organization you want to add the user to. 
 2. Click on the __Manage__ button in the upper right.
 3. Click on the __Members__ tab at the top.
@@ -21,9 +24,35 @@ To give a user a role in an organization:
         - To remove the user from the organization completely, click the __Delete__ button.
     ![](images/deletemember.png)
 
-## Reviewing a Dataset {.unnumbered}
+## Reviewing and Publishing a Dataset {.unnumbered}
+1. Navigate to the dataset you would like to publish. 
+2. Review the metadata and ensure the files/links are correct and function properly.
+3. To publish, click on the __Manage__ button in the top right of the dataset page.
+4. In the metadata fields, find the __Visibility__ field.  
+    ![](images/publish.png)
+5. Change the __Visibility__ field from __Private__ to __Public__, and click the __Update Dataset__ button at the bottom of the form.
 
 ## Deleting Datasets/Groups/Organizations {.unnumbered}
+1. To delete a dataset, group, or organization, navigate to it's page and click the __Manage__ button in the upper right.
+2. Click the __Delete__ button at the bottom of the form to delete. 
+3. __Deleting a dataset, group, or organization does not remove it from the database.__ After deleting, a sysadmin can restore the item or purge it to remove it from the database. If not purged, the url for the deleted item cannot be reused.
+
+### Purge Deleted Datasets/Groups/Organizations {.unnumbered}
+1. Navigate to sysadmin settings by clicking the hammer icon at the top of the page.  
+    ![](images/sysadminsettings.png)
+2. Click on the __Trash__ tab. This page will list all the currently deleted datasets, groups, and organizations.
+    ![](images/purge.png)
+3. You can purge all deleted items using the __Purge all__ button at the top of the form. To purge only one group of items (datasets, group, or organizations) use the __Purge__ button in that section.
+
+### Restore Deleted Datasets {.unnumbered}
+1. Navigate to sysadmin settings by clicking the hammer icon at the top of the page.  
+    ![](images/sysadminsettings.png)
+2. Click on the __Trash__ tab. This page will list all the currently deleted datasets, groups, and organizations.  
+    ![](images/purge.png)
+3. Click on the dataset you would like to restore, and click the __Manage__ button in the upper right.
+4. In the metadata fields find the __State__ field. 
+    ![](images/deletedstate.png)  
+5. Change the __State__ field from __Deleted__ to __Active__, and then click the __Update Dataset__ button at the bottom of the form.  
 
 ## Restoring a Deleted User {.unnumbered}
 When a user is deleted from the website, their information remains in the database with the `state` field set to `deleted`. To reactivate the user, you must set this field to `active` in the database.  
