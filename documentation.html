@@ -181,6 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#developing-the-data-catalog" id="toc-developing-the-data-catalog" class="nav-link active" data-scroll-target="#developing-the-data-catalog">Developing the Data Catalog</a>
   <ul class="collapse">
+  <li><a href="#basic-docker-commands" id="toc-basic-docker-commands" class="nav-link" data-scroll-target="#basic-docker-commands">Basic Docker Commands</a></li>
   <li><a href="#creating-a-local-instance" id="toc-creating-a-local-instance" class="nav-link" data-scroll-target="#creating-a-local-instance">Creating a Local Instance</a></li>
   <li><a href="#create-a-new-extension" id="toc-create-a-new-extension" class="nav-link" data-scroll-target="#create-a-new-extension">Create a New Extension</a></li>
   <li><a href="#install-an-extension" id="toc-install-an-extension" class="nav-link" data-scroll-target="#install-an-extension">Install an Extension</a></li>
@@ -222,6 +223,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="developing-the-data-catalog" class="level2">
 <h2 class="anchored" data-anchor-id="developing-the-data-catalog">Developing the Data Catalog</h2>
 <p>The ACEP Data Catalog is run on a VM hosted by RCS. Extensions can be updated by pushing to the acepportal-ckan GitHub repository. After pushing, changes take ~30 min to update on the main site.</p>
+<section id="basic-docker-commands" class="level3">
+<h3 class="anchored" data-anchor-id="basic-docker-commands">Basic Docker Commands</h3>
+<p><strong>List all running containers:</strong><br>
+<code>docker ps -a</code> There are 5 containers that run the data catalog</p>
+<pre><code>- `acep-ckan-cont`
+- `acep-db-cont`
+- `acep-redis-cont`
+- `acep-solr-cont`
+- `acep-datapusher-cont`</code></pre>
+<p><strong>Rebuild and spin up containers:</strong><br>
+<code>docker compose up -d --build</code></p>
+<p><strong>Go into container:</strong><br>
+<code>docker exec -it [container_nane] /bin/bash</code><br>
+Or if bash is not installed in the container:<br>
+<code>docker exec -it [container_nane] /bin/sh</code><br>
+Or if in a bash terminal:<br>
+<code>docker exec -it [container_nane] bash</code></p>
+<p><strong>Restart a container:</strong><br>
+<code>docker restart [container_name]</code></p>
+</section>
 <section id="creating-a-local-instance" class="level3">
 <h3 class="anchored" data-anchor-id="creating-a-local-instance">Creating a Local Instance</h3>
 <p>Creating a local version of the data catalog is a useful tool for developing and testing new features.</p>
@@ -230,33 +251,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </p></li>
 <li><p>Clone the ACEP CKAN repository from Github: <a href="https://github.com/UAF-RCS/acepportal-ckan.git">https://github.com/UAF-RCS/acepportal-ckan.git</a></p></li>
 <li><p>Create the <code>.env</code> file inside the main <code>acepportal-ckan</code> folder. Copy the contents from the <code>.env.example</code> file.</p></li>
-<li><p>Create a replica of the main VM CKAN instance by copying over the source files, storage files, ckan.ini file, and database backups.<br>
-These files are located on the VM inside <code>/opt/ckan/backups</code>. Use scp to copy the files onto your machine. These backups are created everyday: replace [date] with the most recent date in the format yyyymmdd.</p>
+<li><p>Specify the location of the source files, storage files, backups, etc. in the <code>.env</code> file. You will move those files to these locations in the next steps. For example:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CKAN Mounts Directory</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">CKAN_EXTENSIONS_MOUNT</span><span class="ot">=</span><span class="st">./ckan-extension</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">SRC_EXTENSIONS_PATH</span><span class="ot">=</span><span class="st">/srv/app/src_extensions</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dt">CKAN_SOURCE_MOUNT</span><span class="ot">=</span><span class="st">./ckan-src/src</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dt">CKAN_STORAGE_MOUNT</span><span class="ot">=</span><span class="st">./ckan-src/storage</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="dt">CKAN_INI_MOUNT</span><span class="ot">=</span><span class="st">./ckan-src/ckan.ini</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="dt">...</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Backups </span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="dt">BACKUP_TO</span><span class="ot">=</span><span class="st">../../[backups folder name]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>To create a replica of the current main Data Catalog, copy over the source files, storage files, ckan.ini file, and database backups from the VM. These files are located on the VM inside <code>/opt/ckan/backups</code>. Use scp to copy the files onto your machine. These backups are created everyday: replace [date] with the most recent date in the format <code>yyyymmdd</code>.</p>
+<p>Inside of <code>acepportal-ckan/sckan-src</code> run the following</p>
 <ul>
-<li><code>scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/app_[date].tar.bz2 .</code></li>
+<li><code>scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/app_[date].tar.bz2 .</code><br>
+</li>
 <li><code>scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/app_storage_[date].tar.bz2 .</code></li>
-<li><code>scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/ckandb_[date].tar .</code></li>
-<li><code>scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/datastore_[date].tar .</code></li>
+<li><code>scp user@portal.lab.acep.uaf.edu:/opt/ckan/acepportal-ckan/ckan-src/ckan.ini</code></li>
 </ul></li>
 <li><p>Use tar to decompress the source and storage tar files</p>
 <ul>
 <li><code>tar -jxvf app_[date].tar.bz2</code></li>
 <li><code>tar -jxvf app_storage_[date].tar.bz2</code></li>
+</ul>
+<p>This should result in the directory structure specified in <code>ckan-src/README.txt</code></p></li>
+<li><p>Create a backups folder alongside the <code>acepportal-ckan</code> repository on your machine. Specify the name in the <code>BACKUP_TO</code> setting in the <code>.env</code> file.</p></li>
+<li><p>Run the following commands inside the backups folder to copy over the database and datastore.</p>
+<ul>
+<li><code>scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/ckandb_[date].tar .</code></li>
+<li><code>scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/datastore_[date].tar .</code></li>
 </ul></li>
-<li><p>Place the source files and storage files inside of <code>acepportal-ckan/ckan-src</code> app storage - ckan&gt;storage things app - src files ckan.ini &gt; <code>scp user@portal.lab.acep.uaf.edu:/opt/ckan/acepportal-ckan/ckan-src/ckan.ini</code> change site url to localhost switch debug and app main?</p></li>
-<li><p>Create a backups folder alongside the <code>acepportal-ckan</code> repository on your machine. move other tar files there, ckandb and datastore</p></li>
-<li></li>
-<li><p>Specify the location of the source files, storage files, backups, etc. in the <code>.env</code> file.<br>
-For example:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CKAN Mounts Directory</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">CKAN_EXTENSIONS_MOUNT</span><span class="ot">=</span><span class="st">./ckan-extension</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">SRC_EXTENSIONS_PATH</span><span class="ot">=</span><span class="st">/srv/app/src_extensions</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dt">CKAN_SOURCE_MOUNT</span><span class="ot">=</span><span class="st">./ckan-src/src</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">CKAN_STORAGE_MOUNT</span><span class="ot">=</span><span class="st">./ckan-src/storage</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dt">CKAN_INI_MOUNT</span><span class="ot">=</span><span class="st">./ckan-src/ckan.ini</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="dt">...</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Backups </span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dt">BACKUP_TO</span><span class="ot">=</span><span class="st">../../acepportal_backups_jm</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Inside of the <code>ckan.ini</code> file, set the <code>ckan.site_url</code> setting to the localhost url as so:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode .ini code-with-copy"><code class="sourceCode ini"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">ckan.site_url </span><span class="ot">=</span><span class="st"> http://127.0.0.1:5000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Build the containers using,</p>
 <ul>
 <li><code>docker compose up</code></li>
@@ -349,39 +375,39 @@ For example:</p>
 <ul>
 <li>In the file <code>plugin.py</code>, change the <code>member_create</code> function to the following</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> member_create(<span class="va">self</span>, next_auth, context, data_dict):</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">    This code is largely borrowed from /src/ckan/ckan/logic/auth/create.py</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">    With a modification to allow users to add datasets to any group</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">    :param context:</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">    :param data_dict:</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">    :return:</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    group <span class="op">=</span> logic_auth.get_group_object(context, data_dict)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    authorized <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> group.is_organization <span class="kw">and</span> data_dict.get(<span class="st">'object_type'</span>) <span class="op">==</span> <span class="st">'package'</span>:</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        authorized <span class="op">=</span> helpers.user_has_admin_access(include_editor_access<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> authorized:</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Fallback to the default CKAN behaviour</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> next_auth(context, data_dict)</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {<span class="st">'success'</span>: <span class="va">True</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> member_create(<span class="va">self</span>, next_auth, context, data_dict):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">    This code is largely borrowed from /src/ckan/ckan/logic/auth/create.py</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">    With a modification to allow users to add datasets to any group</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">    :param context:</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">    :param data_dict:</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">    :return:</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    group <span class="op">=</span> logic_auth.get_group_object(context, data_dict)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    authorized <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> group.is_organization <span class="kw">and</span> data_dict.get(<span class="st">'object_type'</span>) <span class="op">==</span> <span class="st">'package'</span>:</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        authorized <span class="op">=</span> helpers.user_has_admin_access(include_editor_access<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> authorized:</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Fallback to the default CKAN behaviour</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> next_auth(context, data_dict)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {<span class="st">'success'</span>: <span class="va">True</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>In the the file <code>templates/package/group_list.html</code>, add the line <code>{ h.csrf_input() }</code> to the beginning of the two post forms, as follows</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>{% if groups %}</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> class</span><span class="op">=</span><span class="st">"add-to-group"</span><span class="ot"> method</span><span class="op">=</span><span class="st">"post"</span><span class="dt">&gt;</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    {{ h.csrf_input() }}</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>{% endif %}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>{% if c.pkg_dict.groups %}</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> method</span><span class="op">=</span><span class="st">"post"</span><span class="dt">&gt;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    {{ h.csrf_input() }}</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>{% endif %}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>{% if groups %}</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> class</span><span class="op">=</span><span class="st">"add-to-group"</span><span class="ot"> method</span><span class="op">=</span><span class="st">"post"</span><span class="dt">&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    {{ h.csrf_input() }}</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>{% endif %}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>{% if c.pkg_dict.groups %}</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> method</span><span class="op">=</span><span class="st">"post"</span><span class="dt">&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    {{ h.csrf_input() }}</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>{% endif %}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="ckanext-scheming" class="level4">
 <h4 class="anchored" data-anchor-id="ckanext-scheming">ckanext-scheming</h4>
@@ -397,8 +423,8 @@ For example:</p>
 <li>In <code>ckan.ini</code>, add your schema to the <code>scheming.dataset_schemas</code> config option. For example:<br>
 </li>
 </ol>
-<div class="sourceCode" id="cb5"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">scheming.dataset_schemas </span><span class="ot">=</span><span class="st"> ckanext.scheming:arctic_dataset.json   </span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dt">                            ckanext.scheming:geo_dataset.json</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">scheming.dataset_schemas </span><span class="ot">=</span><span class="st"> ckanext.scheming:arctic_dataset.json   </span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dt">                            ckanext.scheming:geo_dataset.json</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="3" type="1">
 <li>The new dataset creation form is located at a url defined by the schema type name. For example, the creation form for datasets of type <code>arctic-dataset</code> is located at <code>/arctic-dataset/new</code>. You can define a new Add Dataset button using this new url.</li>
 </ol>
