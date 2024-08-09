@@ -228,10 +228,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li><p>Install Docker: <a href="https://www.docker.com/get-started/">https://www.docker.com/get-started/</a><br>
 </p></li>
-<li><p>Clone the ACEP CKAN repository from Github: <a href="https://github.com/UAF-RCS/acepportal-ckan.git">https://github.com/UAF-RCS/acepportal-ckan.git</a><br>
-</p></li>
+<li><p>Clone the ACEP CKAN repository from Github: <a href="https://github.com/UAF-RCS/acepportal-ckan.git">https://github.com/UAF-RCS/acepportal-ckan.git</a></p></li>
+<li><p>Create the <code>.env</code> file inside the main <code>acepportal-ckan</code> folder. Copy the contents from the <code>.env.example</code> file.</p></li>
 <li><p>Create a replica of the main VM CKAN instance by copying over the source files, storage files, ckan.ini file, and database backups.<br>
-These files are located on the VM inside <code>/opt/ckan/backups</code>. Use scp to copy the files onto your machine</p>
+These files are located on the VM inside <code>/opt/ckan/backups</code>. Use scp to copy the files onto your machine. These backups are created everyday: replace [date] with the most recent date in the format yyyymmdd.</p>
 <ul>
 <li><code>scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/app_[date].tar.bz2 .</code></li>
 <li><code>scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/app_storage_[date].tar.bz2 .</code></li>
@@ -241,11 +241,11 @@ These files are located on the VM inside <code>/opt/ckan/backups</code>. Use scp
 <li><p>Use tar to decompress the source and storage tar files</p>
 <ul>
 <li><code>tar -jxvf app_[date].tar.bz2</code></li>
-<li><code>tar -jxvf app_[date].tar.bz2</code></li>
+<li><code>tar -jxvf app_storage_[date].tar.bz2</code></li>
 </ul></li>
-<li><p>Place the source files and storage files inside of <code>acepportal-ckan/ckan-src</code></p></li>
-<li><p>Create a backups folder alongside the <code>acepportal-ckan</code> repository on your machine.</p></li>
-<li><p>Create the <code>.env</code> file inside the main <code>acepportal-ckan</code> folder. Copy the contents from the <code>.env.example</code> file.</p></li>
+<li><p>Place the source files and storage files inside of <code>acepportal-ckan/ckan-src</code> app storage - ckan&gt;storage things app - src files ckan.ini &gt; <code>scp user@portal.lab.acep.uaf.edu:/opt/ckan/acepportal-ckan/ckan-src/ckan.ini</code> change site url to localhost switch debug and app main?</p></li>
+<li><p>Create a backups folder alongside the <code>acepportal-ckan</code> repository on your machine. move other tar files there, ckandb and datastore</p></li>
+<li></li>
 <li><p>Specify the location of the source files, storage files, backups, etc. in the <code>.env</code> file.<br>
 For example:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CKAN Mounts Directory</span></span>
@@ -253,7 +253,10 @@ For example:</p>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">SRC_EXTENSIONS_PATH</span><span class="ot">=</span><span class="st">/srv/app/src_extensions</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dt">CKAN_SOURCE_MOUNT</span><span class="ot">=</span><span class="st">./ckan-src/src</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">CKAN_STORAGE_MOUNT</span><span class="ot">=</span><span class="st">./ckan-src/storage</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dt">CKAN_INI_MOUNT</span><span class="ot">=</span><span class="st">./ckan-src/ckan.ini</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dt">CKAN_INI_MOUNT</span><span class="ot">=</span><span class="st">./ckan-src/ckan.ini</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="dt">...</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Backups </span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dt">BACKUP_TO</span><span class="ot">=</span><span class="st">../../acepportal_backups_jm</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Build the containers using,</p>
 <ul>
 <li><code>docker compose up</code></li>
