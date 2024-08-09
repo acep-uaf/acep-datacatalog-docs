@@ -9,7 +9,9 @@ The ACEP Data Catalog is run on a VM hosted by RCS. Extensions can be updated by
 ### Basic Docker Commands
 
 __List all running containers:__  
-`docker ps -a`
+
+- `docker ps -a`  
+
 There are 5 containers that run the data catalog
 
     - `acep-ckan-cont`
@@ -18,18 +20,49 @@ There are 5 containers that run the data catalog
     - `acep-solr-cont`
     - `acep-datapusher-cont`
 
+__Spin up Application__
+ 
+- `docker compose up`
+
+This will turn the terminal into an output stream for the docker containers.
+
+> TIP: I recommend keeping two terminal open: one for the output stream so you can see errors, and another to run other commands in
+
 __Rebuild and spin up containers:__  
-`docker compose up -d --build`
+
+- `docker compose up -d --build`
+
+Run this command after installing a new extension and adding it to the `.env` file.
 
 __Go into container:__  
-`docker exec -it [container_nane] /bin/bash`  
+
+- `docker exec -it [container_name] /bin/bash`  
+
 Or if bash is not installed in the container:  
-`docker exec -it [container_nane] /bin/sh`  
+
+- `docker exec -it [container_name] /bin/sh`  
+
 Or if in a bash terminal:  
-`docker exec -it [container_nane] bash`  
+
+- `docker exec -it [container_name] bash`  
 
 __Restart a container:__  
-`docker restart [container_name]`
+
+- `docker restart [container_name]`
+
+Restart the `acep-ckan-cont` container after making changes to non-HTML files. Changes in html files can be seen by refreshing the webpage.
+
+__Take Down Application__
+
+- `docker compose down`
+
+__Clean up Project__  
+
+- `docker compose down --rmi all -v --remove-orphans`
+
+This removes all containers, images, and volumes associated with a project. __Only do this if you want to clean up your environment and reset the containers.__
+
+
 
 ### Creating a Local Instance
 Creating a local version of the data catalog is a useful tool for developing and testing new features.
