@@ -114,17 +114,27 @@
     "href": "admin.html",
     "title": "3  Admin",
     "section": "",
-    "text": "Giving User Permissions\nUsers have roles in each organization that give them different permissions.\nThe roles are: - Member: can see private datasets in the organization - Editor: can add private datasets to the organization and delete datasets from the organization - Admin: can change users’ roles in an organization and publish datasets from private to public To give a user a role in an organization: 1. Click on the Organizations tab at the top of the screen and click on the organization you want to add the user to. 2. Click on the Manage button in the upper right. 3. Click on the Members tab at the top.  - To add a new member to the organizaton, click the Add Member button. Enter their username, select their new role from the dropdown, and click the Add Member button at the bottom of the form.  -To change an existing member’s role, click the wrench next to their user name.  - Select their new role from the dropdown menu and click Update Member - To remove the user from the organization completely, click the Delete button.",
+    "text": "Giving User Permissions\nUsers have roles in each organization that give them different permissions.\nThe roles are:\nTo give a user a role in an organization:",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Admin</span>"
     ]
   },
   {
-    "objectID": "admin.html#reviewing-a-dataset",
-    "href": "admin.html#reviewing-a-dataset",
+    "objectID": "admin.html#giving-user-permissions",
+    "href": "admin.html#giving-user-permissions",
     "title": "3  Admin",
-    "section": "Reviewing a Dataset",
-    "text": "Reviewing a Dataset",
+    "section": "",
+    "text": "Member: can see private datasets in the organization\nEditor: can add private datasets to the organization and delete datasets from the organization\nAdmin: can change users’ roles in an organization and publish datasets from private to public\n\n\n\nClick on the Organizations tab at the top of the screen and click on the organization you want to add the user to.\nClick on the Manage button in the upper right.\nClick on the Members tab at the top. \n\nTo add a new member to the organizaton, click the Add Member button. Enter their username, select their new role from the dropdown, and click the Add Member button at the bottom of the form.  -To change an existing member’s role, click the wrench next to their user name. \n\nSelect their new role from the dropdown menu and click Update Member\nTo remove the user from the organization completely, click the Delete button.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Admin</span>"
+    ]
+  },
+  {
+    "objectID": "admin.html#reviewing-and-publishing-a-dataset",
+    "href": "admin.html#reviewing-and-publishing-a-dataset",
+    "title": "3  Admin",
+    "section": "Reviewing and Publishing a Dataset",
+    "text": "Reviewing and Publishing a Dataset\n\nNavigate to the dataset you would like to publish.\nReview the metadata and ensure the files/links are correct and function properly.\nTo publish, click on the Manage button in the top right of the dataset page.\nIn the metadata fields, find the Visibility field.\n\nChange the Visibility field from Private to Public, and click the Update Dataset button at the bottom of the form.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Admin</span>"
     ]
@@ -134,7 +144,7 @@
     "href": "admin.html#deleting-datasetsgroupsorganizations",
     "title": "3  Admin",
     "section": "Deleting Datasets/Groups/Organizations",
-    "text": "Deleting Datasets/Groups/Organizations",
+    "text": "Deleting Datasets/Groups/Organizations\n\nTo delete a dataset, group, or organization, navigate to it’s page and click the Manage button in the upper right.\nClick the Delete button at the bottom of the form to delete.\nDeleting a dataset, group, or organization does not remove it from the database. After deleting, a sysadmin can restore the item or purge it to remove it from the database. If not purged, the url for the deleted item cannot be reused.\n\n\nPurge Deleted Datasets/Groups/Organizations\n\nNavigate to sysadmin settings by clicking the hammer icon at the top of the page.\n\nClick on the Trash tab. This page will list all the currently deleted datasets, groups, and organizations. \nYou can purge all deleted items using the Purge all button at the top of the form. To purge only one group of items (datasets, group, or organizations) use the Purge button in that section.\n\n\n\nRestore Deleted Datasets\n\nNavigate to sysadmin settings by clicking the hammer icon at the top of the page.\n\nClick on the Trash tab. This page will list all the currently deleted datasets, groups, and organizations.\n\nClick on the dataset you would like to restore, and click the Manage button in the upper right.\nIn the metadata fields find the State field. \n\nChange the State field from Deleted to Active, and then click the Update Dataset button at the bottom of the form.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Admin</span>"
     ]

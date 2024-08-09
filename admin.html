@@ -147,8 +147,12 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#giving-user-permissions" id="toc-giving-user-permissions" class="nav-link active" data-scroll-target="#giving-user-permissions">Giving User Permissions</a></li>
-  <li><a href="#reviewing-a-dataset" id="toc-reviewing-a-dataset" class="nav-link" data-scroll-target="#reviewing-a-dataset">Reviewing a Dataset</a></li>
-  <li><a href="#deleting-datasetsgroupsorganizations" id="toc-deleting-datasetsgroupsorganizations" class="nav-link" data-scroll-target="#deleting-datasetsgroupsorganizations">Deleting Datasets/Groups/Organizations</a></li>
+  <li><a href="#reviewing-and-publishing-a-dataset" id="toc-reviewing-and-publishing-a-dataset" class="nav-link" data-scroll-target="#reviewing-and-publishing-a-dataset">Reviewing and Publishing a Dataset</a></li>
+  <li><a href="#deleting-datasetsgroupsorganizations" id="toc-deleting-datasetsgroupsorganizations" class="nav-link" data-scroll-target="#deleting-datasetsgroupsorganizations">Deleting Datasets/Groups/Organizations</a>
+  <ul class="collapse">
+  <li><a href="#purge-deleted-datasetsgroupsorganizations" id="toc-purge-deleted-datasetsgroupsorganizations" class="nav-link" data-scroll-target="#purge-deleted-datasetsgroupsorganizations">Purge Deleted Datasets/Groups/Organizations</a></li>
+  <li><a href="#restore-deleted-datasets" id="toc-restore-deleted-datasets" class="nav-link" data-scroll-target="#restore-deleted-datasets">Restore Deleted Datasets</a></li>
+  </ul></li>
   <li><a href="#restoring-a-deleted-user" id="toc-restoring-a-deleted-user" class="nav-link" data-scroll-target="#restoring-a-deleted-user">Restoring a Deleted User</a></li>
   </ul>
 </nav>
@@ -179,13 +183,66 @@ ul.task-list li input[type="checkbox"] {
 <section id="giving-user-permissions" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="giving-user-permissions">Giving User Permissions</h2>
 <p>Users have roles in each organization that give them different permissions.<br>
-The roles are: - Member: can see private datasets in the organization - Editor: can add private datasets to the organization and delete datasets from the organization - Admin: can change users’ roles in an organization and publish datasets from private to public To give a user a role in an organization: 1. Click on the <strong>Organizations</strong> tab at the top of the screen and click on the organization you want to add the user to. 2. Click on the <strong>Manage</strong> button in the upper right. 3. Click on the <strong>Members</strong> tab at the top. <img src="images/orgmembers.png" class="img-fluid"> - To add a new member to the organizaton, click the <strong>Add Member</strong> button. Enter their username, select their new role from the dropdown, and click the <strong>Add Member</strong> button at the bottom of the form. <img src="images/addorgmember.png" class="img-fluid"> -To change an existing member’s role, click the wrench next to their user name. <img src="images/editmember.png" class="img-fluid"> - Select their new role from the dropdown menu and click <strong>Update Member</strong> - To remove the user from the organization completely, click the <strong>Delete</strong> button. <img src="images/deletemember.png" class="img-fluid"></p>
+The roles are:</p>
+<ul>
+<li><strong>Member</strong>: can see private datasets in the organization</li>
+<li><strong>Editor</strong>: can add private datasets to the organization and delete datasets from the organization</li>
+<li><strong>Admin</strong>: can change users’ roles in an organization and publish datasets from private to public</li>
+</ul>
+<p>To give a user a role in an organization:</p>
+<ol type="1">
+<li>Click on the <strong>Organizations</strong> tab at the top of the screen and click on the organization you want to add the user to.</li>
+<li>Click on the <strong>Manage</strong> button in the upper right.</li>
+<li>Click on the <strong>Members</strong> tab at the top. <img src="images/orgmembers.png" class="img-fluid">
+<ul>
+<li>To add a new member to the organizaton, click the <strong>Add Member</strong> button. Enter their username, select their new role from the dropdown, and click the <strong>Add Member</strong> button at the bottom of the form. <img src="images/addorgmember.png" class="img-fluid"> -To change an existing member’s role, click the wrench next to their user name. <img src="images/editmember.png" class="img-fluid">
+<ul>
+<li>Select their new role from the dropdown menu and click <strong>Update Member</strong></li>
+<li>To remove the user from the organization completely, click the <strong>Delete</strong> button. <img src="images/deletemember.png" class="img-fluid"></li>
+</ul></li>
+</ul></li>
+</ol>
 </section>
-<section id="reviewing-a-dataset" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="reviewing-a-dataset">Reviewing a Dataset</h2>
+<section id="reviewing-and-publishing-a-dataset" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="reviewing-and-publishing-a-dataset">Reviewing and Publishing a Dataset</h2>
+<ol type="1">
+<li>Navigate to the dataset you would like to publish.</li>
+<li>Review the metadata and ensure the files/links are correct and function properly.</li>
+<li>To publish, click on the <strong>Manage</strong> button in the top right of the dataset page.</li>
+<li>In the metadata fields, find the <strong>Visibility</strong> field.<br>
+<img src="images/publish.png" class="img-fluid"></li>
+<li>Change the <strong>Visibility</strong> field from <strong>Private</strong> to <strong>Public</strong>, and click the <strong>Update Dataset</strong> button at the bottom of the form.</li>
+</ol>
 </section>
 <section id="deleting-datasetsgroupsorganizations" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="deleting-datasetsgroupsorganizations">Deleting Datasets/Groups/Organizations</h2>
+<ol type="1">
+<li>To delete a dataset, group, or organization, navigate to it’s page and click the <strong>Manage</strong> button in the upper right.</li>
+<li>Click the <strong>Delete</strong> button at the bottom of the form to delete.</li>
+<li><strong>Deleting a dataset, group, or organization does not remove it from the database.</strong> After deleting, a sysadmin can restore the item or purge it to remove it from the database. If not purged, the url for the deleted item cannot be reused.</li>
+</ol>
+<section id="purge-deleted-datasetsgroupsorganizations" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="purge-deleted-datasetsgroupsorganizations">Purge Deleted Datasets/Groups/Organizations</h3>
+<ol type="1">
+<li>Navigate to sysadmin settings by clicking the hammer icon at the top of the page.<br>
+<img src="images/sysadminsettings.png" class="img-fluid"></li>
+<li>Click on the <strong>Trash</strong> tab. This page will list all the currently deleted datasets, groups, and organizations. <img src="images/purge.png" class="img-fluid"></li>
+<li>You can purge all deleted items using the <strong>Purge all</strong> button at the top of the form. To purge only one group of items (datasets, group, or organizations) use the <strong>Purge</strong> button in that section.</li>
+</ol>
+</section>
+<section id="restore-deleted-datasets" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="restore-deleted-datasets">Restore Deleted Datasets</h3>
+<ol type="1">
+<li>Navigate to sysadmin settings by clicking the hammer icon at the top of the page.<br>
+<img src="images/sysadminsettings.png" class="img-fluid"></li>
+<li>Click on the <strong>Trash</strong> tab. This page will list all the currently deleted datasets, groups, and organizations.<br>
+<img src="images/purge.png" class="img-fluid"></li>
+<li>Click on the dataset you would like to restore, and click the <strong>Manage</strong> button in the upper right.</li>
+<li>In the metadata fields find the <strong>State</strong> field. <img src="images/deletedstate.png" class="img-fluid"><br>
+</li>
+<li>Change the <strong>State</strong> field from <strong>Deleted</strong> to <strong>Active</strong>, and then click the <strong>Update Dataset</strong> button at the bottom of the form.</li>
+</ol>
+</section>
 </section>
 <section id="restoring-a-deleted-user" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="restoring-a-deleted-user">Restoring a Deleted User</h2>
