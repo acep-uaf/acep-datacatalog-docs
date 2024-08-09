@@ -225,23 +225,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The ACEP Data Catalog is run on a VM hosted by RCS. Extensions can be updated by pushing to the acepportal-ckan GitHub repository. After pushing, changes take ~30 min to update on the main site.</p>
 <section id="basic-docker-commands" class="level3">
 <h3 class="anchored" data-anchor-id="basic-docker-commands">Basic Docker Commands</h3>
-<p><strong>List all running containers:</strong><br>
-<code>docker ps -a</code> There are 5 containers that run the data catalog</p>
+<p><strong>List all running containers:</strong></p>
+<ul>
+<li><code>docker ps -a</code></li>
+</ul>
+<p>There are 5 containers that run the data catalog</p>
 <pre><code>- `acep-ckan-cont`
 - `acep-db-cont`
 - `acep-redis-cont`
 - `acep-solr-cont`
 - `acep-datapusher-cont`</code></pre>
-<p><strong>Rebuild and spin up containers:</strong><br>
-<code>docker compose up -d --build</code></p>
-<p><strong>Go into container:</strong><br>
-<code>docker exec -it [container_nane] /bin/bash</code><br>
-Or if bash is not installed in the container:<br>
-<code>docker exec -it [container_nane] /bin/sh</code><br>
-Or if in a bash terminal:<br>
-<code>docker exec -it [container_nane] bash</code></p>
-<p><strong>Restart a container:</strong><br>
-<code>docker restart [container_name]</code></p>
+<p><strong>Spin up Application</strong></p>
+<ul>
+<li><code>docker compose up</code></li>
+</ul>
+<p>This will turn the terminal into an output stream for the docker containers.</p>
+<blockquote class="blockquote">
+<p>TIP: I recommend keeping two terminal open: one for the output stream so you can see errors, and another to run other commands in</p>
+</blockquote>
+<p><strong>Rebuild and spin up containers:</strong></p>
+<ul>
+<li><code>docker compose up -d --build</code></li>
+</ul>
+<p>Run this command after installing a new extension and adding it to the <code>.env</code> file.</p>
+<p><strong>Go into container:</strong></p>
+<ul>
+<li><code>docker exec -it [container_name] /bin/bash</code></li>
+</ul>
+<p>Or if bash is not installed in the container:</p>
+<ul>
+<li><code>docker exec -it [container_name] /bin/sh</code></li>
+</ul>
+<p>Or if in a bash terminal:</p>
+<ul>
+<li><code>docker exec -it [container_name] bash</code></li>
+</ul>
+<p><strong>Restart a container:</strong></p>
+<ul>
+<li><code>docker restart [container_name]</code></li>
+</ul>
+<p>Restart the <code>acep-ckan-cont</code> container after making changes to non-HTML files. Changes in html files can be seen by refreshing the webpage.</p>
+<p><strong>Take Down Application</strong></p>
+<ul>
+<li><code>docker compose down</code></li>
+</ul>
+<p><strong>Clean up Project</strong></p>
+<ul>
+<li><code>docker compose down --rmi all -v --remove-orphans</code></li>
+</ul>
+<p>This removes all containers, images, and volumes associated with a project. <strong>Only do this if you want to clean up your environment and reset the containers.</strong></p>
 </section>
 <section id="creating-a-local-instance" class="level3">
 <h3 class="anchored" data-anchor-id="creating-a-local-instance">Creating a Local Instance</h3>
