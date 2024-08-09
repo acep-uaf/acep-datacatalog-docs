@@ -9,16 +9,19 @@ Here are some instructions for how to navigate the data catalog.
 3. In order to see the Internal Use datasets or post datasets, you will need permissions granted to your account. If you are an ACEP employee, contact Liz or another admin.
 
 ## Searching for Datasets {.unnumbered}
-There are multiple ways to search for datasets  
+There are many ways to search for datasets in the catalog.
 
-- Search Bar  
-    Use key words to find datasets, just like Google.
-- Groups  
+- __Search Bar__  
+    Use key words to find datasets, just like Google. On the left sidebar of the search results page, you can filter by tags and other categories to get more specific results.
+    ![](images/searching.png)
+- __Groups__  
     Browse through the groups that can be found at the __Groups__ tab at the top of the screen or listed on the home page. 
 ![](images/groups.png)
-- Organizations
+- __Organizations__  
+    Sort by larger categories by looking the __Organization__ tab at the top of the screen.
 
-
+    - The __ACEP Open Data__ organization holds datasets created and owned by ACEP's research teams.
+    - The __ACEP Internal Use__ organization holds datasets that ACEP does not own. These are useful resources for ACEP researchers. __You must be an ACEP employee to gain access to these datasets.__ Contact Liz to get the necessary permissions for your account.
 
 ## Submitting a Comment/Complaint {.unnumbered}
 If you find a problem with a dataset or have a comment or suggestion for the data catalog, please contact the ACEP data team at <uaf-acep-dcm-support@alaska.edu>. 
