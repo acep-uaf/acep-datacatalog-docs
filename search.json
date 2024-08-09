@@ -34,7 +34,7 @@
     "href": "getting_started.html#searching-for-datasets",
     "title": "1  Getting Started",
     "section": "Searching for Datasets",
-    "text": "Searching for Datasets\nThere are multiple ways to search for datasets\n\nSearch Bar\nUse key words to find datasets, just like Google.\nGroups\nBrowse through the groups that can be found at the Groups tab at the top of the screen or listed on the home page. \nOrganizations",
+    "text": "Searching for Datasets\nThere are many ways to search for datasets in the catalog.\n\nSearch Bar\nUse key words to find datasets, just like Google. On the left sidebar of the search results page, you can filter by tags and other categories to get more specific results. \nGroups\nBrowse through the groups that can be found at the Groups tab at the top of the screen or listed on the home page. \nOrganizations\nSort by larger categories by looking the Organization tab at the top of the screen.\n\nThe ACEP Open Data organization holds datasets created and owned by ACEP’s research teams.\nThe ACEP Internal Use organization holds datasets that ACEP does not own. These are useful resources for ACEP researchers. You must be an ACEP employee to gain access to these datasets. Contact Liz to get the necessary permissions for your account.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Getting Started</span>"
     ]
