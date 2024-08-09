@@ -17,9 +17,9 @@ To give a user a role in an organization:
     ![](images/addorgmember.png)
     -To change an existing member's role, click the wrench next to their user name.
     ![](images/editmember.png)
-    ![](images/deletemember.png)
         - Select their new role from the dropdown menu and click __Update Member__
         - To remove the user from the organization completely, click the __Delete__ button.
+    ![](images/deletemember.png)
 
 ## Reviewing a Dataset {.unnumbered}
 

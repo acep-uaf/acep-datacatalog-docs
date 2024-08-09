@@ -10,9 +10,10 @@ The ACEP Data Catalog is run on a VM hosted by RCS. Extensions can be updated by
 Creating a local version of the data catalog is a useful tool for developing and testing new features.
 
 1. Install Docker: [https://www.docker.com/get-started/](https://www.docker.com/get-started/)  
-2. Clone the ACEP CKAN repository from Github: [https://github.com/UAF-RCS/acepportal-ckan.git](https://github.com/UAF-RCS/acepportal-ckan.git)  
+2. Clone the ACEP CKAN repository from Github: [https://github.com/UAF-RCS/acepportal-ckan.git](https://github.com/UAF-RCS/acepportal-ckan.git) 
+3. Create the `.env` file inside the main `acepportal-ckan` folder. Copy the contents from the `.env.example` file.
 3. Create a replica of the main VM CKAN instance by copying over the source files, storage    files, ckan.ini file, and database backups.   
-    These files are located on the VM inside `/opt/ckan/backups`. Use scp to copy the files onto your machine
+    These files are located on the VM inside `/opt/ckan/backups`. Use scp to copy the files onto your machine. These backups are created everyday: replace [date] with the most recent date in the format yyyymmdd. 
 
     - `scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/app_[date].tar.bz2 .`
     - `scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/app_storage_[date].tar.bz2 .`
@@ -21,10 +22,19 @@ Creating a local version of the data catalog is a useful tool for developing and
 4. Use tar to decompress the source and storage tar files
 
     - `tar -jxvf app_[date].tar.bz2`
-    - `tar -jxvf app_[date].tar.bz2`
+    - `tar -jxvf app_storage_[date].tar.bz2`
 5. Place the source files and storage files inside of `acepportal-ckan/ckan-src`
+    app storage - ckan>storage things
+    app - src files
+    ckan.ini > `scp user@portal.lab.acep.uaf.edu:/opt/ckan/acepportal-ckan/ckan-src/ckan.ini`
+        change site url to localhost
+        switch debug and app main?
+    
+
+
 6. Create a backups folder alongside the `acepportal-ckan` repository on your machine.
-7. Create the `.env` file inside the main `acepportal-ckan` folder. Copy the contents from the `.env.example` file.
+    move other tar files there, ckandb and datastore
+7. 
 7. Specify the location of the source files, storage files, backups, etc. in the `.env` file.   
     For example: 
 
@@ -35,6 +45,9 @@ Creating a local version of the data catalog is a useful tool for developing and
     CKAN_SOURCE_MOUNT=./ckan-src/src
     CKAN_STORAGE_MOUNT=./ckan-src/storage
     CKAN_INI_MOUNT=./ckan-src/ckan.ini
+    ...
+    # Backups 
+    BACKUP_TO=../../acepportal_backups_jm
     ```
 8. Build the containers using,
 
