@@ -146,8 +146,15 @@ To add a feature from your local instance to the main Data Catalog,
 
 1. Push the files to the `acepportal-ckan` GitHub repository. 
 2. Wait about 30 min. for the changes to be pulled to VM.
-3. If you have added a new extension, ssh into the VM and add the extension name to the `.env` file.
-4. 
+3. If you have added a new extension, SSH into the VM and add the extension name to the `.env` file.
+
+- `ssh user@portal.lab.acep.uaf.edu`
+- `cd /opt/ckan/acepportal-ckan`
+- `vi .env`
+
+4. After installing new extensions or making other changes, you may need to restart the `acep-ckan-cont` container to make them take effect. Inside the VM, run
+
+- `docker restart acep-ckan-cont`
     
 ## Extensions
 ### Currently Installed
