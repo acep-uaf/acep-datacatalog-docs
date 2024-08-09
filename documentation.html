@@ -271,7 +271,8 @@ Or if in a bash terminal:<br>
 <li><code>tar -jxvf app_[date].tar.bz2</code></li>
 <li><code>tar -jxvf app_storage_[date].tar.bz2</code></li>
 </ul>
-<p>This should result in the directory structure specified in <code>ckan-src/README.txt</code></p></li>
+<p>Decompressing the <code>app_storage</code> tar file should create a folder called <code>ckan</code> containing the folders <code>resources</code>, <code>storage</code>, and <code>webassets</code>. Rename the <code>ckan</code> folder to <code>storage</code>.<br>
+This should result in the directory structure specified in <code>ckan-src/README.txt</code></p></li>
 <li><p>Create a backups folder alongside the <code>acepportal-ckan</code> repository on your machine. Specify the name in the <code>BACKUP_TO</code> setting in the <code>.env</code> file.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode .ini code-with-copy"><code class="sourceCode ini"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Backups </span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dt">BACKUP_TO</span><span class="ot">=</span><span class="st">../../[backups folder name]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
