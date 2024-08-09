@@ -360,9 +360,19 @@ This should result in the directory structure specified in <code>ckan-src/README
 <ol type="1">
 <li>Push the files to the <code>acepportal-ckan</code> GitHub repository.</li>
 <li>Wait about 30 min. for the changes to be pulled to VM.</li>
-<li>If you have added a new extension, ssh into the VM and add the extension name to the <code>.env</code> file.</li>
-<li></li>
+<li>If you have added a new extension, SSH into the VM and add the extension name to the <code>.env</code> file.</li>
 </ol>
+<ul>
+<li><code>ssh user@portal.lab.acep.uaf.edu</code></li>
+<li><code>cd /opt/ckan/acepportal-ckan</code></li>
+<li><code>vi .env</code></li>
+</ul>
+<ol start="4" type="1">
+<li>After installing new extensions or making other changes, you may need to restart the <code>acep-ckan-cont</code> container to make them take effect. Inside the VM, run</li>
+</ol>
+<ul>
+<li><code>docker restart acep-ckan-cont</code></li>
+</ul>
 </section>
 </section>
 <section id="extensions" class="level2">
