@@ -61,6 +61,7 @@ Creating a local version of the data catalog is a useful tool for developing and
     - `tar -jxvf app_[date].tar.bz2`
     - `tar -jxvf app_storage_[date].tar.bz2`
 
+    Decompressing the `app_storage` tar file should create a folder called `ckan` containing the folders `resources`, `storage`, and `webassets`. Rename the `ckan` folder to `storage`.  
     This should result in the directory structure specified in `ckan-src/README.txt`
 
 5. Create a backups folder alongside the `acepportal-ckan` repository on your machine. Specify the name in the `BACKUP_TO` setting in the `.env` file. 
