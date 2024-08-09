@@ -6,36 +6,38 @@ For more information and guides, visit the official [CKAN Documentation](https:/
 ## Developing the Data Catalog
 The ACEP Data Catalog is run on a VM hosted by RCS. Extensions can be updated by pushing to the acepportal-ckan GitHub repository. After pushing, changes take ~30 min to update on the main site.
 
+### Basic Docker Commands
+
+__List all running containers:__  
+`docker ps -a`
+There are 5 containers that run the data catalog
+
+    - `acep-ckan-cont`
+    - `acep-db-cont`
+    - `acep-redis-cont`
+    - `acep-solr-cont`
+    - `acep-datapusher-cont`
+
+__Rebuild and spin up containers:__  
+`docker compose up -d --build`
+
+__Go into container:__  
+`docker exec -it [container_nane] /bin/bash`  
+Or if bash is not installed in the container:  
+`docker exec -it [container_nane] /bin/sh`  
+Or if in a bash terminal:  
+`docker exec -it [container_nane] bash`  
+
+__Restart a container:__  
+`docker restart [container_name]`
+
 ### Creating a Local Instance
 Creating a local version of the data catalog is a useful tool for developing and testing new features.
 
 1. Install Docker: [https://www.docker.com/get-started/](https://www.docker.com/get-started/)  
 2. Clone the ACEP CKAN repository from Github: [https://github.com/UAF-RCS/acepportal-ckan.git](https://github.com/UAF-RCS/acepportal-ckan.git) 
 3. Create the `.env` file inside the main `acepportal-ckan` folder. Copy the contents from the `.env.example` file.
-3. Create a replica of the main VM CKAN instance by copying over the source files, storage    files, ckan.ini file, and database backups.   
-    These files are located on the VM inside `/opt/ckan/backups`. Use scp to copy the files onto your machine. These backups are created everyday: replace [date] with the most recent date in the format yyyymmdd. 
-
-    - `scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/app_[date].tar.bz2 .`
-    - `scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/app_storage_[date].tar.bz2 .`
-    - `scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/ckandb_[date].tar .`
-    - `scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/datastore_[date].tar .`
-4. Use tar to decompress the source and storage tar files
-
-    - `tar -jxvf app_[date].tar.bz2`
-    - `tar -jxvf app_storage_[date].tar.bz2`
-5. Place the source files and storage files inside of `acepportal-ckan/ckan-src`
-    app storage - ckan>storage things
-    app - src files
-    ckan.ini > `scp user@portal.lab.acep.uaf.edu:/opt/ckan/acepportal-ckan/ckan-src/ckan.ini`
-        change site url to localhost
-        switch debug and app main?
-    
-
-
-6. Create a backups folder alongside the `acepportal-ckan` repository on your machine.
-    move other tar files there, ckandb and datastore
-7. 
-7. Specify the location of the source files, storage files, backups, etc. in the `.env` file.   
+4. Specify the location of the source files, storage files, backups, etc. in the `.env` file. You will move those files to these locations in the next steps.
     For example: 
 
     ```ini
@@ -47,8 +49,34 @@ Creating a local version of the data catalog is a useful tool for developing and
     CKAN_INI_MOUNT=./ckan-src/ckan.ini
     ...
     # Backups 
-    BACKUP_TO=../../acepportal_backups_jm
+    BACKUP_TO=../../[backups folder name]
     ```
+3. To create a replica of the current main Data Catalog, copy over the source files, storage files, ckan.ini file, and database backups from the VM. These files are located on the VM inside `/opt/ckan/backups`. Use scp to copy the files onto your machine. These backups are created everyday: replace [date] with the most recent date in the format `yyyymmdd`. 
+
+    Inside of `acepportal-ckan/sckan-src` run the following
+
+    - `scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/app_[date].tar.bz2 .`   
+    - `scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/app_storage_[date].tar.bz2 .`
+    - `scp user@portal.lab.acep.uaf.edu:/opt/ckan/acepportal-ckan/ckan-src/ckan.ini`
+
+4. Use tar to decompress the source and storage tar files
+
+    - `tar -jxvf app_[date].tar.bz2`
+    - `tar -jxvf app_storage_[date].tar.bz2`
+
+    This should result in the directory structure specified in `ckan-src/README.txt`
+
+5. Create a backups folder alongside the `acepportal-ckan` repository on your machine. Specify the name in the `BACKUP_TO` setting in the `.env` file. 
+6. Run the following commands inside the backups folder to copy over the database and datastore.
+    - `scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/ckandb_[date].tar .`
+    - `scp user@portal.lab.acep.uaf.edu:/opt/ckan/backups/datastore_[date].tar .`
+    
+7. Inside of the `ckan.ini` file, set the `ckan.site_url` setting to the localhost url as so:
+
+    ```.ini
+    ckan.site_url = http://127.0.0.1:5000
+    ```
+    
 8. Build the containers using,
 
     - `docker compose up`
