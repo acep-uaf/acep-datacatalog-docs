@@ -14,11 +14,11 @@ __List all running containers:__
 
 There are 5 containers that run the data catalog
 
-    - `acep-ckan-cont`
-    - `acep-db-cont`
-    - `acep-redis-cont`
-    - `acep-solr-cont`
-    - `acep-datapusher-cont`
+- `acep-ckan-cont`
+- `acep-db-cont`
+- `acep-redis-cont`
+- `acep-solr-cont`
+- `acep-datapusher-cont`
 
 __Spin up Application__
  
