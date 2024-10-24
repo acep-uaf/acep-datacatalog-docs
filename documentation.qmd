@@ -299,11 +299,10 @@ __Modifications__: Some of the automatically calculated resource fields were man
 
 ### Adding Alternate Schemas with ckanext-scheming
 1. Create a .yaml or .json file in the folder `ckanext-scheming/ckanext/scheming` to define the metadata schema. See extension documentation for more information and examples.  
-2. In `ckan.ini`, add your schema to the `scheming.dataset_schemas` config option.
+2. In `ckan.ini`, add your schema(s) to the `scheming.dataset_schemas` config option.
 For example:   
 ```ini
-scheming.dataset_schemas = ckanext.scheming:arctic_dataset.json   
-                            ckanext.scheming:geo_dataset.json
+scheming.dataset_schemas = ckanext.scheming:arctic_dataset.json ckanext.scheming:geo_dataset.json
 ```
 3. The new dataset creation form is located at a url defined by the schema type name. For example, the creation form for datasets of type `arctic-dataset` is located at `/arctic-dataset/new`. You can define a new Add Dataset button using this new url.
 
