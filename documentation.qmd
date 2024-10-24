@@ -175,22 +175,61 @@ __Purpose__: Add custom theming and features for the CKAN instance, including
 - Added support contact info to dataset sidebar
 - Added default blank option to add-to-group dropdown menu
 
+#### ckanext-dcat
+__Link__: [https://github.com/ckan/ckanext-dcat](https://github.com/ckan/ckanext-dcat)  
+__Purpose__: Rework metadata to conform to DCAT standard.  
+__Modifications__:  
+
+- The file `schemas/acep_dcat_fields.yaml` was created to define the metadata fields for the catalog. 
+- The file `templates/scheming/form_snippets/publisher.html` was created to define the dynamic dropdown menu in the Publisher metadata field.
+
 #### ckanext-faqpage
 __Author__: Jenae Matson  
 __Purpose__: Create an FAQ page linked in the masthead with collapsible boxes for questions and answers.  
-
-#### ckanext-restrictpublish
-__Author__: Jenae Matson  
-__Purpose__: Restrict the ability to ochange the visibility of a dataset to admins only. Datasets posted by editors default to private.
 
 #### ckanext-geoview
 __Link__: [https://github.com/ckan/ckanext-geoview ](https://github.com/ckan/ckanext-geoview)  
 __Purpose__: Created resource views for geojson and other geo-data file types. We have implemented the OpenLayers Viewer.
 
+#### ckanext-githubrepopreview
+__Link__: [https://github.com/DataShades/ckanext-githubrepopreview](https://github.com/DataShades/ckanext-githubrepopreview)  
+__Purpose__: Provide a view for GitHub repository resources.  
+__Modifications__: This extension was created for an older version of CKAN, so the following changes were made to make it work with version 2.10:  
+
+- In the file `plugin.py`, replace the line `from lib import parse` with the following
+```py
+from urllib.parse import urlparse
+
+def parse(input_url, some_flag):
+    parsed_info = {}
+    parsed_url = urlparse(input_url)
+    domain = parsed_url.netloc
+    path_parts = parsed_url.path.strip('/').split('/')
+    
+    parsed_info['domain'] = domain
+    parsed_info['owner'] = path_parts[0] if len(path_parts) > 0 else None
+    parsed_info['repo'] = path_parts[1] if len(path_parts) > 1 else None
+    
+    return parsed_info
+```
+- In the file `templates/githubrepo.html`, delete the following lines
+```
+{%- block styles %}
+    {% resource g.main_css[6:] %}
+{% endblock %}
+{%- block scripts %}
+    {% resource 'base/main' %}
+    {% resource 'base/ckan' %}
+    {% if g.tracking_enabled %}
+        {% resource 'base/tracking.js' %}
+    {% endif %}
+{% endblock -%}
+```
+
 #### ckanext-package-group-permissions
 __Link__: [https://github.com/salsadigitalauorg/ckanext-package-group-permissions](https://github.com/salsadigitalauorg/ckanext-package-group-permissions)  
 __Purpose__: Allows all editors and admins to add datasets to any group, without having to be added as members to each group.  
-__Modifications__: This extension was created and works with CKAN 2.9. This instance is version 2.10, so the extension requires some small modifications to work. The following changes were made to the original extension:    
+__Modifications__: This extension was created and works with CKAN 2.9. This instance is version 2.10, so the extension requires some small modifications to work. The following changes were made to the original extension:  
 
 - In the file `plugin.py`, change the `member_create` function to the following
 ```py
@@ -231,9 +270,32 @@ def member_create(self, next_auth, context, data_dict):
 {% endif %}
 ```
 
+#### ckanext-pdfview
+__Link__: [https://github.com/ckan/ckanext-pdfview](https://github.com/ckan/ckanext-pdfview)  
+__Purpose__: Provide a view for pdf resources.
+
+#### ckanext-restrictpublish
+__Author__: Jenae Matson  
+__Purpose__: Restrict the ability to change the visibility of a dataset to admins only. Datasets posted by editors default to private. 
+
 #### ckanext-scheming
 __Link__: [https://github.com/ckan/ckanext-scheming ](https://github.com/ckan/ckanext-scheming)  
-__Purpose__: Allows for the creation of alternate metadata templates (schemas) defined by .yaml or .json files.
+__Purpose__: Allows for the creation of alternate metadata templates (schemas) defined by .yaml or .json files.  
+__Modifications__: Some of the automatically calculated resource fields were manually re-added to be displayed. In the file `templates/scheming/package/resource_read.html`, below `{%- block resource_license -%}` add the following 
+```
+{%- block resource_size -%}
+<tr>
+    <th scope="row">{{ _('Size') }}</th>
+    <td>{{ res.size or _('unknown') }} bytes</td>
+</tr>
+{%- endblock -%}
+{%- block resource_datastore -%}
+<tr>
+    <th scope="row">{{ _('Datastore active') }}</th>
+    <td>{{ res.datastore_active or _('unknown') }}</td>
+</tr>
+{%- endblock -%}
+```
 
 ### Adding Alternate Schemas with ckanext-scheming
 1. Create a .yaml or .json file in the folder `ckanext-scheming/ckanext/scheming` to define the metadata schema. See extension documentation for more information and examples.  
