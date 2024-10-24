@@ -401,20 +401,60 @@ This should result in the directory structure specified in <code>ckan-src/README
 <li>Added default blank option to add-to-group dropdown menu</li>
 </ul>
 </section>
+<section id="ckanext-dcat" class="level4">
+<h4 class="anchored" data-anchor-id="ckanext-dcat">ckanext-dcat</h4>
+<p><strong>Link</strong>: <a href="https://github.com/ckan/ckanext-dcat">https://github.com/ckan/ckanext-dcat</a><br>
+<strong>Purpose</strong>: Rework metadata to conform to DCAT standard.<br>
+<strong>Modifications</strong>:</p>
+<ul>
+<li>The file <code>schemas/acep_dcat_fields.yaml</code> was created to define the metadata fields for the catalog.</li>
+<li>The file <code>templates/scheming/form_snippets/publisher.html</code> was created to define the dynamic dropdown menu in the Publisher metadata field.</li>
+</ul>
+</section>
 <section id="ckanext-faqpage" class="level4">
 <h4 class="anchored" data-anchor-id="ckanext-faqpage">ckanext-faqpage</h4>
 <p><strong>Author</strong>: Jenae Matson<br>
 <strong>Purpose</strong>: Create an FAQ page linked in the masthead with collapsible boxes for questions and answers.</p>
 </section>
-<section id="ckanext-restrictpublish" class="level4">
-<h4 class="anchored" data-anchor-id="ckanext-restrictpublish">ckanext-restrictpublish</h4>
-<p><strong>Author</strong>: Jenae Matson<br>
-<strong>Purpose</strong>: Restrict the ability to ochange the visibility of a dataset to admins only. Datasets posted by editors default to private.</p>
-</section>
 <section id="ckanext-geoview" class="level4">
 <h4 class="anchored" data-anchor-id="ckanext-geoview">ckanext-geoview</h4>
 <p><strong>Link</strong>: <a href="https://github.com/ckan/ckanext-geoview">https://github.com/ckan/ckanext-geoview</a><br>
 <strong>Purpose</strong>: Created resource views for geojson and other geo-data file types. We have implemented the OpenLayers Viewer.</p>
+</section>
+<section id="ckanext-githubrepopreview" class="level4">
+<h4 class="anchored" data-anchor-id="ckanext-githubrepopreview">ckanext-githubrepopreview</h4>
+<p><strong>Link</strong>: <a href="https://github.com/DataShades/ckanext-githubrepopreview">https://github.com/DataShades/ckanext-githubrepopreview</a><br>
+<strong>Purpose</strong>: Provide a view for GitHub repository resources.<br>
+<strong>Modifications</strong>: This extension was created for an older version of CKAN, so the following changes were made to make it work with version 2.10:</p>
+<ul>
+<li>In the file <code>plugin.py</code>, replace the line <code>from lib import parse</code> with the following</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> urllib.parse <span class="im">import</span> urlparse</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse(input_url, some_flag):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    parsed_info <span class="op">=</span> {}</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    parsed_url <span class="op">=</span> urlparse(input_url)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    domain <span class="op">=</span> parsed_url.netloc</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    path_parts <span class="op">=</span> parsed_url.path.strip(<span class="st">'/'</span>).split(<span class="st">'/'</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    parsed_info[<span class="st">'domain'</span>] <span class="op">=</span> domain</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    parsed_info[<span class="st">'owner'</span>] <span class="op">=</span> path_parts[<span class="dv">0</span>] <span class="cf">if</span> <span class="bu">len</span>(path_parts) <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="va">None</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    parsed_info[<span class="st">'repo'</span>] <span class="op">=</span> path_parts[<span class="dv">1</span>] <span class="cf">if</span> <span class="bu">len</span>(path_parts) <span class="op">&gt;</span> <span class="dv">1</span> <span class="cf">else</span> <span class="va">None</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> parsed_info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>In the file <code>templates/githubrepo.html</code>, delete the following lines</li>
+</ul>
+<pre><code>{%- block styles %}
+    {% resource g.main_css[6:] %}
+{% endblock %}
+{%- block scripts %}
+    {% resource 'base/main' %}
+    {% resource 'base/ckan' %}
+    {% if g.tracking_enabled %}
+        {% resource 'base/tracking.js' %}
+    {% endif %}
+{% endblock -%}</code></pre>
 </section>
 <section id="ckanext-package-group-permissions" class="level4">
 <h4 class="anchored" data-anchor-id="ckanext-package-group-permissions">ckanext-package-group-permissions</h4>
@@ -424,44 +464,67 @@ This should result in the directory structure specified in <code>ckan-src/README
 <ul>
 <li>In the file <code>plugin.py</code>, change the <code>member_create</code> function to the following</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> member_create(<span class="va">self</span>, next_auth, context, data_dict):</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">    This code is largely borrowed from /src/ckan/ckan/logic/auth/create.py</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">    With a modification to allow users to add datasets to any group</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">    :param context:</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">    :param data_dict:</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">    :return:</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    group <span class="op">=</span> logic_auth.get_group_object(context, data_dict)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    authorized <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> group.is_organization <span class="kw">and</span> data_dict.get(<span class="st">'object_type'</span>) <span class="op">==</span> <span class="st">'package'</span>:</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        authorized <span class="op">=</span> helpers.user_has_admin_access(include_editor_access<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> authorized:</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Fallback to the default CKAN behaviour</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> next_auth(context, data_dict)</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {<span class="st">'success'</span>: <span class="va">True</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> member_create(<span class="va">self</span>, next_auth, context, data_dict):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">    This code is largely borrowed from /src/ckan/ckan/logic/auth/create.py</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">    With a modification to allow users to add datasets to any group</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">    :param context:</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">    :param data_dict:</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">    :return:</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    group <span class="op">=</span> logic_auth.get_group_object(context, data_dict)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    authorized <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> group.is_organization <span class="kw">and</span> data_dict.get(<span class="st">'object_type'</span>) <span class="op">==</span> <span class="st">'package'</span>:</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        authorized <span class="op">=</span> helpers.user_has_admin_access(include_editor_access<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> authorized:</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Fallback to the default CKAN behaviour</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> next_auth(context, data_dict)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {<span class="st">'success'</span>: <span class="va">True</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>In the the file <code>templates/package/group_list.html</code>, add the line <code>{ h.csrf_input() }</code> to the beginning of the two post forms, as follows</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>{% if groups %}</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> class</span><span class="op">=</span><span class="st">"add-to-group"</span><span class="ot"> method</span><span class="op">=</span><span class="st">"post"</span><span class="dt">&gt;</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    {{ h.csrf_input() }}</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>{% endif %}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>{% if c.pkg_dict.groups %}</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> method</span><span class="op">=</span><span class="st">"post"</span><span class="dt">&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    {{ h.csrf_input() }}</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>{% endif %}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>{% if groups %}</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> class</span><span class="op">=</span><span class="st">"add-to-group"</span><span class="ot"> method</span><span class="op">=</span><span class="st">"post"</span><span class="dt">&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    {{ h.csrf_input() }}</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>{% endif %}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>{% if c.pkg_dict.groups %}</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> method</span><span class="op">=</span><span class="st">"post"</span><span class="dt">&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    {{ h.csrf_input() }}</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>{% endif %}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ckanext-pdfview" class="level4">
+<h4 class="anchored" data-anchor-id="ckanext-pdfview">ckanext-pdfview</h4>
+<p><strong>Link</strong>: <a href="https://github.com/ckan/ckanext-pdfview">https://github.com/ckan/ckanext-pdfview</a><br>
+<strong>Purpose</strong>: Provide a view for pdf resources.</p>
+</section>
+<section id="ckanext-restrictpublish" class="level4">
+<h4 class="anchored" data-anchor-id="ckanext-restrictpublish">ckanext-restrictpublish</h4>
+<p><strong>Author</strong>: Jenae Matson<br>
+<strong>Purpose</strong>: Restrict the ability to change the visibility of a dataset to admins only. Datasets posted by editors default to private.</p>
 </section>
 <section id="ckanext-scheming" class="level4">
 <h4 class="anchored" data-anchor-id="ckanext-scheming">ckanext-scheming</h4>
 <p><strong>Link</strong>: <a href="https://github.com/ckan/ckanext-scheming">https://github.com/ckan/ckanext-scheming</a><br>
-<strong>Purpose</strong>: Allows for the creation of alternate metadata templates (schemas) defined by .yaml or .json files.</p>
+<strong>Purpose</strong>: Allows for the creation of alternate metadata templates (schemas) defined by .yaml or .json files.<br>
+<strong>Modifications</strong>: Some of the automatically calculated resource fields were manually re-added to be displayed. In the file <code>templates/scheming/package/resource_read.html</code>, below <code>{%- block resource_license -%}</code> add the following</p>
+<pre><code>{%- block resource_size -%}
+&lt;tr&gt;
+    &lt;th scope="row"&gt;{{ _('Size') }}&lt;/th&gt;
+    &lt;td&gt;{{ res.size or _('unknown') }} bytes&lt;/td&gt;
+&lt;/tr&gt;
+{%- endblock -%}
+{%- block resource_datastore -%}
+&lt;tr&gt;
+    &lt;th scope="row"&gt;{{ _('Datastore active') }}&lt;/th&gt;
+    &lt;td&gt;{{ res.datastore_active or _('unknown') }}&lt;/td&gt;
+&lt;/tr&gt;
+{%- endblock -%}</code></pre>
 </section>
 </section>
 <section id="adding-alternate-schemas-with-ckanext-scheming" class="level3">
@@ -472,8 +535,8 @@ This should result in the directory structure specified in <code>ckan-src/README
 <li>In <code>ckan.ini</code>, add your schema to the <code>scheming.dataset_schemas</code> config option. For example:<br>
 </li>
 </ol>
-<div class="sourceCode" id="cb7"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">scheming.dataset_schemas </span><span class="ot">=</span><span class="st"> ckanext.scheming:arctic_dataset.json   </span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dt">                            ckanext.scheming:geo_dataset.json</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">scheming.dataset_schemas </span><span class="ot">=</span><span class="st"> ckanext.scheming:arctic_dataset.json   </span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="dt">                            ckanext.scheming:geo_dataset.json</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="3" type="1">
 <li>The new dataset creation form is located at a url defined by the schema type name. For example, the creation form for datasets of type <code>arctic-dataset</code> is located at <code>/arctic-dataset/new</code>. You can define a new Add Dataset button using this new url.</li>
 </ol>
