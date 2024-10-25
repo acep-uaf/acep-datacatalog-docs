@@ -532,11 +532,10 @@ This should result in the directory structure specified in <code>ckan-src/README
 <ol type="1">
 <li>Create a .yaml or .json file in the folder <code>ckanext-scheming/ckanext/scheming</code> to define the metadata schema. See extension documentation for more information and examples.<br>
 </li>
-<li>In <code>ckan.ini</code>, add your schema to the <code>scheming.dataset_schemas</code> config option. For example:<br>
+<li>In <code>ckan.ini</code>, add your schema(s) to the <code>scheming.dataset_schemas</code> config option. For example:<br>
 </li>
 </ol>
-<div class="sourceCode" id="cb10"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">scheming.dataset_schemas </span><span class="ot">=</span><span class="st"> ckanext.scheming:arctic_dataset.json   </span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="dt">                            ckanext.scheming:geo_dataset.json</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">scheming.dataset_schemas </span><span class="ot">=</span><span class="st"> ckanext.scheming:arctic_dataset.json ckanext.scheming:geo_dataset.json</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="3" type="1">
 <li>The new dataset creation form is located at a url defined by the schema type name. For example, the creation form for datasets of type <code>arctic-dataset</code> is located at <code>/arctic-dataset/new</code>. You can define a new Add Dataset button using this new url.</li>
 </ol>
