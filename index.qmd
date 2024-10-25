@@ -2,6 +2,6 @@
 
 This documentation provides some helpful tutorials for working with the ACEP Data Catalog.
 
-![](images/ckanafter.png)
+![](images/ckanhome.png)
 
 
