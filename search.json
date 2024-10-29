@@ -64,7 +64,7 @@
     "href": "researcher.html#posting-a-dataset",
     "title": "2  Researcher",
     "section": "",
-    "text": "Click on the Datasets tab at the top of the screen\nClick on the Organizations tab at the top of the screen and select the organization you want to add a dataset to:\n\nChoose ACEP Open Data if you are posting your own data or data that ACEP owns.\nChoose ACEP Internal Use if you are posting a useful dataset that ACEP does not own.\n\n\n\nClick on the Add Dataset button above the search bar.\nOn the first page, fill out the metadata fields for your dataset. \n\nDouble check the organization field.\n\nChoose ACEP Open Data if you are posting your own data or data that ACEP owns.\nChoose ACEP Internal Use if you are posting a useful dataset that ACEP does not own.\n\nIf you are a researcher, your dataset’s visibility will automatically be set to private. An admin will review your dataset and make it public.\n\nOnce you have completed the metadata fields, click the Next: Add Data button at the bottom of the form.\nOn the next page, add the data resources to your dataset. \n\nSmall datasets (&lt;2MB) can be uploaded directly to the catalog\nAlternatively, enter a link to where the data is stored, such as a GitHub repository or Google Drive.\n\nIf you have more resources to add, click the Save & add another button at the bottom of the form. Otherwise click Finish to post your dataset.",
+    "text": "Click on the Datasets tab at the top of the screen\nClick on the Organizations tab at the top of the screen and select the organization you want to add a dataset to:\n\nChoose ACEP Open Data if you are posting your own data or data that ACEP owns.\nChoose ACEP Internal Use if you are posting a useful dataset that ACEP does not own.\n\n\n\nClick on the Add Dataset button above the search bar.\nOn the first page, fill out the metadata fields for your dataset.\n\nFor examples and more information about the metadata fields, see the Metadata Walkthrough. \nDouble check the organization field.\n\nChoose ACEP Open Data if you are posting your own data or data that ACEP owns.\nChoose ACEP Internal Use if you are posting a useful dataset that ACEP does not own.\n\nIf you are a researcher, your dataset’s visibility will automatically be set to private. An admin will review your dataset and make it public.\n\nOnce you have completed the metadata fields, click the Next: Add Data button at the bottom of the form.\nOn the next page, add the data resources to your dataset. \n\nSmall datasets (&lt;2MB) can be uploaded directly to the catalog\nAlternatively, enter a link to where the data is stored, such as a GitHub repository or Google Drive.\n\nIf you have more resources to add, click the Save & add another button at the bottom of the form. Otherwise click Finish to post your dataset.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Researcher</span>"
     ]
@@ -157,6 +157,36 @@
     "text": "Restoring a Deleted User\nWhen a user is deleted from the website, their information remains in the database with the state field set to deleted. To reactivate the user, you must set this field to active in the database.\n\nEnter the acep-db-cont docker container\n\n&gt; docker exec -it acep-db-cont /bin/bash\n\n\nAccess the postgres database\n\n&gt; psql -U postgres\n\n\nList all the databases and connect to the ckandb database.\n\n&gt; \\l\n&gt; \\c ckandb\n\nList all the tables and list the columns of the user table.\n\n&gt; \\d\n&gt; \\d user\n\nList all the users in the user table.\n\n&gt; SELECT * FROM public.user\n\nFind the deleted user with the username [username].\n\n&gt; SELECT id, name, email, state FROM public.user WHERE name = ‘[username]’\n\nUpdate the user’s state field.\n\n&gt; UPDATE public.user SET state = ‘active’ WHERE name = ‘[username]’\n\nFind the user again and ensure that the state field is set to active.\n\n&gt; SELECT id, name, email, state FROM public.user WHERE name = ‘[username]’",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Admin</span>"
+    ]
+  },
+  {
+    "objectID": "metadata.html",
+    "href": "metadata.html",
+    "title": "Metadata Walkthrough",
+    "section": "",
+    "text": "Dataset Fields",
+    "crumbs": [
+      "Metadata Walkthrough"
+    ]
+  },
+  {
+    "objectID": "metadata.html#dataset-fields",
+    "href": "metadata.html#dataset-fields",
+    "title": "Metadata Walkthrough",
+    "section": "",
+    "text": "Title\n\n\nDescription\n\n\nKeywords\n\n\nContact Points\n\n\nLicense\n\n\nOrganization\n\n\nVisibility\n\n\nPublisher\n\n\nLanding Page\n\n\nRelease Date\n\n\nModification Date\n\n\nVersion\n\n\nVersion Notes\n\n\nIdentifier\n\n\nProvenance\nInclude the filename of a README or other narrative document that describes the origin of the data and the processing steps employed to get to this posted version. Optionally include changes of ownership, custody, or responsibility. If brief, this information can be included in this free text field instead of in a separate document.\nMore info: https://www.go-fair.org/fair-principles/r1-2-metadata-associated-detailed-provenance/\n\n\nType\n\n\nTemporal Coverage\n\n\nSpatial Coverage\n\n\nLanguage\n\n\nDocumentation\n\n\nConforms to\n\n\nIs referenced by\n\n\nURI",
+    "crumbs": [
+      "Metadata Walkthrough"
+    ]
+  },
+  {
+    "objectID": "metadata.html#resource-fields",
+    "href": "metadata.html#resource-fields",
+    "title": "Metadata Walkthrough",
+    "section": "Resource Fields",
+    "text": "Resource Fields\n\nName\n\n\nDescription\n\n\nFormat\n\n\nGitHub Repo\n\n\nStatus\n\n\nLicense\n\n\nAccess URL\n\n\nDownload URL\n\n\nRelease Date\n\n\nModification Date\n\n\nLanguage\n\n\nDocumentation\n\n\nConforms to\n\n\nAccess Services\n\n\nURI",
+    "crumbs": [
+      "Metadata Walkthrough"
     ]
   },
   {

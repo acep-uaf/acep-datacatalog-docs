@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Admin – ACEP Data Catalog User Guides</title>
+<title>Metadata Walkthrough – ACEP Data Catalog User Guides</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./metadata.html" rel="next">
-<link href="./researcher.html" rel="prev">
+<link href="./documentation.html" rel="next">
+<link href="./admin.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -81,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./admin.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Admin</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./metadata.html">Metadata Walkthrough</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -126,13 +126,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./admin.html" class="sidebar-item-text sidebar-link active">
+  <a href="./admin.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Admin</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./metadata.html" class="sidebar-item-text sidebar-link">
+  <a href="./metadata.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Metadata Walkthrough</span></a>
   </div>
 </li>
@@ -152,14 +152,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#giving-user-permissions" id="toc-giving-user-permissions" class="nav-link active" data-scroll-target="#giving-user-permissions">Giving User Permissions</a></li>
-  <li><a href="#reviewing-and-publishing-a-dataset" id="toc-reviewing-and-publishing-a-dataset" class="nav-link" data-scroll-target="#reviewing-and-publishing-a-dataset">Reviewing and Publishing a Dataset</a></li>
-  <li><a href="#deleting-datasetsgroupsorganizations" id="toc-deleting-datasetsgroupsorganizations" class="nav-link" data-scroll-target="#deleting-datasetsgroupsorganizations">Deleting Datasets/Groups/Organizations</a>
-  <ul class="collapse">
-  <li><a href="#purge-deleted-datasetsgroupsorganizations" id="toc-purge-deleted-datasetsgroupsorganizations" class="nav-link" data-scroll-target="#purge-deleted-datasetsgroupsorganizations">Purge Deleted Datasets/Groups/Organizations</a></li>
-  <li><a href="#restore-deleted-datasets" id="toc-restore-deleted-datasets" class="nav-link" data-scroll-target="#restore-deleted-datasets">Restore Deleted Datasets</a></li>
-  </ul></li>
-  <li><a href="#restoring-a-deleted-user" id="toc-restoring-a-deleted-user" class="nav-link" data-scroll-target="#restoring-a-deleted-user">Restoring a Deleted User</a></li>
+  <li><a href="#dataset-fields" id="toc-dataset-fields" class="nav-link active" data-scroll-target="#dataset-fields">Dataset Fields</a></li>
+  <li><a href="#resource-fields" id="toc-resource-fields" class="nav-link" data-scroll-target="#resource-fields">Resource Fields</a></li>
   </ul>
 </nav>
     </div>
@@ -168,7 +162,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Admin</span></h1>
+<h1 class="title">Metadata Walkthrough</h1>
 </div>
 
 
@@ -185,114 +179,129 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Guides for admins managing the data catalog.</p>
-<section id="giving-user-permissions" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="giving-user-permissions">Giving User Permissions</h2>
-<p>Users have roles in each organization that give them different permissions.<br>
-The roles are:</p>
-<ul>
-<li><strong>Member</strong>: can see private datasets in the organization</li>
-<li><strong>Editor</strong>: can add private datasets to the organization and delete datasets from the organization</li>
-<li><strong>Admin</strong>: can change users’ roles in an organization and publish datasets from private to public</li>
-</ul>
-<p>To give a user a role in an organization:</p>
-<ol type="1">
-<li>Click on the <strong>Organizations</strong> tab at the top of the screen and click on the organization you want to add the user to.</li>
-<li>Click on the <strong>Manage</strong> button in the upper right.</li>
-<li>Click on the <strong>Members</strong> tab at the top. <img src="images/orgmembers.png" class="img-fluid">
-<ul>
-<li>To add a new member to the organizaton, click the <strong>Add Member</strong> button. Enter their username, select their new role from the dropdown, and click the <strong>Add Member</strong> button at the bottom of the form. <img src="images/addorgmember.png" class="img-fluid"> -To change an existing member’s role, click the wrench next to their user name. <img src="images/editmember.png" class="img-fluid">
-<ul>
-<li>Select their new role from the dropdown menu and click <strong>Update Member</strong></li>
-<li>To remove the user from the organization completely, click the <strong>Delete</strong> button. <img src="images/deletemember.png" class="img-fluid"></li>
-</ul></li>
-</ul></li>
-</ol>
+<section id="dataset-fields" class="level2">
+<h2 class="anchored" data-anchor-id="dataset-fields">Dataset Fields</h2>
+<section id="title" class="level4">
+<h4 class="anchored" data-anchor-id="title">Title</h4>
 </section>
-<section id="reviewing-and-publishing-a-dataset" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="reviewing-and-publishing-a-dataset">Reviewing and Publishing a Dataset</h2>
-<ol type="1">
-<li>Navigate to the dataset you would like to publish.</li>
-<li>Review the metadata and ensure the files/links are correct and function properly.</li>
-<li>To publish, click on the <strong>Manage</strong> button in the top right of the dataset page.</li>
-<li>In the metadata fields, find the <strong>Visibility</strong> field.<br>
-<img src="images/publish.png" class="img-fluid"></li>
-<li>Change the <strong>Visibility</strong> field from <strong>Private</strong> to <strong>Public</strong>, and click the <strong>Update Dataset</strong> button at the bottom of the form.</li>
-</ol>
+<section id="description" class="level4">
+<h4 class="anchored" data-anchor-id="description">Description</h4>
 </section>
-<section id="deleting-datasetsgroupsorganizations" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="deleting-datasetsgroupsorganizations">Deleting Datasets/Groups/Organizations</h2>
-<ol type="1">
-<li>To delete a dataset, group, or organization, navigate to it’s page and click the <strong>Manage</strong> button in the upper right.</li>
-<li>Click the <strong>Delete</strong> button at the bottom of the form to delete.</li>
-<li><strong>Deleting a dataset, group, or organization does not remove it from the database.</strong> After deleting, a sysadmin can restore the item or purge it to remove it from the database. If not purged, the url for the deleted item cannot be reused.</li>
-</ol>
-<section id="purge-deleted-datasetsgroupsorganizations" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="purge-deleted-datasetsgroupsorganizations">Purge Deleted Datasets/Groups/Organizations</h3>
-<ol type="1">
-<li>Navigate to sysadmin settings by clicking the hammer icon at the top of the page.<br>
-<img src="images/sysadminsettings.png" class="img-fluid"></li>
-<li>Click on the <strong>Trash</strong> tab. This page will list all the currently deleted datasets, groups, and organizations. <img src="images/purge.png" class="img-fluid"></li>
-<li>You can purge all deleted items using the <strong>Purge all</strong> button at the top of the form. To purge only one group of items (datasets, group, or organizations) use the <strong>Purge</strong> button in that section.</li>
-</ol>
+<section id="keywords" class="level4">
+<h4 class="anchored" data-anchor-id="keywords">Keywords</h4>
 </section>
-<section id="restore-deleted-datasets" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="restore-deleted-datasets">Restore Deleted Datasets</h3>
-<ol type="1">
-<li>Navigate to sysadmin settings by clicking the hammer icon at the top of the page.<br>
-<img src="images/sysadminsettings.png" class="img-fluid"></li>
-<li>Click on the <strong>Trash</strong> tab. This page will list all the currently deleted datasets, groups, and organizations.<br>
-<img src="images/purge.png" class="img-fluid"></li>
-<li>Click on the dataset you would like to restore, and click the <strong>Manage</strong> button in the upper right.</li>
-<li>In the metadata fields find the <strong>State</strong> field. <img src="images/deletedstate.png" class="img-fluid"><br>
-</li>
-<li>Change the <strong>State</strong> field from <strong>Deleted</strong> to <strong>Active</strong>, and then click the <strong>Update Dataset</strong> button at the bottom of the form.</li>
-</ol>
+<section id="contact-points" class="level4">
+<h4 class="anchored" data-anchor-id="contact-points">Contact Points</h4>
+</section>
+<section id="license" class="level4">
+<h4 class="anchored" data-anchor-id="license">License</h4>
+</section>
+<section id="organization" class="level4">
+<h4 class="anchored" data-anchor-id="organization">Organization</h4>
+</section>
+<section id="visibility" class="level4">
+<h4 class="anchored" data-anchor-id="visibility">Visibility</h4>
+</section>
+<section id="publisher" class="level4">
+<h4 class="anchored" data-anchor-id="publisher">Publisher</h4>
+</section>
+<section id="landing-page" class="level4">
+<h4 class="anchored" data-anchor-id="landing-page">Landing Page</h4>
+</section>
+<section id="release-date" class="level4">
+<h4 class="anchored" data-anchor-id="release-date">Release Date</h4>
+</section>
+<section id="modification-date" class="level4">
+<h4 class="anchored" data-anchor-id="modification-date">Modification Date</h4>
+</section>
+<section id="version" class="level4">
+<h4 class="anchored" data-anchor-id="version">Version</h4>
+</section>
+<section id="version-notes" class="level4">
+<h4 class="anchored" data-anchor-id="version-notes">Version Notes</h4>
+</section>
+<section id="identifier" class="level4">
+<h4 class="anchored" data-anchor-id="identifier">Identifier</h4>
+</section>
+<section id="provenance" class="level4">
+<h4 class="anchored" data-anchor-id="provenance">Provenance</h4>
+<p>Include the filename of a README or other narrative document that describes the origin of the data and the processing steps employed to get to this posted version. Optionally include changes of ownership, custody, or responsibility. If brief, this information can be included in this free text field instead of in a separate document.<br>
+More info: <a href="https://www.go-fair.org/fair-principles/r1-2-metadata-associated-detailed-provenance/">https://www.go-fair.org/fair-principles/r1-2-metadata-associated-detailed-provenance/</a></p>
+</section>
+<section id="type" class="level4">
+<h4 class="anchored" data-anchor-id="type">Type</h4>
+</section>
+<section id="temporal-coverage" class="level4">
+<h4 class="anchored" data-anchor-id="temporal-coverage">Temporal Coverage</h4>
+</section>
+<section id="spatial-coverage" class="level4">
+<h4 class="anchored" data-anchor-id="spatial-coverage">Spatial Coverage</h4>
+</section>
+<section id="language" class="level4">
+<h4 class="anchored" data-anchor-id="language">Language</h4>
+</section>
+<section id="documentation" class="level4">
+<h4 class="anchored" data-anchor-id="documentation">Documentation</h4>
+</section>
+<section id="conforms-to" class="level4">
+<h4 class="anchored" data-anchor-id="conforms-to">Conforms to</h4>
+</section>
+<section id="is-referenced-by" class="level4">
+<h4 class="anchored" data-anchor-id="is-referenced-by">Is referenced by</h4>
+</section>
+<section id="uri" class="level4">
+<h4 class="anchored" data-anchor-id="uri">URI</h4>
 </section>
 </section>
-<section id="restoring-a-deleted-user" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="restoring-a-deleted-user">Restoring a Deleted User</h2>
-<p>When a user is deleted from the website, their information remains in the database with the <code>state</code> field set to <code>deleted</code>. To reactivate the user, you must set this field to <code>active</code> in the database.</p>
-<ol type="1">
-<li>Enter the <code>acep-db-cont</code> docker container
-<ul>
-<li><code>&gt; docker exec -it acep-db-cont /bin/bash</code><br>
-</li>
-</ul></li>
-<li>Access the postgres database
-<ul>
-<li><code>&gt; psql -U postgres</code><br>
-</li>
-</ul></li>
-<li>List all the databases and connect to the ckandb database.
-<ul>
-<li><code>&gt; \l</code></li>
-<li><code>&gt; \c ckandb</code></li>
-</ul></li>
-<li>List all the tables and list the columns of the user table.
-<ul>
-<li><code>&gt; \d</code></li>
-<li><code>&gt; \d user</code></li>
-</ul></li>
-<li>List all the users in the user table.
-<ul>
-<li><code>&gt; SELECT * FROM public.user</code></li>
-</ul></li>
-<li>Find the deleted user with the username [username].
-<ul>
-<li><code>&gt; SELECT id, name, email, state FROM public.user WHERE name = ‘[username]’</code></li>
-</ul></li>
-<li>Update the user’s state field.
-<ul>
-<li><code>&gt; UPDATE public.user SET state = ‘active’ WHERE name = ‘[username]’</code></li>
-</ul></li>
-<li>Find the user again and ensure that the state field is set to active.
-<ul>
-<li><code>&gt; SELECT id, name, email, state FROM public.user WHERE name = ‘[username]’</code></li>
-</ul></li>
-</ol>
+<section id="resource-fields" class="level2">
+<h2 class="anchored" data-anchor-id="resource-fields">Resource Fields</h2>
+<section id="name" class="level4">
+<h4 class="anchored" data-anchor-id="name">Name</h4>
+</section>
+<section id="description-1" class="level4">
+<h4 class="anchored" data-anchor-id="description-1">Description</h4>
+</section>
+<section id="format" class="level4">
+<h4 class="anchored" data-anchor-id="format">Format</h4>
+</section>
+<section id="github-repo" class="level4">
+<h4 class="anchored" data-anchor-id="github-repo">GitHub Repo</h4>
+</section>
+<section id="status" class="level4">
+<h4 class="anchored" data-anchor-id="status">Status</h4>
+</section>
+<section id="license-1" class="level4">
+<h4 class="anchored" data-anchor-id="license-1">License</h4>
+</section>
+<section id="access-url" class="level4">
+<h4 class="anchored" data-anchor-id="access-url">Access URL</h4>
+</section>
+<section id="download-url" class="level4">
+<h4 class="anchored" data-anchor-id="download-url">Download URL</h4>
+</section>
+<section id="release-date-1" class="level4">
+<h4 class="anchored" data-anchor-id="release-date-1">Release Date</h4>
+</section>
+<section id="modification-date-1" class="level4">
+<h4 class="anchored" data-anchor-id="modification-date-1">Modification Date</h4>
+</section>
+<section id="language-1" class="level4">
+<h4 class="anchored" data-anchor-id="language-1">Language</h4>
+</section>
+<section id="documentation-1" class="level4">
+<h4 class="anchored" data-anchor-id="documentation-1">Documentation</h4>
+</section>
+<section id="conforms-to-1" class="level4">
+<h4 class="anchored" data-anchor-id="conforms-to-1">Conforms to</h4>
+</section>
+<section id="access-services" class="level4">
+<h4 class="anchored" data-anchor-id="access-services">Access Services</h4>
+</section>
+<section id="uri-1" class="level4">
+<h4 class="anchored" data-anchor-id="uri-1">URI</h4>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -718,13 +727,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./researcher.html" class="pagination-link" aria-label="Researcher">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Researcher</span></span>
+      <a href="./admin.html" class="pagination-link" aria-label="Admin">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Admin</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./metadata.html" class="pagination-link" aria-label="Metadata Walkthrough">
-        <span class="nav-page-text">Metadata Walkthrough</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./documentation.html" class="pagination-link" aria-label="For Developers">
+        <span class="nav-page-text">For Developers</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
