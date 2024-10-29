@@ -1,0 +1,46 @@
+# Metadata Walkthrough {.unnumbered}
+
+## Dataset Fields
+#### Title
+#### Description
+#### Keywords
+#### Contact Points
+#### License
+#### Organization
+#### Visibility
+#### Publisher
+#### Landing Page
+#### Release Date
+#### Modification Date
+#### Version
+#### Version Notes
+#### Identifier
+#### Provenance
+Include the filename of a README or other narrative document that describes the origin of the data and the processing steps employed to get to this posted version. Optionally include changes of ownership, custody, or responsibility. If brief, this information can be included in this free text field instead of in a separate document.  
+More info: [https://www.go-fair.org/fair-principles/r1-2-metadata-associated-detailed-provenance/](https://www.go-fair.org/fair-principles/r1-2-metadata-associated-detailed-provenance/)  
+
+#### Type
+#### Temporal Coverage
+#### Spatial Coverage
+#### Language
+#### Documentation
+#### Conforms to
+#### Is referenced by
+#### URI
+
+## Resource Fields
+#### Name
+#### Description
+#### Format
+#### GitHub Repo
+#### Status
+#### License
+#### Access URL 
+#### Download URL 
+#### Release Date
+#### Modification Date
+#### Language
+#### Documentation
+#### Conforms to
+#### Access Services
+#### URI

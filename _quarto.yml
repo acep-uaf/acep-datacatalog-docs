@@ -10,6 +10,7 @@ book:
     - getting_started.qmd
     - researcher.qmd
     - admin.qmd
+    - metadata.qmd
     - documentation.qmd
 
 bibliography: references.bib

@@ -12,6 +12,7 @@ There are two ways to access the __Add Dataset__ button:
 
 1. Click on the __Add Dataset__ button above the search bar.
 2. On the first page, fill out the metadata fields for your dataset. 
+    - For examples and more information about the metadata fields, see the [Metadata Walkthrough](metadata.qmd).
 ![](images/createdataset1.png)
     - Double check the organization field.
         - Choose __ACEP Open Data__ if you are posting your own data or data that ACEP owns.
