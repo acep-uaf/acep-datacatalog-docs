@@ -1,46 +1,119 @@
 # Metadata Walkthrough {.unnumbered}
+A detailed walkthrough of the metadata fields available.
 
 ## Dataset Fields
-#### Title
-#### Description
-#### Keywords
-#### Contact Points
-#### License
-#### Organization
-#### Visibility
-#### Publisher
-#### Landing Page
-#### Release Date
-#### Modification Date
-#### Version
-#### Version Notes
-#### Identifier
-#### Provenance
+### Title
+A descriptive title for the dataset.
+
+### Description
+A free-form description of the dataset.
+
+### Keywords
+Keywords that describe the dataset.
+
+### Contact Points
+Relevant contact information for the dataset.
+
+### License
+A legal document under which the dataset is made available.
+
+### Organization
+The organization the dataset falls under, either ACEP Internal Use, or ACEP Open Data.
+
+### Visibility
+The visibility of the dataset: private for internal use or under-review datasets and public for reviewed/published datasets.
+
+### Publisher
+If the entity responsible for the dataset is ACEP, select ACEP (default) from the dropdown menus. The assigned default value will be displayed. If the publisher is an entity other than ACEP, or if you would like to enter a custom value for one of the fields, select Other and enter information into the provided text box.
+
+### Landing Page
+A webpage where one can gain access to the dataset or more information about the dataset.
+
+### Release Date
+Enter the date of the dataset's entry to the data catalog.
+
+### Modification Date
+Enter the most recent date of change to the dataset.
+
+### Version
+An indicator of the version of the dataset.
+
+### Version Notes
+A description of changes between the current and previous verion of the dataset.
+
+### Identifier
+A unique identifier of the dataset.
+
+### Provenance
+The origin and history of the dataset. 
 Include the filename of a README or other narrative document that describes the origin of the data and the processing steps employed to get to this posted version. Optionally include changes of ownership, custody, or responsibility. If brief, this information can be included in this free text field instead of in a separate document.  
 More info: [https://www.go-fair.org/fair-principles/r1-2-metadata-associated-detailed-provenance/](https://www.go-fair.org/fair-principles/r1-2-metadata-associated-detailed-provenance/)  
 
-#### Type
-#### Temporal Coverage
-#### Spatial Coverage
-#### Language
-#### Documentation
-#### Conforms to
-#### Is referenced by
-#### URI
+### Type
+The nature or genre of the dataset.
+
+### Temporal Coverage
+The temporal period(s) covered by the dataset.
+Enter the begin and end dates for the temporal period(s) covered by the dataset. If there is a period of missing or suspect data in the dataset, you can enter it as a separate temporal coverage and make a comment in the Notes section to explain the issue.
+
+### Spatial Coverage
+The geographical area(s) covered by the dataset
+
+### Language
+The language(s) of the dataset.
+
+### Documentation
+A page or document about the dataset. 
+
+### Conforms to
+An established standard to which the dataset conforms.
+
+### Is referenced by
+A related resource that references, cited, or otherwise points to the dataset.
+
+### URI
 
 ## Resource Fields
-#### Name
-#### Description
-#### Format
-#### GitHub Repo
-#### Status
-#### License
-#### Access URL 
-#### Download URL 
-#### Release Date
-#### Modification Date
-#### Language
-#### Documentation
-#### Conforms to
-#### Access Services
-#### URI
+### Name
+A descriptive name for the resource.
+
+### Description
+A free-form description of the resource.
+
+### Format
+The file format of the resource. This can be detected automatically.
+
+### GitHub Repo
+If the resource is a link to a GitHub repository, select True. This will allow the addition of a GitHub page view that displays the repository's statistics.
+
+### Status
+The current stage of the resource in the workflow.
+
+### License
+A legal document under which the resource is made available.
+
+### Access URL 
+A URL where one can access the resource.
+
+### Download URL 
+A URL where one can download the resource.
+
+### Release Date
+The date of formal issuance/publication of the resource.
+
+### Modification Date
+The most recent date of change/update/modification to the resource.
+
+### Language
+The laguage(s) of the metadata or textual values of the resource. 
+
+### Documentation
+A page or document about the resource. 
+
+### Conforms to
+An established standard to which the resource conforms. 
+
+### Access Services
+A data service that gives access to the resource.
+
+### URI
