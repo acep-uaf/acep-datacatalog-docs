@@ -152,8 +152,50 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#dataset-fields" id="toc-dataset-fields" class="nav-link active" data-scroll-target="#dataset-fields">Dataset Fields</a></li>
-  <li><a href="#resource-fields" id="toc-resource-fields" class="nav-link" data-scroll-target="#resource-fields">Resource Fields</a></li>
+  <li><a href="#dataset-fields" id="toc-dataset-fields" class="nav-link active" data-scroll-target="#dataset-fields">Dataset Fields</a>
+  <ul class="collapse">
+  <li><a href="#title" id="toc-title" class="nav-link" data-scroll-target="#title">Title</a></li>
+  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
+  <li><a href="#keywords" id="toc-keywords" class="nav-link" data-scroll-target="#keywords">Keywords</a></li>
+  <li><a href="#contact-points" id="toc-contact-points" class="nav-link" data-scroll-target="#contact-points">Contact Points</a></li>
+  <li><a href="#license" id="toc-license" class="nav-link" data-scroll-target="#license">License</a></li>
+  <li><a href="#organization" id="toc-organization" class="nav-link" data-scroll-target="#organization">Organization</a></li>
+  <li><a href="#visibility" id="toc-visibility" class="nav-link" data-scroll-target="#visibility">Visibility</a></li>
+  <li><a href="#publisher" id="toc-publisher" class="nav-link" data-scroll-target="#publisher">Publisher</a></li>
+  <li><a href="#landing-page" id="toc-landing-page" class="nav-link" data-scroll-target="#landing-page">Landing Page</a></li>
+  <li><a href="#release-date" id="toc-release-date" class="nav-link" data-scroll-target="#release-date">Release Date</a></li>
+  <li><a href="#modification-date" id="toc-modification-date" class="nav-link" data-scroll-target="#modification-date">Modification Date</a></li>
+  <li><a href="#version" id="toc-version" class="nav-link" data-scroll-target="#version">Version</a></li>
+  <li><a href="#version-notes" id="toc-version-notes" class="nav-link" data-scroll-target="#version-notes">Version Notes</a></li>
+  <li><a href="#identifier" id="toc-identifier" class="nav-link" data-scroll-target="#identifier">Identifier</a></li>
+  <li><a href="#provenance" id="toc-provenance" class="nav-link" data-scroll-target="#provenance">Provenance</a></li>
+  <li><a href="#type" id="toc-type" class="nav-link" data-scroll-target="#type">Type</a></li>
+  <li><a href="#temporal-coverage" id="toc-temporal-coverage" class="nav-link" data-scroll-target="#temporal-coverage">Temporal Coverage</a></li>
+  <li><a href="#spatial-coverage" id="toc-spatial-coverage" class="nav-link" data-scroll-target="#spatial-coverage">Spatial Coverage</a></li>
+  <li><a href="#language" id="toc-language" class="nav-link" data-scroll-target="#language">Language</a></li>
+  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
+  <li><a href="#conforms-to" id="toc-conforms-to" class="nav-link" data-scroll-target="#conforms-to">Conforms to</a></li>
+  <li><a href="#is-referenced-by" id="toc-is-referenced-by" class="nav-link" data-scroll-target="#is-referenced-by">Is referenced by</a></li>
+  <li><a href="#uri" id="toc-uri" class="nav-link" data-scroll-target="#uri">URI</a></li>
+  </ul></li>
+  <li><a href="#resource-fields" id="toc-resource-fields" class="nav-link" data-scroll-target="#resource-fields">Resource Fields</a>
+  <ul class="collapse">
+  <li><a href="#name" id="toc-name" class="nav-link" data-scroll-target="#name">Name</a></li>
+  <li><a href="#description-1" id="toc-description-1" class="nav-link" data-scroll-target="#description-1">Description</a></li>
+  <li><a href="#format" id="toc-format" class="nav-link" data-scroll-target="#format">Format</a></li>
+  <li><a href="#github-repo" id="toc-github-repo" class="nav-link" data-scroll-target="#github-repo">GitHub Repo</a></li>
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#license-1" id="toc-license-1" class="nav-link" data-scroll-target="#license-1">License</a></li>
+  <li><a href="#access-url" id="toc-access-url" class="nav-link" data-scroll-target="#access-url">Access URL</a></li>
+  <li><a href="#download-url" id="toc-download-url" class="nav-link" data-scroll-target="#download-url">Download URL</a></li>
+  <li><a href="#release-date-1" id="toc-release-date-1" class="nav-link" data-scroll-target="#release-date-1">Release Date</a></li>
+  <li><a href="#modification-date-1" id="toc-modification-date-1" class="nav-link" data-scroll-target="#modification-date-1">Modification Date</a></li>
+  <li><a href="#language-1" id="toc-language-1" class="nav-link" data-scroll-target="#language-1">Language</a></li>
+  <li><a href="#documentation-1" id="toc-documentation-1" class="nav-link" data-scroll-target="#documentation-1">Documentation</a></li>
+  <li><a href="#conforms-to-1" id="toc-conforms-to-1" class="nav-link" data-scroll-target="#conforms-to-1">Conforms to</a></li>
+  <li><a href="#access-services" id="toc-access-services" class="nav-link" data-scroll-target="#access-services">Access Services</a></li>
+  <li><a href="#uri-1" id="toc-uri-1" class="nav-link" data-scroll-target="#uri-1">URI</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -179,126 +221,162 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>A detailed walkthrough of the metadata fields available.</p>
 <section id="dataset-fields" class="level2">
 <h2 class="anchored" data-anchor-id="dataset-fields">Dataset Fields</h2>
-<section id="title" class="level4">
-<h4 class="anchored" data-anchor-id="title">Title</h4>
+<section id="title" class="level3">
+<h3 class="anchored" data-anchor-id="title">Title</h3>
+<p>A descriptive title for the dataset.</p>
 </section>
-<section id="description" class="level4">
-<h4 class="anchored" data-anchor-id="description">Description</h4>
+<section id="description" class="level3">
+<h3 class="anchored" data-anchor-id="description">Description</h3>
+<p>A free-form description of the dataset.</p>
 </section>
-<section id="keywords" class="level4">
-<h4 class="anchored" data-anchor-id="keywords">Keywords</h4>
+<section id="keywords" class="level3">
+<h3 class="anchored" data-anchor-id="keywords">Keywords</h3>
+<p>Keywords that describe the dataset.</p>
 </section>
-<section id="contact-points" class="level4">
-<h4 class="anchored" data-anchor-id="contact-points">Contact Points</h4>
+<section id="contact-points" class="level3">
+<h3 class="anchored" data-anchor-id="contact-points">Contact Points</h3>
+<p>Relevant contact information for the dataset.</p>
 </section>
-<section id="license" class="level4">
-<h4 class="anchored" data-anchor-id="license">License</h4>
+<section id="license" class="level3">
+<h3 class="anchored" data-anchor-id="license">License</h3>
+<p>A legal document under which the dataset is made available.</p>
 </section>
-<section id="organization" class="level4">
-<h4 class="anchored" data-anchor-id="organization">Organization</h4>
+<section id="organization" class="level3">
+<h3 class="anchored" data-anchor-id="organization">Organization</h3>
+<p>The organization the dataset falls under, either ACEP Internal Use, or ACEP Open Data.</p>
 </section>
-<section id="visibility" class="level4">
-<h4 class="anchored" data-anchor-id="visibility">Visibility</h4>
+<section id="visibility" class="level3">
+<h3 class="anchored" data-anchor-id="visibility">Visibility</h3>
+<p>The visibility of the dataset: private for internal use or under-review datasets and public for reviewed/published datasets.</p>
 </section>
-<section id="publisher" class="level4">
-<h4 class="anchored" data-anchor-id="publisher">Publisher</h4>
+<section id="publisher" class="level3">
+<h3 class="anchored" data-anchor-id="publisher">Publisher</h3>
+<p>If the entity responsible for the dataset is ACEP, select ACEP (default) from the dropdown menus. The assigned default value will be displayed. If the publisher is an entity other than ACEP, or if you would like to enter a custom value for one of the fields, select Other and enter information into the provided text box.</p>
 </section>
-<section id="landing-page" class="level4">
-<h4 class="anchored" data-anchor-id="landing-page">Landing Page</h4>
+<section id="landing-page" class="level3">
+<h3 class="anchored" data-anchor-id="landing-page">Landing Page</h3>
+<p>A webpage where one can gain access to the dataset or more information about the dataset.</p>
 </section>
-<section id="release-date" class="level4">
-<h4 class="anchored" data-anchor-id="release-date">Release Date</h4>
+<section id="release-date" class="level3">
+<h3 class="anchored" data-anchor-id="release-date">Release Date</h3>
+<p>Enter the date of the dataset’s entry to the data catalog.</p>
 </section>
-<section id="modification-date" class="level4">
-<h4 class="anchored" data-anchor-id="modification-date">Modification Date</h4>
+<section id="modification-date" class="level3">
+<h3 class="anchored" data-anchor-id="modification-date">Modification Date</h3>
+<p>Enter the most recent date of change to the dataset.</p>
 </section>
-<section id="version" class="level4">
-<h4 class="anchored" data-anchor-id="version">Version</h4>
+<section id="version" class="level3">
+<h3 class="anchored" data-anchor-id="version">Version</h3>
+<p>An indicator of the version of the dataset.</p>
 </section>
-<section id="version-notes" class="level4">
-<h4 class="anchored" data-anchor-id="version-notes">Version Notes</h4>
+<section id="version-notes" class="level3">
+<h3 class="anchored" data-anchor-id="version-notes">Version Notes</h3>
+<p>A description of changes between the current and previous verion of the dataset.</p>
 </section>
-<section id="identifier" class="level4">
-<h4 class="anchored" data-anchor-id="identifier">Identifier</h4>
+<section id="identifier" class="level3">
+<h3 class="anchored" data-anchor-id="identifier">Identifier</h3>
+<p>A unique identifier of the dataset.</p>
 </section>
-<section id="provenance" class="level4">
-<h4 class="anchored" data-anchor-id="provenance">Provenance</h4>
-<p>Include the filename of a README or other narrative document that describes the origin of the data and the processing steps employed to get to this posted version. Optionally include changes of ownership, custody, or responsibility. If brief, this information can be included in this free text field instead of in a separate document.<br>
+<section id="provenance" class="level3">
+<h3 class="anchored" data-anchor-id="provenance">Provenance</h3>
+<p>The origin and history of the dataset. Include the filename of a README or other narrative document that describes the origin of the data and the processing steps employed to get to this posted version. Optionally include changes of ownership, custody, or responsibility. If brief, this information can be included in this free text field instead of in a separate document.<br>
 More info: <a href="https://www.go-fair.org/fair-principles/r1-2-metadata-associated-detailed-provenance/">https://www.go-fair.org/fair-principles/r1-2-metadata-associated-detailed-provenance/</a></p>
 </section>
-<section id="type" class="level4">
-<h4 class="anchored" data-anchor-id="type">Type</h4>
+<section id="type" class="level3">
+<h3 class="anchored" data-anchor-id="type">Type</h3>
+<p>The nature or genre of the dataset.</p>
 </section>
-<section id="temporal-coverage" class="level4">
-<h4 class="anchored" data-anchor-id="temporal-coverage">Temporal Coverage</h4>
+<section id="temporal-coverage" class="level3">
+<h3 class="anchored" data-anchor-id="temporal-coverage">Temporal Coverage</h3>
+<p>The temporal period(s) covered by the dataset. Enter the begin and end dates for the temporal period(s) covered by the dataset. If there is a period of missing or suspect data in the dataset, you can enter it as a separate temporal coverage and make a comment in the Notes section to explain the issue.</p>
 </section>
-<section id="spatial-coverage" class="level4">
-<h4 class="anchored" data-anchor-id="spatial-coverage">Spatial Coverage</h4>
+<section id="spatial-coverage" class="level3">
+<h3 class="anchored" data-anchor-id="spatial-coverage">Spatial Coverage</h3>
+<p>The geographical area(s) covered by the dataset</p>
 </section>
-<section id="language" class="level4">
-<h4 class="anchored" data-anchor-id="language">Language</h4>
+<section id="language" class="level3">
+<h3 class="anchored" data-anchor-id="language">Language</h3>
+<p>The language(s) of the dataset.</p>
 </section>
-<section id="documentation" class="level4">
-<h4 class="anchored" data-anchor-id="documentation">Documentation</h4>
+<section id="documentation" class="level3">
+<h3 class="anchored" data-anchor-id="documentation">Documentation</h3>
+<p>A page or document about the dataset.</p>
 </section>
-<section id="conforms-to" class="level4">
-<h4 class="anchored" data-anchor-id="conforms-to">Conforms to</h4>
+<section id="conforms-to" class="level3">
+<h3 class="anchored" data-anchor-id="conforms-to">Conforms to</h3>
+<p>An established standard to which the dataset conforms.</p>
 </section>
-<section id="is-referenced-by" class="level4">
-<h4 class="anchored" data-anchor-id="is-referenced-by">Is referenced by</h4>
+<section id="is-referenced-by" class="level3">
+<h3 class="anchored" data-anchor-id="is-referenced-by">Is referenced by</h3>
+<p>A related resource that references, cited, or otherwise points to the dataset.</p>
 </section>
-<section id="uri" class="level4">
-<h4 class="anchored" data-anchor-id="uri">URI</h4>
+<section id="uri" class="level3">
+<h3 class="anchored" data-anchor-id="uri">URI</h3>
 </section>
 </section>
 <section id="resource-fields" class="level2">
 <h2 class="anchored" data-anchor-id="resource-fields">Resource Fields</h2>
-<section id="name" class="level4">
-<h4 class="anchored" data-anchor-id="name">Name</h4>
+<section id="name" class="level3">
+<h3 class="anchored" data-anchor-id="name">Name</h3>
+<p>A descriptive name for the resource.</p>
 </section>
-<section id="description-1" class="level4">
-<h4 class="anchored" data-anchor-id="description-1">Description</h4>
+<section id="description-1" class="level3">
+<h3 class="anchored" data-anchor-id="description-1">Description</h3>
+<p>A free-form description of the resource.</p>
 </section>
-<section id="format" class="level4">
-<h4 class="anchored" data-anchor-id="format">Format</h4>
+<section id="format" class="level3">
+<h3 class="anchored" data-anchor-id="format">Format</h3>
+<p>The file format of the resource. This can be detected automatically.</p>
 </section>
-<section id="github-repo" class="level4">
-<h4 class="anchored" data-anchor-id="github-repo">GitHub Repo</h4>
+<section id="github-repo" class="level3">
+<h3 class="anchored" data-anchor-id="github-repo">GitHub Repo</h3>
+<p>If the resource is a link to a GitHub repository, select True. This will allow the addition of a GitHub page view that displays the repository’s statistics.</p>
 </section>
-<section id="status" class="level4">
-<h4 class="anchored" data-anchor-id="status">Status</h4>
+<section id="status" class="level3">
+<h3 class="anchored" data-anchor-id="status">Status</h3>
+<p>The current stage of the resource in the workflow.</p>
 </section>
-<section id="license-1" class="level4">
-<h4 class="anchored" data-anchor-id="license-1">License</h4>
+<section id="license-1" class="level3">
+<h3 class="anchored" data-anchor-id="license-1">License</h3>
+<p>A legal document under which the resource is made available.</p>
 </section>
-<section id="access-url" class="level4">
-<h4 class="anchored" data-anchor-id="access-url">Access URL</h4>
+<section id="access-url" class="level3">
+<h3 class="anchored" data-anchor-id="access-url">Access URL</h3>
+<p>A URL where one can access the resource.</p>
 </section>
-<section id="download-url" class="level4">
-<h4 class="anchored" data-anchor-id="download-url">Download URL</h4>
+<section id="download-url" class="level3">
+<h3 class="anchored" data-anchor-id="download-url">Download URL</h3>
+<p>A URL where one can download the resource.</p>
 </section>
-<section id="release-date-1" class="level4">
-<h4 class="anchored" data-anchor-id="release-date-1">Release Date</h4>
+<section id="release-date-1" class="level3">
+<h3 class="anchored" data-anchor-id="release-date-1">Release Date</h3>
+<p>The date of formal issuance/publication of the resource.</p>
 </section>
-<section id="modification-date-1" class="level4">
-<h4 class="anchored" data-anchor-id="modification-date-1">Modification Date</h4>
+<section id="modification-date-1" class="level3">
+<h3 class="anchored" data-anchor-id="modification-date-1">Modification Date</h3>
+<p>The most recent date of change/update/modification to the resource.</p>
 </section>
-<section id="language-1" class="level4">
-<h4 class="anchored" data-anchor-id="language-1">Language</h4>
+<section id="language-1" class="level3">
+<h3 class="anchored" data-anchor-id="language-1">Language</h3>
+<p>The laguage(s) of the metadata or textual values of the resource.</p>
 </section>
-<section id="documentation-1" class="level4">
-<h4 class="anchored" data-anchor-id="documentation-1">Documentation</h4>
+<section id="documentation-1" class="level3">
+<h3 class="anchored" data-anchor-id="documentation-1">Documentation</h3>
+<p>A page or document about the resource.</p>
 </section>
-<section id="conforms-to-1" class="level4">
-<h4 class="anchored" data-anchor-id="conforms-to-1">Conforms to</h4>
+<section id="conforms-to-1" class="level3">
+<h3 class="anchored" data-anchor-id="conforms-to-1">Conforms to</h3>
+<p>An established standard to which the resource conforms.</p>
 </section>
-<section id="access-services" class="level4">
-<h4 class="anchored" data-anchor-id="access-services">Access Services</h4>
+<section id="access-services" class="level3">
+<h3 class="anchored" data-anchor-id="access-services">Access Services</h3>
+<p>A data service that gives access to the resource.</p>
 </section>
-<section id="uri-1" class="level4">
-<h4 class="anchored" data-anchor-id="uri-1">URI</h4>
+<section id="uri-1" class="level3">
+<h3 class="anchored" data-anchor-id="uri-1">URI</h3>
 
 
 </section>
