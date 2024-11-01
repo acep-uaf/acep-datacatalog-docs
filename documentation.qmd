@@ -5,7 +5,7 @@ For more information and guides, visit the official [CKAN Documentation](https:/
 
 ## Data Sources Overview
 
-![](images/data_sources_diagram.png)
+![](images/documentation/data_sources_diagram.png)
 
 ## Developing the Data Catalog
 The ACEP Data Catalog is run on a VM hosted by RCS. Extensions can be updated by pushing to the acepportal-ckan GitHub repository. After pushing, changes take ~30 min to update on the main site.

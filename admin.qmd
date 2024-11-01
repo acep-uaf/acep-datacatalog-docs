@@ -15,21 +15,21 @@ To give a user a role in an organization:
 1. Click on the __Organizations__ tab at the top of the screen and click on the organization you want to add the user to. 
 2. Click on the __Manage__ button in the upper right.
 3. Click on the __Members__ tab at the top.
-![](images/orgmembers.png)
+![](images/admin/orgmembers.png)
     - To add a new member to the organizaton, click the __Add Member__ button. Enter their username, select their new role from the dropdown, and click the __Add Member__ button at the bottom of the form.
-    ![](images/addorgmember.png)
+    ![](images/admin/addorgmember.png)
     -To change an existing member's role, click the wrench next to their user name.
-    ![](images/editmember.png)
+    ![](images/admin/editmember.png)
         - Select their new role from the dropdown menu and click __Update Member__
         - To remove the user from the organization completely, click the __Delete__ button.
-    ![](images/deletemember.png)
+    ![](images/admin/deletemember.png)
 
 ## Reviewing and Publishing a Dataset {.unnumbered}
 1. Navigate to the dataset you would like to publish. 
 2. Review the metadata and ensure the files/links are correct and function properly.
 3. To publish, click on the __Manage__ button in the top right of the dataset page.
 4. In the metadata fields, find the __Visibility__ field.  
-    ![](images/publish.png)
+    ![](images/admin/publish.png)
 5. Change the __Visibility__ field from __Private__ to __Public__, and click the __Update Dataset__ button at the bottom of the form.
 
 ## Deleting Datasets/Groups/Organizations {.unnumbered}
@@ -39,19 +39,19 @@ To give a user a role in an organization:
 
 ### Purge Deleted Datasets/Groups/Organizations {.unnumbered}
 1. Navigate to sysadmin settings by clicking the hammer icon at the top of the page.  
-    ![](images/sysadminsettings.png)
+    ![](images/admin/sysadminsettings.png)
 2. Click on the __Trash__ tab. This page will list all the currently deleted datasets, groups, and organizations.
-    ![](images/purge.png)
+    ![](images/admin/purge.png)
 3. You can purge all deleted items using the __Purge all__ button at the top of the form. To purge only one group of items (datasets, group, or organizations) use the __Purge__ button in that section.
 
 ### Restore Deleted Datasets {.unnumbered}
 1. Navigate to sysadmin settings by clicking the hammer icon at the top of the page.  
-    ![](images/sysadminsettings.png)
+    ![](images/admin/sysadminsettings.png)
 2. Click on the __Trash__ tab. This page will list all the currently deleted datasets, groups, and organizations.  
-    ![](images/purge.png)
+    ![](images/admin/purge.png)
 3. Click on the dataset you would like to restore, and click the __Manage__ button in the upper right.
 4. In the metadata fields find the __State__ field. 
-    ![](images/deletedstate.png)  
+    ![](images/admin/deletedstate.png)  
 5. Change the __State__ field from __Deleted__ to __Active__, and then click the __Update Dataset__ button at the bottom of the form.  
 
 ## Restoring a Deleted User {.unnumbered}

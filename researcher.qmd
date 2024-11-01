@@ -13,14 +13,14 @@ There are two ways to access the __Add Dataset__ button:
 1. Click on the __Add Dataset__ button above the search bar.
 2. On the first page, fill out the metadata fields for your dataset. 
     - For examples and more information about the metadata fields, see the [Metadata Walkthrough](metadata.qmd).
-![](images/createdataset1.png)
+![](images/researcher/createdataset1.png)
     - Double check the organization field.
         - Choose __ACEP Open Data__ if you are posting your own data or data that ACEP owns.
         - Choose __ACEP Internal Use__ if you are posting a useful dataset that ACEP does not own.
     - If you are a researcher, your dataset's visibility will automatically be set to private. An admin will review your dataset and make it public.
 3. Once you have completed the metadata fields, click the __Next: Add Data__ button at the bottom of the form. 
 4. On the next page, add the data resources to your dataset.
-![](images/createdataset2.png)
+![](images/researcher/createdataset2.png)
     - Small datasets (<2MB) can be uploaded directly to the catalog
     - Alternatively, enter a link to where the data is stored, such as a GitHub repository or Google Drive.
 5. If you have more resources to add, click the __Save & add another__ button at the bottom of the form. Otherwise click __Finish__ to post your dataset.
@@ -30,28 +30,28 @@ TBD
 
 ## Editing/Deleting a Dataset {.unnumbered}
 1. Navigate to the dataset page and click on the __Manage__ button in the upper right.
-![](images/managedataset.png)
+![](images/researcher/managedataset.png)
 2. This displays the __Edit metadata__ page where you can change the metadata of the dataset. After making changes, click the __Update Dataset__ button at the bottom of the form.
 
     - To delete the dataset, click the __Delete__ button at the bottom of the form.
 
     > NOTE: Deleting a dataset does not remove it completely from the database. The url of the deleted dataset will not be able to be reused until it has been purged by a sysadmin.
 3. To edit the resources or add more resources, click on the __Resources__ tab.
-![](images/editresource.png)
+![](images/researcher/editresource.png)
     - To delete a resource, select it from the list and then click the __Delete__ button at the bottom of the page.
 
 ## Adding a Dataset to a Group {.unnumbered}
 1. Navigate to the dataset page and click on the __Groups__ tab.
-![](images/addtogroup.png)
+![](images/researcher/addtogroup.png)
 2. Select a group from the dropdown menu and click the __Add to group__ button.
 3. To remove the dataset from a group, hover your cursor over the group and click the __Remove__ button.
-![](images/removefromgroup.png)
+![](images/researcher/removefromgroup.png)
 
 ## Creating a New Group {.unnumbered}
 Groups are a good way to group together datasets that are connected. You may want to create groups for common research themes, funding organizations, or projects.
 
 1. Click on the __Groups__ tab at the top of the screen.
 2. Click the __Add Group__ button. 
-![](images/creategroup.png)
+![](images/researcher/creategroup.png)
 3. Enter the information for the group. Find a logo or simple image to upload to represent the group.  
 4. Once you have entered the information, click the __Create Group__ button at the bottom of the form.

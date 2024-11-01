@@ -5,7 +5,7 @@ Guides for anyone using the data catalog.
 ## Making an Account {.unnumbered}
 1. Click the __Register__ button in the upper right corner of the screen.
 2. Fill out your information, using your UA email if you have one.
-![](images/accountcreation.png)
+![](images/getting_started/accountcreation.png)
 3. In order to see the Internal Use datasets or post datasets, you will need permissions granted to your account. If you are an ACEP employee, contact Liz or another admin.
 
 ## Searching for Datasets {.unnumbered}
@@ -13,10 +13,10 @@ There are many ways to search for datasets in the catalog.
 
 - __Search Bar__  
     Use key words to find datasets, just like Google. On the left sidebar of the search results page, you can filter by tags and other categories to get more specific results.
-    ![](images/searching.png)
+    ![](images/getting_started/searching.png)
 - __Groups__  
     Browse through the groups that can be found at the __Groups__ tab at the top of the screen or listed on the home page. 
-![](images/groups.png)
+![](images/getting_started/groups.png)
 - __Organizations__  
     Sort by larger categories by looking the __Organization__ tab at the top of the screen.
 
