@@ -9,10 +9,15 @@ A descriptive title for the dataset.
 A free-form description of the dataset.
 
 ### Keywords
-Keywords that describe the dataset.
+Keywords that describe the dataset.  
+Standardized vocabulary TBD
 
 ### Contact Points
-Relevant contact information for the dataset.
+Relevant contact information for the dataset. This includes the following roles:  
+
+- __Creator__: primarily responsible for the content of the dataset  
+- __Contributor__: has made contributions to the dataset  
+- __Editor__: has helped prepare the dataset for publication
 
 ### License
 A legal document under which the dataset is made available.
@@ -84,7 +89,7 @@ A free-form description of the resource.
 The file format of the resource. This can be detected automatically.
 
 ### GitHub Repo
-If the resource is a link to a GitHub repository, select True. This will allow the addition of a GitHub page view that displays the repository's statistics.
+If the resource is a link to a GitHub repository, select True. This will allow the addition of a GitHub repository view that displays the repository's statistics.
 
 ### Status
 The current stage of the resource in the workflow.

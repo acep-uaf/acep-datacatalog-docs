@@ -30,7 +30,7 @@ __Spin up Application__
 
 This will turn the terminal into an output stream for the docker containers.
 
-> TIP: I recommend keeping two terminal open: one for the output stream so you can see errors, and another to run other commands in
+> TIP: I recommend keeping two terminals open: one for the output stream so you can see errors, and another to run other commands in
 
 __Rebuild and spin up containers:__  
 
