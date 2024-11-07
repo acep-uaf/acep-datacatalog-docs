@@ -1,6 +1,8 @@
 # For Developers {.unnumbered}
 Documentation of the development of the ACEP Data Catalog.
 
+GitHub repository for the main Data Catalog site: [https://github.com/UAF-RCS/acepportal-ckan](https://github.com/UAF-RCS/acepportal-ckan)
+
 For more information and guides, visit the official [CKAN Documentation](https://docs.ckan.org/en/2.10/contents.html)
 
 ## Data Sources Overview
@@ -162,6 +164,8 @@ To add a feature from your local instance to the main Data Catalog,
     
 ## Extensions
 ### Currently Installed
+[https://github.com/UAF-RCS/acepportal-ckan/tree/main/ckan-extension](https://github.com/UAF-RCS/acepportal-ckan/tree/main/ckan-extension)  
+
 #### ckanext-customtheme
 __Author__: Jenae Matson   
 __Purpose__: Add custom theming and features for the CKAN instance, including   
@@ -175,9 +179,17 @@ __Purpose__: Add custom theming and features for the CKAN instance, including
 - Added support contact info to dataset sidebar
 - Added default blank option to add-to-group dropdown menu
 
+__Configuration Settings__:
+
+- `ckan.customtheme.featured_dataset = alaska-energy-inventory` 
+
 #### ckanext-dcat
 __Link__: [https://github.com/ckan/ckanext-dcat](https://github.com/ckan/ckanext-dcat)  
 __Purpose__: Rework metadata to conform to DCAT standard.  
+__Configuration Settings__:
+
+- `ckanext.dcat.rdf.profiles = euro_dcat_ap_3`  
+
 __Modifications__:  
 
 - The file `schemas/acep_dcat_fields.yaml` was created to define the metadata fields for the catalog. 
@@ -189,7 +201,10 @@ __Purpose__: Create an FAQ page linked in the masthead with collapsible boxes fo
 
 #### ckanext-geoview
 __Link__: [https://github.com/ckan/ckanext-geoview ](https://github.com/ckan/ckanext-geoview)  
-__Purpose__: Created resource views for geojson and other geo-data file types. We have implemented the OpenLayers Viewer.
+__Purpose__: Created resource views for geojson and other geo-data file types. We have implemented the OpenLayers Viewer.  
+__Configuration Settings__:
+
+- `ckanext.geoview.ol_viewer.default_feature_hoveron = true`
 
 #### ckanext-githubrepopreview
 __Link__: [https://github.com/DataShades/ckanext-githubrepopreview](https://github.com/DataShades/ckanext-githubrepopreview)  
@@ -225,6 +240,23 @@ def parse(input_url, some_flag):
     {% endif %}
 {% endblock -%}
 ```
+
+#### ckanext-ldap
+__Link__: [https://github.com/NaturalHistoryMuseum/ckanext-ldap](https://github.com/NaturalHistoryMuseum/ckanext-ldap)  
+__Purpose__: Allows users to login using their UA credentials (a temporary solution while the official SSO is being implemented).  
+__Configuration Settings__:
+
+- `ckanext.ldap.uri = ldaps://auth.alaska.edu`  
+- `ckanext.ldap.auth.password = s3arch@ccount!`  
+- `ckanext.ldap.base_dn = ou=userAccounts,dc=ua,dc=ad,dc=alaska,dc=edu`  
+- `ckanext.ldap.search.filter = (sAMAccountName={login})`  
+- `ckanext.ldap.auth.dn = cn=rcs-ad-read,ou=RCS,ou=UAF,dc=ua,dc=ad,dc=alaska,dc=edu`  
+- `ckanext.ldap.username = sAMAccountName`  
+- `ckanext.ldap.fullname = displayName`  
+- `ckanext.ldap.email = mail`  
+- `ckanext.ldap.ckan_fallback = True`  
+
+__Modifications__: Theng from RCS has made some modifications, including improving user creation to handle existing accounts: [https://github.com/UAF-RCS/acepportal-ckan/tree/main/ckan-extension/ckanext-ldap](https://github.com/UAF-RCS/acepportal-ckan/tree/main/ckan-extension/ckanext-ldap).
 
 #### ckanext-package-group-permissions
 __Link__: [https://github.com/salsadigitalauorg/ckanext-package-group-permissions](https://github.com/salsadigitalauorg/ckanext-package-group-permissions)  
@@ -281,6 +313,12 @@ __Purpose__: Restrict the ability to change the visibility of a dataset to admin
 #### ckanext-scheming
 __Link__: [https://github.com/ckan/ckanext-scheming ](https://github.com/ckan/ckanext-scheming)  
 __Purpose__: Allows for the creation of alternate metadata templates (schemas) defined by .yaml or .json files.  
+__Configuration Settings__:
+
+- `scheming.dataset_schemas ckanext.dcat.schemas:acep_dcat_fields.yaml`  
+- `scheming.presets = ckanext.scheming:presets.json ckanext.dcat.schemas:presets.yaml`  
+- `scheming.dataset_fallback = false`  
+
 __Modifications__: Some of the automatically calculated resource fields were manually re-added to be displayed. In the file `templates/scheming/package/resource_read.html`, below `{%- block resource_license -%}` add the following 
 ```
 {%- block resource_size -%}
@@ -296,6 +334,13 @@ __Modifications__: Some of the automatically calculated resource fields were man
 </tr>
 {%- endblock -%}
 ```
+
+#### ckanext-xloader
+__Link__: [https://github.com/ckan/ckanext-xloader](https://github.com/ckan/ckanext-xloader)  
+__Purpose__: Improve data uploading, including increasing allowed file sizes.  
+__Configuration Settings__:
+
+- `ckanext.xloader.jobs_db.uri=postgresql://ckandbuser:ckandbpassword@db/ckandb`  
 
 ### Adding Alternate Schemas with ckanext-scheming
 1. Create a .yaml or .json file in the folder `ckanext-scheming/ckanext/scheming` to define the metadata schema. See extension documentation for more information and examples.  
