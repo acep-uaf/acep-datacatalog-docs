@@ -2,42 +2,44 @@
 A detailed walkthrough of the metadata fields available.
 
 ## Dataset Fields
-### Title
+*required field
+
+### Title*
 A descriptive title for the dataset.
 
-### Description
+### Description*
 A free-form description of the dataset.
 
 ### Keywords
 Keywords that describe the dataset.  
 Standardized vocabulary TBD
 
-### Contact Points
+### Contact Points*
 Relevant contact information for the dataset. This includes the following roles:  
 
 - __Creator__: primarily responsible for the content of the dataset  
 - __Contributor__: has made contributions to the dataset  
 - __Editor__: has helped prepare the dataset for publication
 
-### License
+### Publisher*
+If the entity responsible for the dataset is ACEP, select ACEP (default) from the dropdown menus. The assigned default value will be displayed. If the publisher is an entity other than ACEP, or if you would like to enter a custom value for one of the fields, select Other and enter information into the provided text box.
+
+### License*
 A legal document under which the dataset is made available.
 
-### Organization
+### Organization*
 The organization the dataset falls under, either ACEP Internal Use, or ACEP Open Data.
 
 ### Visibility
 The visibility of the dataset: private for internal use or under-review datasets and public for reviewed/published datasets.
 
-### Publisher
-If the entity responsible for the dataset is ACEP, select ACEP (default) from the dropdown menus. The assigned default value will be displayed. If the publisher is an entity other than ACEP, or if you would like to enter a custom value for one of the fields, select Other and enter information into the provided text box.
-
 ### Landing Page
 A webpage where one can gain access to the dataset or more information about the dataset.
 
-### Release Date
+### Release Date*
 Enter the date of the dataset's entry to the data catalog.
 
-### Modification Date
+### Modification Date*
 Enter the most recent date of change to the dataset.
 
 ### Version
@@ -79,10 +81,10 @@ A related resource that references, cited, or otherwise points to the dataset.
 ### URI
 
 ## Resource Fields
-### Name
+### Name*
 A descriptive name for the resource.
 
-### Description
+### Description*
 A free-form description of the resource.
 
 ### Format
@@ -103,10 +105,10 @@ A URL where one can access the resource.
 ### Download URL 
 A URL where one can download the resource.
 
-### Release Date
+### Release Date*
 The date of formal issuance/publication of the resource.
 
-### Modification Date
+### Modification Date*
 The most recent date of change/update/modification to the resource.
 
 ### Language
