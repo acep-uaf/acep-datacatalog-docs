@@ -226,6 +226,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Documentation of the development of the ACEP Data Catalog.</p>
+<p>GitHub repository for the main Data Catalog site: <a href="https://github.com/UAF-RCS/acepportal-ckan">https://github.com/UAF-RCS/acepportal-ckan</a></p>
 <p>For more information and guides, visit the official <a href="https://docs.ckan.org/en/2.10/contents.html">CKAN Documentation</a></p>
 <section id="data-sources-overview" class="level2">
 <h2 class="anchored" data-anchor-id="data-sources-overview">Data Sources Overview</h2>
@@ -392,6 +393,7 @@ This should result in the directory structure specified in <code>ckan-src/README
 <h2 class="anchored" data-anchor-id="extensions">Extensions</h2>
 <section id="currently-installed" class="level3">
 <h3 class="anchored" data-anchor-id="currently-installed">Currently Installed</h3>
+<p><a href="https://github.com/UAF-RCS/acepportal-ckan/tree/main/ckan-extension">https://github.com/UAF-RCS/acepportal-ckan/tree/main/ckan-extension</a></p>
 <section id="ckanext-customtheme" class="level4">
 <h4 class="anchored" data-anchor-id="ckanext-customtheme">ckanext-customtheme</h4>
 <p><strong>Author</strong>: Jenae Matson<br>
@@ -406,12 +408,20 @@ This should result in the directory structure specified in <code>ckan-src/README
 <li>Added support contact info to dataset sidebar</li>
 <li>Added default blank option to add-to-group dropdown menu</li>
 </ul>
+<p><strong>Configuration Settings</strong>:</p>
+<ul>
+<li><code>ckan.customtheme.featured_dataset = alaska-energy-inventory</code></li>
+</ul>
 </section>
 <section id="ckanext-dcat" class="level4">
 <h4 class="anchored" data-anchor-id="ckanext-dcat">ckanext-dcat</h4>
 <p><strong>Link</strong>: <a href="https://github.com/ckan/ckanext-dcat">https://github.com/ckan/ckanext-dcat</a><br>
 <strong>Purpose</strong>: Rework metadata to conform to DCAT standard.<br>
-<strong>Modifications</strong>:</p>
+<strong>Configuration Settings</strong>:</p>
+<ul>
+<li><code>ckanext.dcat.rdf.profiles = euro_dcat_ap_3</code></li>
+</ul>
+<p><strong>Modifications</strong>:</p>
 <ul>
 <li>The file <code>schemas/acep_dcat_fields.yaml</code> was created to define the metadata fields for the catalog.</li>
 <li>The file <code>templates/scheming/form_snippets/publisher.html</code> was created to define the dynamic dropdown menu in the Publisher metadata field.</li>
@@ -425,7 +435,11 @@ This should result in the directory structure specified in <code>ckan-src/README
 <section id="ckanext-geoview" class="level4">
 <h4 class="anchored" data-anchor-id="ckanext-geoview">ckanext-geoview</h4>
 <p><strong>Link</strong>: <a href="https://github.com/ckan/ckanext-geoview">https://github.com/ckan/ckanext-geoview</a><br>
-<strong>Purpose</strong>: Created resource views for geojson and other geo-data file types. We have implemented the OpenLayers Viewer.</p>
+<strong>Purpose</strong>: Created resource views for geojson and other geo-data file types. We have implemented the OpenLayers Viewer.<br>
+<strong>Configuration Settings</strong>:</p>
+<ul>
+<li><code>ckanext.geoview.ol_viewer.default_feature_hoveron = true</code></li>
+</ul>
 </section>
 <section id="ckanext-githubrepopreview" class="level4">
 <h4 class="anchored" data-anchor-id="ckanext-githubrepopreview">ckanext-githubrepopreview</h4>
@@ -461,6 +475,32 @@ This should result in the directory structure specified in <code>ckan-src/README
         {% resource 'base/tracking.js' %}
     {% endif %}
 {% endblock -%}</code></pre>
+</section>
+<section id="ckanext-ldap" class="level4">
+<h4 class="anchored" data-anchor-id="ckanext-ldap">ckanext-ldap</h4>
+<p><strong>Link</strong>: <a href="https://github.com/NaturalHistoryMuseum/ckanext-ldap">https://github.com/NaturalHistoryMuseum/ckanext-ldap</a><br>
+<strong>Purpose</strong>: Allows users to login using their UA credentials (a temporary solution while the official SSO is being implemented).<br>
+<strong>Configuration Settings</strong>:</p>
+<ul>
+<li><code>ckanext.ldap.uri = ldaps://auth.alaska.edu</code><br>
+</li>
+<li><code>ckanext.ldap.auth.password = s3arch@ccount!</code><br>
+</li>
+<li><code>ckanext.ldap.base_dn = ou=userAccounts,dc=ua,dc=ad,dc=alaska,dc=edu</code><br>
+</li>
+<li><code>ckanext.ldap.search.filter = (sAMAccountName={login})</code><br>
+</li>
+<li><code>ckanext.ldap.auth.dn = cn=rcs-ad-read,ou=RCS,ou=UAF,dc=ua,dc=ad,dc=alaska,dc=edu</code><br>
+</li>
+<li><code>ckanext.ldap.username = sAMAccountName</code><br>
+</li>
+<li><code>ckanext.ldap.fullname = displayName</code><br>
+</li>
+<li><code>ckanext.ldap.email = mail</code><br>
+</li>
+<li><code>ckanext.ldap.ckan_fallback = True</code></li>
+</ul>
+<p><strong>Modifications</strong>: Theng from RCS has made some modifications, including improving user creation to handle existing accounts: <a href="https://github.com/UAF-RCS/acepportal-ckan/tree/main/ckan-extension/ckanext-ldap">https://github.com/UAF-RCS/acepportal-ckan/tree/main/ckan-extension/ckanext-ldap</a>.</p>
 </section>
 <section id="ckanext-package-group-permissions" class="level4">
 <h4 class="anchored" data-anchor-id="ckanext-package-group-permissions">ckanext-package-group-permissions</h4>
@@ -518,7 +558,15 @@ This should result in the directory structure specified in <code>ckan-src/README
 <h4 class="anchored" data-anchor-id="ckanext-scheming">ckanext-scheming</h4>
 <p><strong>Link</strong>: <a href="https://github.com/ckan/ckanext-scheming">https://github.com/ckan/ckanext-scheming</a><br>
 <strong>Purpose</strong>: Allows for the creation of alternate metadata templates (schemas) defined by .yaml or .json files.<br>
-<strong>Modifications</strong>: Some of the automatically calculated resource fields were manually re-added to be displayed. In the file <code>templates/scheming/package/resource_read.html</code>, below <code>{%- block resource_license -%}</code> add the following</p>
+<strong>Configuration Settings</strong>:</p>
+<ul>
+<li><code>scheming.dataset_schemas ckanext.dcat.schemas:acep_dcat_fields.yaml</code><br>
+</li>
+<li><code>scheming.presets = ckanext.scheming:presets.json ckanext.dcat.schemas:presets.yaml</code><br>
+</li>
+<li><code>scheming.dataset_fallback = false</code></li>
+</ul>
+<p><strong>Modifications</strong>: Some of the automatically calculated resource fields were manually re-added to be displayed. In the file <code>templates/scheming/package/resource_read.html</code>, below <code>{%- block resource_license -%}</code> add the following</p>
 <pre><code>{%- block resource_size -%}
 &lt;tr&gt;
     &lt;th scope="row"&gt;{{ _('Size') }}&lt;/th&gt;
@@ -531,6 +579,15 @@ This should result in the directory structure specified in <code>ckan-src/README
     &lt;td&gt;{{ res.datastore_active or _('unknown') }}&lt;/td&gt;
 &lt;/tr&gt;
 {%- endblock -%}</code></pre>
+</section>
+<section id="ckanext-xloader" class="level4">
+<h4 class="anchored" data-anchor-id="ckanext-xloader">ckanext-xloader</h4>
+<p><strong>Link</strong>: <a href="https://github.com/ckan/ckanext-xloader">https://github.com/ckan/ckanext-xloader</a><br>
+<strong>Purpose</strong>: Improve data uploading, including increasing allowed file sizes.<br>
+<strong>Configuration Settings</strong>:</p>
+<ul>
+<li><code>ckanext.xloader.jobs_db.uri=postgresql://ckandbuser:ckandbpassword@db/ckandb</code></li>
+</ul>
 </section>
 </section>
 <section id="adding-alternate-schemas-with-ckanext-scheming" class="level3">
