@@ -15,23 +15,24 @@ Keywords that describe the dataset.
 Standardized vocabulary TBD
 
 ### Contact Points*
-Relevant contact information for the dataset. This includes the following roles:  
+Individuals connected to the creation or curation of the dataset. An email address is not required. This includes the following roles:  
 
 - __Creator__: primarily responsible for the content of the dataset  
-- __Contributor__: has made contributions to the dataset  
-- __Editor__: has helped prepare the dataset for publication
+- __Contributor__: made contributions to the dataset  
+- __Editor__: helped prepare the dataset for publication
 
 ### Publisher*
-If the entity responsible for the dataset is ACEP, select ACEP (default) from the dropdown menus. The assigned default value will be displayed. If the publisher is an entity other than ACEP, or if you would like to enter a custom value for one of the fields, select Other and enter information into the provided text box.
+The entity responsible for making the dataset available.  
+ACEP is the default value. If the publisher is another entity, or if you would like to enter a custom value for one of the fields, select Other and enter information into the provided text box.
 
 ### License*
 A legal document under which the dataset is made available.
 
 ### Organization*
-The organization the dataset falls under, either ACEP Internal Use, or ACEP Open Data.
+The organization the dataset falls under, either __ACEP Internal Use__ or __ACEP Open Data__.
 
 ### Visibility
-The visibility of the dataset: private for internal use or under-review datasets and public for reviewed/published datasets.
+The visibility of the dataset: __private__ for internal use or under-review datasets and __public__ for reviewed/published datasets.
 
 ### Landing Page
 A webpage where one can gain access to the dataset or more information about the dataset.
@@ -40,7 +41,7 @@ A webpage where one can gain access to the dataset or more information about the
 Enter the date of the dataset's entry to the data catalog.
 
 ### Modification Date*
-Enter the most recent date of change to the dataset.
+Enter the most recent date of change to the dataset entry.
 
 ### Version
 An indicator of the version of the dataset.
@@ -52,7 +53,7 @@ A description of changes between the current and previous verion of the dataset.
 A unique identifier of the dataset.
 
 ### Provenance
-The origin and history of the dataset. 
+The origin and history of the dataset.  
 Include the filename of a README or other narrative document that describes the origin of the data and the processing steps employed to get to this posted version. Optionally include changes of ownership, custody, or responsibility. If brief, this information can be included in this free text field instead of in a separate document.  
 More info: [https://www.go-fair.org/fair-principles/r1-2-metadata-associated-detailed-provenance/](https://www.go-fair.org/fair-principles/r1-2-metadata-associated-detailed-provenance/)  
 
@@ -63,8 +64,10 @@ The nature or genre of the dataset.
 The temporal period(s) covered by the dataset.
 Enter the begin and end dates for the temporal period(s) covered by the dataset. If there is a period of missing or suspect data in the dataset, you can enter it as a separate temporal coverage and make a comment in the Notes section to explain the issue.
 
+> Warning: If there is no temporal coverage to enter, the field must be deleted.
+
 ### Spatial Coverage
-The geographical area(s) covered by the dataset
+The geographical area(s) covered by the dataset.
 
 ### Language
 The language(s) of the dataset.
@@ -109,7 +112,7 @@ A URL where one can download the resource.
 The date of formal issuance/publication of the resource.
 
 ### Modification Date*
-The most recent date of change/update/modification to the resource.
+The most recent date of change/update/modification to the resource entry.
 
 ### Language
 The laguage(s) of the metadata or textual values of the resource. 
