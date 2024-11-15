@@ -67,7 +67,61 @@ Enter the begin and end dates for the temporal period(s) covered by the dataset.
 > Warning: If there is no temporal coverage to enter, the field must be deleted.
 
 ### Spatial Coverage
-The geographical area(s) covered by the dataset.
+The geographical area(s) covered by the dataset. These values should be entered in __GeoJSON format__.  
+Examples:  
+
+__Geometry__  
+```
+{
+  "type": "Polygon",
+  "coordinates": [
+    [
+      [100.0, 0.0],
+      [101.0, 0.0],
+      [101.0, 1.0],
+      [100.0, 1.0],
+      [100.0, 0.0]
+    ]
+  ]
+}
+```
+```
+{
+  "type": "LineString",
+  "coordinates": [
+    [-101.744384, 39.321550],
+    [-101.552124, 39.330048],
+    [-101.403808, 39.330048],
+    [-101.332703, 39.364032],
+    [-101.041259, 39.368279],
+    [-100.976562, 39.305091],
+    [-100.914062, 39.245016],
+    [-100.843658, 39.164141]
+  ]
+}
+```
+__Bounding Box__  
+```
+{
+  "type": "Polygon",
+  "coordinates": [
+    [
+      [-80.190, 25.774],
+      [-66.118, 18.466],
+      [-64.757, 32.321],
+      [-80.190, 25.774]
+    ]
+  ]
+}
+
+```
+__Centroid__  
+```
+{
+  "type": "Point",
+  "coordinates": [-72.323, 25.354]
+}
+```
 
 ### Language
 The language(s) of the dataset.
