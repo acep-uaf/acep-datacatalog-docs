@@ -372,7 +372,11 @@ This should result in the directory structure specified in <code>ckan-src/README
 <h3 class="anchored" data-anchor-id="updating-the-main-site">Updating the Main Site</h3>
 <p>To add a feature from your local instance to the main Data Catalog,</p>
 <ol type="1">
-<li>Push the files to the <code>acepportal-ckan</code> GitHub repository.</li>
+<li>Push the files to the <code>acepportal-ckan</code> GitHub repository.
+<ul>
+<li>If you are adding a new extension, you must <strong>delete the .git folder</strong> before adding/committing/pushing.<br>
+</li>
+</ul></li>
 <li>Wait about 30 min. for the changes to be pulled to VM.</li>
 <li>If you have added a new extension, SSH into the VM and add the extension name to the <code>.env</code> file.</li>
 </ol>
@@ -505,8 +509,11 @@ This should result in the directory structure specified in <code>ckan-src/README
 <section id="ckanext-package-group-permissions" class="level4">
 <h4 class="anchored" data-anchor-id="ckanext-package-group-permissions">ckanext-package-group-permissions</h4>
 <p><strong>Link</strong>: <a href="https://github.com/salsadigitalauorg/ckanext-package-group-permissions">https://github.com/salsadigitalauorg/ckanext-package-group-permissions</a><br>
-<strong>Purpose</strong>: Allows all editors and admins to add datasets to any group, without having to be added as members to each group.<br>
-<strong>Modifications</strong>: This extension was created and works with CKAN 2.9. This instance is version 2.10, so the extension requires some small modifications to work. The following changes were made to the original extension:</p>
+<strong>Purpose</strong>: Allows all editors and admins to add datasets to any group, without having to be added as members to each group.</p>
+<blockquote class="blockquote">
+<p>Note: This extension has now been updated by the creators. The following modifications are no longer necessary.</p>
+</blockquote>
+<p><strong>Modifications</strong>: This extension was created and works with CKAN 2.9. This instance is version 2.10, so the extension requires some small modifications to work. The following changes were made to the original extension:</p>
 <ul>
 <li>In the file <code>plugin.py</code>, change the <code>member_create</code> function to the following</li>
 </ul>
