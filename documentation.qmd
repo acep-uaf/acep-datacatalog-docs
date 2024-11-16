@@ -151,6 +151,7 @@ Clone the extension repository into the `ckan-extension` folder.
 To add a feature from your local instance to the main Data Catalog, 
 
 1. Push the files to the `acepportal-ckan` GitHub repository. 
+    - If you are adding a new extension, you must __delete the .git folder__ before adding/committing/pushing.  
 2. Wait about 30 min. for the changes to be pulled to VM.
 3. If you have added a new extension, SSH into the VM and add the extension name to the `.env` file.
 
@@ -261,6 +262,9 @@ __Modifications__: Theng from RCS has made some modifications, including improvi
 #### ckanext-package-group-permissions
 __Link__: [https://github.com/salsadigitalauorg/ckanext-package-group-permissions](https://github.com/salsadigitalauorg/ckanext-package-group-permissions)  
 __Purpose__: Allows all editors and admins to add datasets to any group, without having to be added as members to each group.  
+
+> Note: This extension has now been updated by the creators. The following modifications are no longer necessary. 
+
 __Modifications__: This extension was created and works with CKAN 2.9. This instance is version 2.10, so the extension requires some small modifications to work. The following changes were made to the original extension:  
 
 - In the file `plugin.py`, change the `member_create` function to the following
