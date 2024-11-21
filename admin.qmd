@@ -61,20 +61,20 @@ To give a user a role in an organization:
 When a user is deleted from the website, their information remains in the database with the `state` field set to `deleted`. To reactivate the user, you must set this field to `active` in the database.  
 
 1. Enter the `acep-db-cont` docker container  
-    - `> docker exec -it acep-db-cont /bin/bash`  
+    - `docker exec -it acep-db-cont /bin/bash`  
 2. Access the postgres database  
-    - `> psql -U postgres`  
+    - `psql -U postgres`  
 3. List all the databases and connect to the ckandb database.
-    - `> \l`
-    - `> \c ckandb`
+    - `\l`
+    - `\c ckandb`
 4. List all the tables and list the columns of the user table.
-    - `> \d`
-    - `> \d user`
+    - `\d`
+    - `\d user`
 5. List all the users in the user table.
-    - `> SELECT * FROM public.user;`
+    - `SELECT * FROM public.user;`
 6. Find the deleted user with the username [username].
-    - `> SELECT id, name, email, state FROM public.user WHERE name = ‘[username]’;`
+    - `SELECT id, name, email, state FROM public.user WHERE name = ‘[username]’;`
 7. Update the user’s state field.
-    - `> UPDATE public.user SET state = ‘active’ WHERE name = ‘[username]’;`
+    - `UPDATE public.user SET state = ‘active’ WHERE name = ‘[username]’;`
 8. Find the user again and ensure that the state field is set to active.
-    - `> SELECT id, name, email, state FROM public.user WHERE name = ‘[username]’;`
+    - `SELECT id, name, email, state FROM public.user WHERE name = ‘[username]’;`
