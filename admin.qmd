@@ -16,11 +16,14 @@ To give a user a role in an organization:
 2. Click on the __Manage__ button in the upper right.
 3. Click on the __Members__ tab at the top.
 ![](images/admin/orgmembers.png)
+
     - To add a new member to the organizaton, click the __Add Member__ button. Enter their username, select their new role from the dropdown, and click the __Add Member__ button at the bottom of the form.
     ![](images/admin/addorgmember.png)
-    -To change an existing member's role, click the wrench next to their user name.
+
+    - To change an existing member's role, click the wrench next to their user name.
     ![](images/admin/editmember.png)
-        - Select their new role from the dropdown menu and click __Update Member__
+
+        - Select their new role from the dropdown menu and click __Update Member__  
         - To remove the user from the organization completely, click the __Delete__ button.
     ![](images/admin/deletemember.png)
 
