@@ -258,39 +258,39 @@ The roles are:</p>
 <ol type="1">
 <li>Enter the <code>acep-db-cont</code> docker container
 <ul>
-<li><code>&gt; docker exec -it acep-db-cont /bin/bash</code><br>
+<li><code>docker exec -it acep-db-cont /bin/bash</code><br>
 </li>
 </ul></li>
 <li>Access the postgres database
 <ul>
-<li><code>&gt; psql -U postgres</code><br>
+<li><code>psql -U postgres</code><br>
 </li>
 </ul></li>
 <li>List all the databases and connect to the ckandb database.
 <ul>
-<li><code>&gt; \l</code></li>
-<li><code>&gt; \c ckandb</code></li>
+<li><code>\l</code></li>
+<li><code>\c ckandb</code></li>
 </ul></li>
 <li>List all the tables and list the columns of the user table.
 <ul>
-<li><code>&gt; \d</code></li>
-<li><code>&gt; \d user</code></li>
+<li><code>\d</code></li>
+<li><code>\d user</code></li>
 </ul></li>
 <li>List all the users in the user table.
 <ul>
-<li><code>&gt; SELECT * FROM public.user;</code></li>
+<li><code>SELECT * FROM public.user;</code></li>
 </ul></li>
 <li>Find the deleted user with the username [username].
 <ul>
-<li><code>&gt; SELECT id, name, email, state FROM public.user WHERE name = ‘[username]’;</code></li>
+<li><code>SELECT id, name, email, state FROM public.user WHERE name = ‘[username]’;</code></li>
 </ul></li>
 <li>Update the user’s state field.
 <ul>
-<li><code>&gt; UPDATE public.user SET state = ‘active’ WHERE name = ‘[username]’;</code></li>
+<li><code>UPDATE public.user SET state = ‘active’ WHERE name = ‘[username]’;</code></li>
 </ul></li>
 <li>Find the user again and ensure that the state field is set to active.
 <ul>
-<li><code>&gt; SELECT id, name, email, state FROM public.user WHERE name = ‘[username]’;</code></li>
+<li><code>SELECT id, name, email, state FROM public.user WHERE name = ‘[username]’;</code></li>
 </ul></li>
 </ol>
 
