@@ -21,7 +21,7 @@ There are two ways to access the __Add Dataset__ button:
 3. Once you have completed the metadata fields, click the __Next: Add Data__ button at the bottom of the form. 
 4. On the next page, add the data resources to your dataset.
 ![](images/researcher/createdataset2.png)
-    - Small datasets (<2MB) can be uploaded directly to the catalog
+    - Some CSV files (maximum ~100-200MB) can be uploaded directly to the catalog
     - Alternatively, enter a link to where the data is stored, such as a GitHub repository or Google Drive.
 5. If you have more resources to add, click the __Save & add another__ button at the bottom of the form. Otherwise click __Finish__ to post your dataset.
 
