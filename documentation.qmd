@@ -178,7 +178,7 @@ __Purpose__: Add custom theming and features for the CKAN instance, including
 - HTML file for About page text
 - Removed social media links from dataset/resources pages
 - Added support contact info to dataset sidebar
-- Added default blank option to add-to-group dropdown menu
+- Made featured_group config option editable from admin console
 
 __Configuration Settings__:
 
@@ -262,49 +262,12 @@ __Modifications__: Theng from RCS has made some modifications, including improvi
 #### ckanext-package-group-permissions
 __Link__: [https://github.com/salsadigitalauorg/ckanext-package-group-permissions](https://github.com/salsadigitalauorg/ckanext-package-group-permissions)  
 __Purpose__: Allows all editors and admins to add datasets to any group, without having to be added as members to each group.  
-
-> Note: This extension has now been updated by the creators. The following modifications are no longer necessary. 
-
-__Modifications__: This extension was created and works with CKAN 2.9. This instance is version 2.10, so the extension requires some small modifications to work. The following changes were made to the original extension:  
-
-- In the file `plugin.py`, change the `member_create` function to the following
-```py
-def member_create(self, next_auth, context, data_dict):
-    """
-    This code is largely borrowed from /src/ckan/ckan/logic/auth/create.py
-    With a modification to allow users to add datasets to any group
-    :param context:
-    :param data_dict:
-    :return:
-    """
-    group = logic_auth.get_group_object(context, data_dict)
-
-    authorized = False
-    if not group.is_organization and data_dict.get('object_type') == 'package':
-        authorized = helpers.user_has_admin_access(include_editor_access=True)
-
-    if not authorized:
-        # Fallback to the default CKAN behaviour
-        return next_auth(context, data_dict)
-    else:
-        return {'success': True}
+__Modifications__: To add a default "Select Group" option to the add to group dropdown menu, in the file `templates/package/group_list.html` add the following line to the "field-add_group" select form:
 ```
-- In the the file `templates/package/group_list.html`, add the line `{{ h.csrf_input() }}` to the beginning of the two post forms, as follows
-```html
-{% if groups %}
-<form class="add-to-group" method="post">
-    {{ h.csrf_input() }}
-    ...
-</form>
-{% endif %}
+<option value="none" selected disabled>Select a Group</option>
 ```
-```html
-{% if c.pkg_dict.groups %}
-<form method="post">
-    {{ h.csrf_input() }}
-    ...
-{% endif %}
-```
+
+> Note: The above modification was previously implemented in the ckanext-customtheme extension, but was moved to ckanext-package-group-permissions to avoid template overriding.
 
 #### ckanext-pdfview
 __Link__: [https://github.com/ckan/ckanext-pdfview](https://github.com/ckan/ckanext-pdfview)  
