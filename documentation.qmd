@@ -178,6 +178,8 @@ __Purpose__: Add custom theming and features for the CKAN instance, including
 - Removed social media links from dataset/resources pages
 - Added support contact info to dataset sidebar
 - Made featured_group config option editable from admin console
+- FAQ page linked in the masthead (formerly in ckanext-faqpage)
+- Restriction on the visibility metadata field, only admin/sysadmins can make datasets public (formerly in ckanext-restrictpublish)
 
 __Configuration Settings__:
 
@@ -194,10 +196,6 @@ __Modifications__:
 
 - The file `schemas/acep_dcat_fields.yaml` was created to define the metadata fields for the catalog. 
 - The file `templates/scheming/form_snippets/publisher.html` was created to define the dynamic dropdown menu in the Publisher metadata field.
-
-#### ckanext-faqpage
-__Author__: Jenae Matson  
-__Purpose__: Create an FAQ page linked in the masthead with collapsible boxes for questions and answers.  
 
 #### ckanext-geoview
 __Link__: [https://github.com/ckan/ckanext-geoview ](https://github.com/ckan/ckanext-geoview)  
@@ -271,10 +269,6 @@ __Modifications__: To add a default "Select Group" option to the add to group dr
 #### ckanext-pdfview
 __Link__: [https://github.com/ckan/ckanext-pdfview](https://github.com/ckan/ckanext-pdfview)  
 __Purpose__: Provide a view for pdf resources.
-
-#### ckanext-restrictpublish
-__Author__: Jenae Matson  
-__Purpose__: Restrict the ability to change the visibility of a dataset to admins only. Datasets posted by editors default to private. 
 
 #### ckanext-scheming
 __Link__: [https://github.com/ckan/ckanext-scheming ](https://github.com/ckan/ckanext-scheming)  
