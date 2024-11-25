@@ -133,16 +133,15 @@ Creating a local version of the data catalog is a useful tool for developing and
 
 ### Create a New Extension
 1. Enter the `acep-ckan-cont` Docker container
-- `docker exec -it acep-ckan-cont /bin/bash`
-    and run the following command
-- `ckan generate extension -o /srv/app/src/ckan-extension`
+- `docker exec -it acep-ckan-cont /bin/bash`  
+    and run the following command  
+- `ckan generate extension -o /srv/app/src/ckan-extension`  
 This will create an extension in the `ckan-extension` folder which can be edited outside of the container. 
 2. Add the extension name to the `CKAN_PLUGINS` list in the `.env` file.
 3. Run `docker compose up -d --build ckan`
 
 ### Install an Extension
-1. Ensure that the extension supports CKAN 2.10.4 and Python 3.10
-Clone the extension repository into the `ckan-extension` folder.
+1. Ensure that the extension supports CKAN 2.10.4 and Python 3.10. Clone the extension repository into the `ckan-extension` folder.
 2. Ensure that all dependencies for the extension are listed in `requirements.txt` or a similar file.
 3. Add the extension name to the `CKAN_PLUGINS` list in the `.env` file.
 4. Run `docker compose up -d --build ckan`
@@ -325,6 +324,7 @@ __Purpose__: This extension adds the ability to search for datasets on a map wid
 __Problems__: This extension is not currently installed due to the following,  
 
 - Configuring map tiles for ckanext-spatial caused the map tiles for ckanext-geoview to disappear.
+- To be indexed on the map search widget, a dataset requires a metadata field called "spatial". This would need to be integrated with the implemented DCAT metadata standard.
 - Datasets with the required spatial metadata were not searchable on the map search widget, although the dataset extent widet worked correctly. 
 
 #### ckanext-oidc-pkce
